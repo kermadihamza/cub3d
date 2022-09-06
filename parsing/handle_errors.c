@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 15:44:51 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:37:39 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,30 @@
 void	handle_errors(int error, char *str)
 {
 	if (error == NB_ARGUMENTS)
-		write(2, "Wrong number of arguments.\n", 27);
+		write(2, "Error.\nWrong number of arguments.\n", 35);
 	else if (error == WRONG_NAME)
 	{
-		write (2, "Error\nWrong file name : ", 24);
+		write (2, "Error.\nWrong file name : ", 25);
 		write (2, str, ft_strlen(str));
-		write (2, "\n", 1);
+		write (2, "\nChange it now.\n", 16);
 	}
 	else if (error == UNEXIST_MAP)
-		write(2, "This map does not exit. Change it now.\n", 39);
-	else if (error == INCORR_CHAR)
+		write(2, "Error.\nThis map does not exit. Change it now.\n", 46);
+	else if (error == SYNTAX_ERR)
 	{
-		write(2, "Incorrect character(s) in the map. Change this now.\n", 52);
-		write (2, str, ft_strlen(str));
-		write (2, "\n", 1);
+		write(2, "Error.\nSyntax error in the file : ", 34);
+		write (2, str, ft_strlen(str) - 1);
+		write (2, "\nChange it now.\n", 16);
 	}
+	else if (error == NB_ELEMENTS)
+		write(2, "Error.\nThere is too few or too many character(s). Fix it.\n", 58);
+	else if (error == OTHER_CHAR)
+	{
+		write(2, "Error.\nIncorrect character in the map : ", 40);
+		write (2, &str[0], 1);
+		write (2, "\nFix it now.\n", 13);
+	}
+	else if (error == OPEN_WALL)
+		write(2, "Error.\nA wall of the map is open. Close it.\n", 44);
 	exit (EXIT_FAILURE);
 }

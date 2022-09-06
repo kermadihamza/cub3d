@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 16:07:47 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 19:11:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ void	sort_map_infos(t_game *game, char *str)
 		game->floor = copy_infos(str + 1);
 	else if (str[0] == 'C')
 		game->roof = copy_infos(str + 1);
-	else if (str[0] == '1')
+	else if (str[0] == '1' || game->map[0] != '\0')
 		game->map = ft_strjoin(game->map, str);
-	else if (str[0] != '\n')
-		handle_errors(INCORR_CHAR, str);
+	else if (str[0] == '\n' && game->map[0] != '\0')
+		handle_errors(OTHER_CHAR, game->map);
+	else if (str[0] != '\n' && game->map[0] == '\0')
+		handle_errors(SYNTAX_ERR, str);
 }
 
 void	read_map_file(t_game *game, char *file)
@@ -75,4 +77,5 @@ void	init_map(t_game *game, char **av)
 {
 	check_error_name(av[1]);
 	read_map_file(game, av[1]);
+	error_map(game->map);
 }

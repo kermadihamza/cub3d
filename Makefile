@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/06 15:53:27 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/06 18:53:10 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRCS = 	main.c\
 		parsing/handle_errors.c\
 		parsing/parsing.c\
 		parsing/init_map.c\
+		parsing/error_map.c\
+		parsing/error_walls.c\
 		utils/utils.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\

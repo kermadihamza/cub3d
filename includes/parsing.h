@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 16:06:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:52:57 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # define WRONG_NAME 3
 # define MLX_INIT 4
 # define UNEXIST_MAP 5
-# define INCORR_CHAR 6
+# define SYNTAX_ERR 6
+# define NB_ELEMENTS 7
+# define OTHER_CHAR 8
+# define OPEN_WALL 9
 
 # include "game.h"
 
@@ -26,5 +29,7 @@ void	init_map(t_game *game, char **av);
 
 void	handle_errors(int error, char *str);
 void	check_error_name(char *av);
+void	error_map(char *map);
+void	holes_in_walls(char *map);
 
 #endif

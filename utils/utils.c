@@ -6,11 +6,16 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 15:45:01 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:53:31 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	is_personage(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
 
 char	*ft_strdup(const char *src)
 {
