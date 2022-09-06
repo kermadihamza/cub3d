@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:48:15 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 11:48:16 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 16:06:26 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define BUFFER_SIZE 1
 
+# include "parsing.h"
 # include <unistd.h>
 # include <stdlib.h>
 

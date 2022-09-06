@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 11:32:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/06 15:56:08 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_mlx_init(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		handle_errors(MLX_INIT, NULL);
-	game->win = mlx_new_window(game->mlx, 1024, 1024, "so_long");
+	game->win = mlx_new_window(game->mlx, 1024, 1024, "cub3d");
 	if (!game->win)
 	{
 		free (game->mlx);
