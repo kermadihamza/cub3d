@@ -5,15 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/05 17:20:46 by lrondia          ###   ########.fr       */
+/*   Created: 2022/09/05 18:30:28 by lrondia           #+#    #+#             */
+/*   Updated: 2022/09/06 12:04:54 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../includes/parsing.h"
 
-void	handle_errors(int error, void *ptr)
+void	check_error_name(char *av)
 {
-	if (error = NB_ARGUMENTS)
-		write(2, "Wrong number of arguments.\n", 27);
+	int		i;
+	int		j;
+	char	end[5];
+
+	i = ft_strlen(av) - 1;
+	j = 0;
+	while (j < 4 && i > 0)
+	{
+		end[j] = av[i];
+		i--;
+		j++;
+	}
+	end[j] = '\0';
+	if (!ft_strcmp(end, "buc."))
+		handle_errors(WRONG_NAME, av);
 }

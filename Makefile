@@ -3,45 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
+#    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/05 17:18:41 by hakermad         ###   ########.fr        #
+#    Updated: 2022/09/06 12:05:42 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = test.c
+SRCS = 	main.c\
+		parsing/errors.c\
+		parsing/handle_errors.c\
+		parsing/parsing.c\
+		parsing/init_map.c\
+		utils/utils.c\
+		utils/gnl/get_next_line.c\
+		utils/gnl/get_next_line_utils.c\
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-
-RM = rm -f
-
 CFLAGS = -Wall -Wextra -Werror
 
-LIBS = -Lmlx -lmlx -framework -OpenGl -AppKit
+MLX = /usr/local/lib/
+FRAMEWORK = -framework OpenGL -framework AppKit
 
-MLX = libmlx.dylib
-
-NAME = cub3D
+NAME = cub3d
 
 all: $(NAME)
 
-$(NAME):		$(MLX) $(OBJS)
-				gcc ${CFLAGS} -o ${NAME} ${OBJS} ${LIBS}
+$(NAME):	$(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(MLX) -lmlx $(FRAMEWORK)
 
-$(MLX):
-				@$(MAKE) -C mlx
-				@mv mlx/$(MLX) .
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-				@$(MAKE) -C mlx clean
-				$(RM) $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS)
 
-fclean:			clean
-				$(RM) $(NAME) $(MLX)
+fclean:	clean
+	rm -f $(NAME)
 
-re:				fclean $(NAME)
+re: fclean all
 
-.PHONY:			all clean fclean re
+.PHONY: all clean fclean re

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:05:58 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/05 18:31:13 by lrondia          ###   ########.fr       */
+/*   Created: 2022/09/06 11:34:12 by lrondia           #+#    #+#             */
+/*   Updated: 2022/09/06 11:43:54 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/utils.h"
 
-void	parsing(t_game *game, int ac, char **av)
+int	ft_strcmp(char *s1, char *s2)
 {
-	if (ac != 2)
-		handle_errors(NB_ARGUMENTS, NULL);
-	init_map(game, av);
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	if (s1[i] == '\0' && s2[i] == '\0')
+		return (1);
+	return (0);
 }

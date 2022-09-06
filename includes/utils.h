@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:18:48 by hakermad          #+#    #+#             */
-/*   Updated: 2022/09/05 17:21:37 by hakermad         ###   ########.fr       */
+/*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
+/*   Updated: 2022/09/06 11:35:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
-{
-	char str = "salut";
-	printf()
-}
+#ifndef UTILS_H
+#define UTILS_H
+
+# include "cub3d.h"
+
+int	ft_strcmp(char *s1, char *s2);
+
+#endif
