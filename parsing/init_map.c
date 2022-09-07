@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 11:56:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 15:34:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,20 @@ void	sort_map_infos(t_game *game, char *str)
 {
 	if (!str[0])
 		return ;
-	if (str[0] == 'N' && str[1] && str[1] == 'O')
+	if (str[0] == 'N' && str[1] && str[1] == 'O' && !game->north)
 		game->north = copy_infos(str + 2);
-	else if (str[0] == 'S' && str[1] && str[1] == 'O')
+	else if (str[0] == 'S' && str[1] && str[1] == 'O' && !game->south)
 		game->south = copy_infos(str + 2);
-	else if (str[0] == 'W' && str[1] && str[1] == 'E')
-		game->west = copy_infos(str + 2);
-	else if (str[0] == 'E' && str[1] && str[1] == 'A')
+	else if (str[0] == 'E' && str[1] && str[1] == 'A' && !game->east)
 		game->east = copy_infos(str + 2);
-	else if (str[0] == 'F')
+	else if (str[0] == 'W' && str[1] && str[1] == 'E' && !game->west)
+		game->west = copy_infos(str + 2);
+	else if (str[0] == 'F' && !game->floor)
 		game->floor = copy_infos(str + 1);
-	else if (str[0] == 'C')
+	else if (str[0] == 'C' && !game->roof)
 		game->roof = copy_infos(str + 1);
-	else if (str[0] == '1' || str[0] == '0' || game->map[0] != '\0')
+	else if (str[0] == '1' || str[0] == '0'
+		|| str[0] == ' ' || game->map[0] != '\0')
 		game->map = ft_strjoin(game->map, str);
 	else if (str[0] == '\n' && game->map[0] != '\0')
 		handle_errors(OTHER_CHAR, game->map);
@@ -75,6 +76,7 @@ void	read_map_file(t_game *game, char *file)
 
 void	init_map(t_game *game, char **av)
 {
+	ft_memset(game, 0, sizeof (t_game));
 	check_error_name(av[1]);
 	read_map_file(game, av[1]);
 	error_map(game->map);

@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/07 10:36:21 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/07 15:34:05 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = 	main.c\
 		parsing/handle_errors.c\
 		parsing/parsing.c\
 		parsing/init_map.c\
-		parsing/error_name.c\
+		parsing/error_file.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
 		utils/libft.c\

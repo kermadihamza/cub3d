@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 10:35:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 15:34:15 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,21 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	dst[i] = '\0';
 	return (res);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*ub;
+	unsigned char	uc;
+
+	ub = b;
+	uc = c;
+	i = 0;
+	while (i < len)
+	{
+		ub[i] = uc;
+		i++;
+	}
+	return (ub);
 }
