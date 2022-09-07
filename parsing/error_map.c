@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 12:01:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 16:01:25 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ void	other_character(char *map)
 		if (!is_personage(map[i]) && map[i] != '0' && map[i] != '1'
 			&& map[i] != '\n' && map[i] != ' ')
 			handle_errors(OTHER_CHAR, &map[i]);
+		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
+			handle_errors(OTHER_CHAR, "\n");
 		i++;
 	}
 }
 
 void	error_map(char *map)
 {
-	number_of_elements(map);
 	other_character(map);
+	number_of_elements(map);
 	holes_in_walls(map);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 15:34:28 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 16:01:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ void	sort_map_infos(t_game *game, char *str)
 {
 	if (!str[0])
 		return ;
-	if (str[0] == 'N' && str[1] && str[1] == 'O' && !game->north)
+	else if (str[0] == '1' || str[0] == '0'
+		|| str[0] == ' ' || game->map[0] != '\0')
+		game->map = ft_strjoin(game->map, str);
+	else if (is_personage(str[0]) && str[1] && (str[1] == '0' || str[1] == '1'))
+		game->map = ft_strjoin(game->map, str);
+	else if (str[0] == 'N' && str[1] && str[1] == 'O' && !game->north)
 		game->north = copy_infos(str + 2);
 	else if (str[0] == 'S' && str[1] && str[1] == 'O' && !game->south)
 		game->south = copy_infos(str + 2);
@@ -42,12 +47,7 @@ void	sort_map_infos(t_game *game, char *str)
 		game->floor = copy_infos(str + 1);
 	else if (str[0] == 'C' && !game->roof)
 		game->roof = copy_infos(str + 1);
-	else if (str[0] == '1' || str[0] == '0'
-		|| str[0] == ' ' || game->map[0] != '\0')
-		game->map = ft_strjoin(game->map, str);
-	else if (str[0] == '\n' && game->map[0] != '\0')
-		handle_errors(OTHER_CHAR, game->map);
-	else if (str[0] != '\n' && game->map[0] == '\0')
+	else if (str[0] != '\n')
 		handle_errors(SYNTAX_ERR, str);
 }
 
