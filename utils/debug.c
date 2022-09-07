@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 15:45:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 10:39:05 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,16 @@ void	debug(t_game *game)
 	printf("F ->%s\n", game->floor);
 	printf("C ->%s\n", game->roof);
 	printf("map ->%s\n", game->map);
+}
+
+void	debug_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		printf("->%s\n", split[i]);
+		i++;
+	}	
 }

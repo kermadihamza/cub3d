@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 16:04:08 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:24:14 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_game
 }	t_game;
 
 void	parsing(t_game *game, int ac, char **av);
+
 void	debug(t_game *game);
+void	debug_split(char **split);
 
 #endif
