@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/07 16:02:02 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/09 16:11:29 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = 	main.c\
 		parsing/error_walls.c\
 		utils/libft.c\
 		utils/utils.c\
+		utils/ft_atoi.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/ft_split.c\

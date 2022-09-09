@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 16:01:55 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/09 16:10:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,6 @@ void	init_map(t_game *game, char **av)
 	check_error_name(av[1]);
 	read_map_file(game, av[1]);
 	error_map(game->map);
+	error_rgb(game->floor);
+	error_rgb(game->roof);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 11:58:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/09 14:47:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void	handle_errors(int error, char *str)
 	}
 	else if (error == UNEXIST_MAP)
 		write(2, "Error.\nThis map does not exit. Change it now.\n", 46);
+	else if (error == INCORR_RGB)
+	{
+		write(2, "Error.\nRGB format is incorrect : ", 33);
+		write (2, str, ft_strlen(str));
+		write (2, "\nChange it now.\n", 16);
+	}
 	else if (error == SYNTAX_ERR)
 	{
 		write(2, "Error.\nSyntax error in the file : ", 34);

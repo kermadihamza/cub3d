@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 13:24:08 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/09 16:10:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define NB_ELEMENTS 7
 # define OTHER_CHAR 8
 # define OPEN_WALL 9
+# define INCORR_RGB 10
 
 # include "game.h"
 

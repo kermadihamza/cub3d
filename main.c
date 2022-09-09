@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 16:42:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/09 17:01:09 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ void	ft_mlx_init(t_game *game)
 	{
 		free (game->mlx);
 		handle_errors(MLX_INIT, NULL);
+	}
+	int i = 0;
+	while (i < 100)
+	{
+		int j = 0;
+		while (j < 100)
+		{
+			// mlx_pixel_put(game->mlx, game->win, i, j, 0xFFFFFF);
+			j++;
+		}
+		i++;
 	}
 }
 
