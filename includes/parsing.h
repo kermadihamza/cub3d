@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/09 16:10:00 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:28:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	handle_errors(int error, char *str);
 void	check_error_name(char *av);
 void	error_map(char *map);
 void	holes_in_walls(char *map);
-void	error_rgb(char *rgb);
+void	error_rgb(char *rgb, int *color);
 
 #endif

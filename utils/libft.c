@@ -6,11 +6,19 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 16:02:26 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:19:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	ft_isdigit(int c)
+{
+	if (c < 48 || c > 57)
+		return (0);
+	else
+		return (1);
+}
 
 char	*ft_strdup(const char *src)
 {

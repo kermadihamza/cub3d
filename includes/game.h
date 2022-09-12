@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 16:02:16 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:26:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_game
 	char	*west;
 	char	*floor;
 	char	*roof;
+	int		color_floor;
+	int		color_roof;
 	char	*map;
 }	t_game;
 

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 10:39:05 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:30:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	debug(t_game *game)
 	printf("EA ->%s\n", game->east);
 	printf("F ->%s\n", game->floor);
 	printf("C ->%s\n", game->roof);
+	printf("F color ->%d\n", game->color_floor);
+	printf("C color ->%d\n\n", game->color_roof);
 	printf("map ->%s\n", game->map);
 }
 
