@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
+#    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/12 17:10:38 by hakermad         ###   ########.fr        #
+#    Updated: 2022/09/12 19:53:45 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = 	main.c\
 		parsing/handle_errors.c\
 		parsing/parsing.c\
-		parsing/init_map.c\
-		parsing/error_file.c\
+		parsing/parsing_rgb.c\
+		parsing/read_sort_map.c\
+		parsing/init_color_sprite.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
 		utils/libft.c\
@@ -24,7 +25,6 @@ SRCS = 	main.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/ft_split.c\
 		utils/debug.c\
-		display/display.c\
 		display/ft_mlx_pixel_put.c\
 
 OBJS = $(SRCS:.c=.o)

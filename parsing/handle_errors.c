@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/09 14:47:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 18:30:38 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	handle_errors(int error, char *str)
 		write(2, "Error.\nA wall of the map is open :\n", 35);
 		write (2, str, ft_strlen(str));
 		write (2, "\nClose it.\n", 11);
+	}
+	else if (error == SPRITE_ERR)
+	{	
+		write(2, "Error.\nThis file does not exist/is corrupted :\n", 47);
+		write (2, str, ft_strlen(str));
+		write (2, "\nChange it.\n", 12);
 	}
 	exit (EXIT_FAILURE);
 }

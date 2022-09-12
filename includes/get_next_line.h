@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:48:15 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/06 16:06:26 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 19:30:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # define BUFFER_SIZE 1
-
-# include "parsing.h"
-# include <unistd.h>
-# include <stdlib.h>
 
 char	*get_next_line(int fd);
 char	*read_line(int fd, char *line);

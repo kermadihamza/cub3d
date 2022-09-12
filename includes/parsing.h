@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 14:28:28 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 19:48:58 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@
 # define OTHER_CHAR 8
 # define OPEN_WALL 9
 # define INCORR_RGB 10
-
-# include "game.h"
+# define SPRITE_ERR 11
 
 void	init_map(t_game *game, char **av);
+void	parsing(t_game *game, int ac, char **av);
+void	read_map(t_game *game, char *file);
+void	parsing_rgb(char *rgb, int *color);
 
 void	handle_errors(int error, char *str);
 void	check_error_name(char *av);
 void	error_map(char *map);
 void	holes_in_walls(char *map);
-void	error_rgb(char *rgb, int *color);
+void	init_color_sprite(t_game *game);
 
 #endif

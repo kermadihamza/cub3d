@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 17:07:41 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:31:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include "game.h"
 # include "parsing.h"
 # include "get_next_line.h"

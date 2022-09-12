@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   read_sort_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 16:56:22 by hakermad         ###   ########.fr       */
+/*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
+/*   Updated: 2022/09/12 19:47:57 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ char	*copy_infos(char *src)
 	if (src[i] == ' ' || src[i] == '	')
 		i++;
 	dest = ft_strdup(src + i);
+	i = 0;
+	while (dest[i] != '\n')
+		i++;
+	if (dest[i] == '\n')
+		dest[i] = '\0';
 	return (dest);
 }
 
@@ -51,7 +56,7 @@ void	sort_map_infos(t_game *game, char *str)
 		handle_errors(SYNTAX_ERR, str);
 }
 
-void	read_map_file(t_game *game, char *file)
+void	read_map(t_game *game, char *file)
 {
 	int		fd;
 	char	*buffer;
@@ -72,14 +77,4 @@ void	read_map_file(t_game *game, char *file)
 		if (buffer)
 			free (buffer);
 	}
-}
-
-void	init_map(t_game *game, char **av)
-{
-	ft_memset(game, 0, sizeof (t_game));
-	check_error_name(av[1]);
-	read_map_file(game, av[1]);
-	error_map(game->map);
-	error_rgb(game->floor, &game->color_floor);
-	error_rgb(game->roof, &game->color_roof);
 }

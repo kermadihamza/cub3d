@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 17:52:38 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/09/12 20:04:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
-	parsing(&game, ac, av);
+	ft_memset(&game, 0, sizeof (t_game));
 	ft_mlx_init(&game);
-	display(&game);
+	parsing(&game, ac, av);
 	mlx_loop(game.mlx);
 }

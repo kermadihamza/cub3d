@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:47:14 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/05 18:24:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 19:32:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_next_line.h"
+#include "../../includes/cub3d.h"
 
 char	*new_line(char *str)
 {

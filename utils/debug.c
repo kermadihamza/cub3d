@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 17:31:16 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:14:43 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	debug(t_game *game)
 	printf("map ->%s\n", game->map);
 }
 
-void	debug_img(t_img *img)
+void	debug_color(t_color *color)
 {
-	printf("img ->%p\n", img->img);
-	printf("addr ->%s\n", img->addr);
-	printf("bpp ->%d\n", img->bpp);
-	printf("line_length ->%d\n", img->line_length);
-	printf("endian ->%d\n\n", img->endian);
+	printf("img ->%p\n", color->img);
+	printf("addr ->%s\n", color->addr);
+	printf("bpp ->%d\n", color->bpp);
+	printf("line_length ->%d\n", color->line_length);
+	printf("endian ->%d\n\n", color->endian);
 }
 
 void	debug_split(char **split)
