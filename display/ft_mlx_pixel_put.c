@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 17:52:38 by hakermad         ###   ########.fr       */
+/*   Created: 2022/09/12 17:09:03 by hakermad          #+#    #+#             */
+/*   Updated: 2022/09/12 17:09:20 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-void	ft_mlx_init(t_game *game)
+void	ft_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		handle_errors(MLX_INIT, NULL);
-	game->win = mlx_new_window(game->mlx, 1024, 1024, "cub3d");
-	if (!game->win)
-	{
-		free (game->mlx);
-		handle_errors(MLX_INIT, NULL);
-	}
-}
+	char	*dst;
 
-int	main(int ac, char **av)
-{
-	t_game	game;
-
-	parsing(&game, ac, av);
-	ft_mlx_init(&game);
-	display(&game);
-	mlx_loop(game.mlx);
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
 }

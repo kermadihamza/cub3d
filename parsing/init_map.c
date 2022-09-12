@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 14:29:12 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/12 16:56:22 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void	init_map(t_game *game, char **av)
 	error_map(game->map);
 	error_rgb(game->floor, &game->color_floor);
 	error_rgb(game->roof, &game->color_roof);
-	debug(game);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
+#    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/09 16:11:29 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/12 17:10:38 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS = 	main.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/ft_split.c\
 		utils/debug.c\
+		display/display.c\
+		display/ft_mlx_pixel_put.c\
 
 OBJS = $(SRCS:.c=.o)
 
