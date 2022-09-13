@@ -6,12 +6,17 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 19:29:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/13 21:30:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
+
+typedef struct s_pos {
+	double	x;
+	double	y;
+}	t_pos;
 
 typedef struct s_color {
 	void	*img;
@@ -28,6 +33,13 @@ typedef struct s_sprite {
 	void	*west;
 }	t_sprite;
 
+typedef struct s_key {
+	bool	a;
+	bool	s;
+	bool	w;
+	bool	d;
+}	t_key;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -43,10 +55,13 @@ typedef struct s_game
 	char		*map;
 	t_color		color[2];			// 0 = floor et 1 = roof
 	t_sprite	sprite;
+	t_pos		player;
+	t_key		key;
 }	t_game;
 
 void	debug(t_game *game);
 void	debug_color(t_color *color);
 void	debug_split(char **split);
+void	debug_pos(t_pos pos);
 
 #endif

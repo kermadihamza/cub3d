@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   pos.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/13 21:13:23 by lrondia          ###   ########.fr       */
+/*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
+/*   Updated: 2022/09/13 21:42:15 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include <mlx.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "game.h"
-# include "parsing.h"
-# include "get_next_line.h"
-# include "utils.h"
-# include "display.h"
+t_pos	find_pos(char *map, int i)
+{
+	int		j;
+	int		count;
+	t_pos	pos;
 
-#endif
+	j = i;
+	count = 0;
+	while (j >= 0)
+	{
+		if (map[j] == '\n')
+			count++;
+		if (map[j] == '\n' && count == 1)
+			pos.x = i - j - 1;
+		j--;
+	}	
+	pos.y = count;
+	return (pos);
+}

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 19:14:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/13 21:42:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ void	debug_split(char **split)
 		printf("->%s\n", split[i]);
 		i++;
 	}	
+}
+
+void	debug_pos(t_pos pos)
+{
+	printf("x : %f\n", pos.x);
+	printf("y : %f\n", pos.y);
 }
