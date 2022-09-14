@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/13 21:30:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/14 12:15:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ typedef struct s_pos {
 	double	x;
 	double	y;
 }	t_pos;
+
+typedef struct s_ray {
+	double	delta_x;
+	double	delta_y;
+	double	p_angle;
+}	t_ray;
 
 typedef struct s_color {
 	void	*img;
@@ -57,6 +63,7 @@ typedef struct s_game
 	t_sprite	sprite;
 	t_pos		player;
 	t_key		key;
+	t_ray		ray;
 }	t_game;
 
 void	debug(t_game *game);
