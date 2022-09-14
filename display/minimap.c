@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/13 21:46:13 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/14 16:15:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,29 @@ void	little_square(t_game *game, int color, t_pos pos)
 			j++;
 		}	
 		i++;
+	}
+}
+
+void	ft_draw_line(t_game *game, double angle)
+{
+	float	bx;
+	float	by;
+	float	d;
+	float	pente;
+
+	bx = cos(angle);
+	by = sin(angle);
+	d = 0;
+	if (bx < 0.05 && bx > -0.05)
+		bx = 0.05;
+	pente = by / bx;
+	while (sqrtf(((d * pente) * (d * pente)) + d * d) <= 25)
+	{
+		mlx_pixel_put(game->mlx, game->win, (game->player.x * 10 + 5) - d * pente, (game->player.y * 10 + 5) + d, 0xFF00000);
+		if (bx < 0)
+			d -= 0.025;
+		else
+			d += 0.025;
 	}
 }
 
@@ -55,4 +78,6 @@ void	init_mini_map(t_game *game)
 	pos.x = game->player.x * 10;
 	pos.y = game->player.y * 10;
 	little_square(game, 0xFF0000, pos);
+	ft_draw_line(game, game->ray.p_angle + (PI/6));
+	ft_draw_line(game, game->ray.p_angle - (PI/6));
 }

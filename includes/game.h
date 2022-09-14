@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 12:15:00 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:29:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ typedef struct s_ray {
 	double	delta_x;
 	double	delta_y;
 	double	p_angle;
+	int		ray;
+	int		mx;		// map x ?
+	int		my;
+	int		mp;
+	int		dof;	// depth of field (pour ne pas regarder à l'infini et être coincé.e dans une boucle)
+	double	ray_x;
+	double	ray_y;
+	double	ray_angle;
+	double	xo;		// x offset (on trouve les coordonnées entre la première et la deuxième
+	double	yo;		// 			intersection avec le mur, comme ça on peut prévoir les suivantes)
 }	t_ray;
 
 typedef struct s_color {

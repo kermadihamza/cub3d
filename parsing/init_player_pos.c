@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 12:31:59 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:18:47 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_player_pos(t_game *game)
 			game->player = find_pos(game->map, i);
 		i++;
 	}
-	game->ray.p_angle = 0;
+	game->ray.p_angle = (3*PI)/2;
 	game->ray.delta_x = cos(game->ray.p_angle);
 	game->ray.delta_y = sin(game->ray.p_angle);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 12:44:08 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/14 18:05:21 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	angle_changes(int code, t_ray *ray)
 	if (code == 123)
 	{
 		ray->p_angle -= 0.1;
-		if (ray->p_angle < 0)
+		if (ray->p_angle <= 0)
 			ray->p_angle += 2*PI;
 		ray->delta_x = cos(ray->p_angle);
 		ray->delta_y = sin(ray->p_angle);
@@ -77,5 +77,6 @@ int	display(t_game *game)
 {
 	key_manager(game, game->key);
 	init_mini_map(game);
+	ray_test(game, &game->ray, game->player);
 	return (0);
 }

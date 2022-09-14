@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/13 21:26:02 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/14 16:27:17 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS = 	main.c\
 		display/ft_mlx_pixel_put.c\
 		display/minimap.c\
 		display/display.c\
+		display/raycasting.c\
 
 OBJS = $(SRCS:.c=.o)
 
