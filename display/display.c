@@ -6,15 +6,23 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 18:05:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/15 15:29:54 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	angle_changes(int code, t_ray *ray)
+void	angle_changes(int code, t_ray *ray, t_pos *player)
 {
 	if (code == 123)
+	{
+		ray->p_angle += 0.1;
+		if (ray->p_angle > 2*PI)
+			ray->p_angle -= 2*PI;
+		ray->delta_x = cos(ray->p_angle);
+		ray->delta_y = sin(ray->p_angle);
+	}
+	if (code == 124)
 	{
 		ray->p_angle -= 0.1;
 		if (ray->p_angle <= 0)
@@ -22,13 +30,15 @@ void	angle_changes(int code, t_ray *ray)
 		ray->delta_x = cos(ray->p_angle);
 		ray->delta_y = sin(ray->p_angle);
 	}
-	if (code == 124)
+	if (code == 126)
 	{
-		ray->p_angle += 0.1;
-		if (ray->p_angle > 2*PI)
-			ray->p_angle -= 2*PI;
-		ray->delta_x = cos(ray->p_angle);
-		ray->delta_y = sin(ray->p_angle);
+		player->x += ray->delta_x / 5;
+		player->y -= ray->delta_y / 5;
+	}
+	if (code == 125)
+	{
+		player->x -= ray->delta_x / 5;
+		player->y += ray->delta_y / 5;
 	}
 }
 
@@ -44,7 +54,7 @@ int	key_press(int code, t_game *game)
 		game->key.w = 1;
 	if (code == 2)
 		game->key.d = 1;
-	angle_changes(code, &game->ray);
+	angle_changes(code, &game->ray, &game->player);
 	return (0);
 }
 

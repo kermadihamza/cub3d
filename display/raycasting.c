@@ -6,95 +6,117 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 18:20:29 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/15 17:47:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_ray(t_game *game, double angle)
+void	little_square_2(t_game *game, int color, t_pos pos)
 {
-	float	bx;
-	float	by;
-	float	d;
-	float	pente;
+	int	i;
+	int	j;
 
-	bx = cos(angle);
-	by = sin(angle);
-	d = 0;
-	if (bx < 0.05 && bx > -0.05)
-		bx = 0.05;
-	pente = by / bx;
-	while (sqrtf(((d * pente) * (d * pente)) + d * d) <= 1)
+	i = 0;
+	while (i < 10)
 	{
-		mlx_pixel_put(game->mlx, game->win, (game->player.x * 10 + 5) - d * pente, (game->player.y * 10 + 5) + d, 0xFF00000);
-		if (bx < 0)
-			d -= 0.025;
-		else
-			d += 0.025;
+		j = 0;
+		while (j < 10)
+		{
+			mlx_pixel_put(game->mlx, game->win, pos.x *10 + i , pos.y * 10 + j, color);
+			j++;
+		}	
+		i++;
 	}
 }
+	// printf("play ->%f\n", player.x);
 
-void	check_horizontal(t_game *game, t_ray *ray, t_pos player)
+	// printf("rx --->%f\n", ray->rx);
+	// printf("ry --->%f\n", ray->ry);
+	// printf("first->%f = %f * %f\n", ray->first_yo, tan(ray->ra), ray->first_xo);
+	// printf("ra : %f\n", ray->ra);
+	// printf("player_a : %f\n", ray->p_angle);
+	
+
+	// printf("rx : %f\n", ray->rx);
+
+void	init_up_values(t_game *game, t_ray *ray, t_pos player)
+{
+	if (ray->ra > PI / 2)
+		ray->rx = floor(player.x);
+	else
+		ray->rx = ceil(player.x);
+	ray->first_xo = ray->rx - player.x;	
+	ray->first_yo = fabs(tan(ray->ra)) * ray->first_xo;
+	ray->ry = player.y - ray->first_yo - ray->yo;
+
+	ray->xo = 1;
+	ray->yo = fabs(tan(ray->ra));
+	t_pos	pos;
+	pos.x = ray->rx;
+	pos.y = ray->ry;
+	little_square_2(game, 0x00FF00, pos);
+}
+	
+void	init_down_values(t_game *game, t_ray *ray, t_pos player)
+{
+	if (ray->ra < (3 * PI) / 2)
+		ray->rx = floor(player.x);
+	else
+		ray->rx = ceil(player.x);
+	ray->first_xo = ray->rx - player.x;	
+	ray->first_yo = -fabs(tan(ray->ra)) * ray->first_xo;
+	ray->ry = player.y- ray->first_yo - ray->yo;
+
+	ray->xo = 1;
+	ray->yo = -fabs(tan(ray->ra));
+	(void) game;
+	t_pos	pos;
+	pos.x = ray->rx;
+	pos.y = ray->ry;
+	little_square_2(game, 0x00FF00, pos);
+}
+
+void	check_vertical(t_game *game, t_ray *ray, t_pos player)
 {
 	int		i;
-	double	aTan;
+	int		dof;
 	char	**map;
 
 	i = 0;
+	dof = 0;
+	map = ft_split(game->map, '\n');
 	while (i < 1)
 	{
-		ray->dof = 0;
-		aTan = -1 / tan(ray->ray_angle);
-		if (ray->ray_angle > PI) // looking up
+		ray->ra = ray->p_angle;
+		if (ray->ra < PI) // looking up
+			init_up_values(game, ray, player);
+		if (ray->ra > PI) // looking down
+			init_down_values(game, ray, player);
+		if (ray->ra == 0 || ray->ra == PI)
 		{
-			ray->ray_y = floor(player.y); // arondir a la valeur au dessus -> utiliser la fonction floor (ou ceil)
-			ray->ray_x = (player.y - ray->ray_y) * aTan + player.x;
-			ray->yo = -1; // c quoi l'offset ??? le décalage entre la case et la case suivant où on va cogner un mur -> 1 ?
-			ray->xo = -ray->yo * aTan;  // avec la tangente on calcule l'offset x (combien on avance dans les x entre deux croisement en y)
-		}
-		if (ray->ray_angle < PI) // looking down
-		{
-			ray->ray_y = ceil(player.y); // arondir a la valeur en dessous 
-			ray->ray_x = (player.y - ray->ray_y) * aTan + player.x;
-			ray->yo = 1;
-			ray->xo -= ray->yo * aTan;
-	// printf("angle:%f\n", ray->ray_angle);
-	// printf("aTan:%f\n", aTan);
-	// printf("xo:%f\n", ray->xo);
-	// printf("yo:%f\n", ray->yo);
-		}
-		if (ray->ray_angle == 0 || ray->ray_angle == PI)
-		{
-			ray->ray_x = player.x;
-			ray->ray_y = player.y;
-			ray->dof = 8;
+			ray->rx = player.x;
+			ray->ry = player.y;
 		}
 		i++;
-		map = ft_split(game->map, '\n');
-		while (ray->dof < 8) // depth of field, pour nous combien ? fade ?
-		// infos de la map, comparer la position oú arrive le rayon avec la carte et regarder si c'est un mur
-		// si on croise un mur on arrête la boucle, sinon on augmente la position du rayon avec l'offset et on se retrouve a la case d'après
-		// /!\ protéger en vérifiant que le rayon ne sort pas de la map pour ne pas segfault
-		{
-		// 	draw_ray(game, ray->p_angle);
-			if (map[(int)ray->ray_x][(int)ray->ray_y] && map[(int)ray->ray_x][(int)ray->ray_y] == '1')
-				ray->dof = 8;
-			else
-			{
-				ray->ray_x += ray->xo;
-				ray->ray_y += ray->yo;
-			}
-			ray->dof ++;
-		}
-		printf("x, y : %f, %f\n", ray->ray_x, ray->ray_y);
-	(void) game;
-	(void) map;
 	}
+	while (dof < 8)
+	{
+		if (map[(int)ray->rx][(int)ray->ry] && map[(int)ray->rx][(int)ray->ry] == '1')
+			dof = 8;
+		else
+		{
+			ray->rx += ray->xo;
+			ray->ry += ray->yo;
+		}
+		dof ++;
+	}
+	// t_pos pos;
+	// pos.x = ray->rx;
+	// pos.y = ray->ry;
 }
 
 void	ray_test(t_game *game, t_ray *ray, t_pos player)
 {
-	ray->ray_angle = ray->p_angle;
-	check_horizontal(game, ray, player);
+	check_vertical(game, ray, player);
 }
