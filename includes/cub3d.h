@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/14 12:12:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:50:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "utils.h"
 # include "display.h"
 
-#define PI 3.14159265359
+# define WIN_H 1024
+# define WIN_W 1024
 
 #endif

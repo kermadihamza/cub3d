@@ -6,19 +6,19 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/15 15:29:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 19:21:02 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	angle_changes(int code, t_ray *ray, t_pos *player)
 {
 	if (code == 123)
 	{
 		ray->p_angle += 0.1;
-		if (ray->p_angle > 2*PI)
-			ray->p_angle -= 2*PI;
+		if (ray->p_angle > 2 * M_PI)
+			ray->p_angle -= 2 * M_PI;
 		ray->delta_x = cos(ray->p_angle);
 		ray->delta_y = sin(ray->p_angle);
 	}
@@ -26,7 +26,7 @@ void	angle_changes(int code, t_ray *ray, t_pos *player)
 	{
 		ray->p_angle -= 0.1;
 		if (ray->p_angle <= 0)
-			ray->p_angle += 2*PI;
+			ray->p_angle += 2 * M_PI;
 		ray->delta_x = cos(ray->p_angle);
 		ray->delta_y = sin(ray->p_angle);
 	}
@@ -85,8 +85,10 @@ void	key_manager(t_game *game, t_key key)
 
 int	display(t_game *game)
 {
+	init_color_sprite(game);
 	key_manager(game, game->key);
-	init_mini_map(game);
 	ray_test(game, &game->ray, game->player);
+	init_mini_map(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
