@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/09/14 16:27:17 by lrondia          ###   ########.fr        #
+#    Updated: 2022/09/20 18:59:07 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRCS = 	main.c\
 		parsing/parsing.c\
 		parsing/parsing_rgb.c\
 		parsing/read_sort_map.c\
-		parsing/init_color_sprite.c\
 		parsing/init_player_pos.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
@@ -27,10 +26,14 @@ SRCS = 	main.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/ft_split.c\
 		utils/debug.c\
+		utils/utils_raycasting.c\
 		display/ft_mlx_pixel_put.c\
+		display/init_color_sprite.c\
 		display/minimap.c\
 		display/display.c\
 		display/raycasting.c\
+		display/init_ray_values.c\
+		display/print_ray.c\
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/13 21:42:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:48:51 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 t_pos	find_pos(char *map, int i)
 {
@@ -30,4 +30,24 @@ t_pos	find_pos(char *map, int i)
 	}	
 	pos.y = count;
 	return (pos);
+}
+
+int	max_vert(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int	max_hor(char **map, int i)
+{
+	int	j;
+
+	j = 0;
+	while (map[i][j])
+		j++;
+	return (j);
 }

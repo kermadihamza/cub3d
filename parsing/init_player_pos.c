@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/15 12:24:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	init_player_pos(t_game *game)
 {

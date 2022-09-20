@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:33:09 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/07 11:57:36 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static	int	count_split(char const *s, char c)
 {

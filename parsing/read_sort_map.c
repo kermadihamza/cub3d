@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/12 19:47:57 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 char	*copy_infos(char *src)
 {

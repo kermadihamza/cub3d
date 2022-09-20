@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/09/13 21:43:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	init_sprites(t_game *game, char *path, void **ptr)
 {
@@ -22,21 +22,21 @@ void	init_sprites(t_game *game, char *path, void **ptr)
 		handle_errors(SPRITE_ERR, path);
 }
 
-void	init_color(t_game *game, t_color *color, int num_color)
+void	init_color(t_img *img, int num_color, char c)
 {
 	int	i;
 	int	j;
 
-	color->img = mlx_new_image(game->mlx, 1024, 512);
-	color->addr = mlx_get_data_addr(color->img, &color->bpp,
-			&color->line_length, &color->endian);
 	i = 0;
-	while (i < 1024)
+	while (i < WIN_W)
 	{
 		j = 0;
-		while (j < 512)
+		while (j < WIN_H / 2)
 		{
-			ft_mlx_pixel_put(color, i, j, num_color);
+			if (c == 'F')
+				ft_mlx_pixel_put(img, i, j + (WIN_H / 2), num_color);
+			else
+				ft_mlx_pixel_put(img, i, j, num_color);
 			j++;
 		}
 		i++;
@@ -45,8 +45,8 @@ void	init_color(t_game *game, t_color *color, int num_color)
 
 void	init_color_sprite(t_game *game)
 {
-	init_color(game, &game->color[0], game->color_floor);
-	init_color(game, &game->color[1], game->color_roof);
+	init_color(&game->img, game->color_floor, 'F');
+	init_color(&game->img, game->color_roof, 'C');
 	init_sprites(game, game->north, &game->sprite.north);
 	init_sprites(game, game->south, &game->sprite.south);
 	init_sprites(game, game->east, &game->sprite.east);
