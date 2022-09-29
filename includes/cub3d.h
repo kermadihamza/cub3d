@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/21 13:26:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:28:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@
 
 # define WIN_H 1024
 # define WIN_W 1024
-# define V_CHUNCK WIN_W / 60
+# define V_CHUNCK 1
 
 #endif

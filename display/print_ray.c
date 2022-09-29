@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/21 13:26:22 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:28:51 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,16 @@ double	calcul_px(t_ray *ray)
 
 void	print_ray(t_game *game, t_ray *ray)
 {
-	double	x;
 	double	y;
 
-	x = 0;
-	while (x < V_CHUNCK)
+	y = 0;
+	while (y < WIN_H)
 	{
-		y = 0;
-		while (y < WIN_H)
-		{
-			if (ray->ray_len == -1)
-				break ;
-			else if (y >= (WIN_H / 2) - (calcul_px(ray) / 2)
-				&& y <= (WIN_H / 2) + (calcul_px(ray) / 2))
-				ft_mlx_pixel_put(&game->img, ray->pos_in_screen * V_CHUNCK + x, y, 0xffaaaa);
-			y++;
-		}
-		x++;
+		if (ray->ray_len == -1)
+			break ;
+		else if (y >= (WIN_H / 2) - (calcul_px(ray) / 2)
+			&& y <= (WIN_H / 2) + (calcul_px(ray) / 2))
+			ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, 0xffaaaa);
+		y++;
 	}
 }

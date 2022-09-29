@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:04:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	init_mini_map(t_game *game)
 		}
 		i++;
 	}
-	pos.x = game->player.x * 10;
-	pos.y = game->player.y * 10;
+	pos.x = game->player.x * 10 - 5;
+	pos.y = game->player.y * 10 - 5;
 	little_square(game, 0xFF0000, pos);
 	ft_draw_line(game, game->ray.p_angle, pos, 25);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 19:21:02 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:44:59 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@ void	angle_changes(int code, t_ray *ray, t_pos *player)
 		ray->p_angle += 0.1;
 		if (ray->p_angle > 2 * M_PI)
 			ray->p_angle -= 2 * M_PI;
-		ray->delta_x = cos(ray->p_angle);
-		ray->delta_y = sin(ray->p_angle);
+		ray->adj_x = cos(ray->p_angle);
+		ray->adj_y = sin(ray->p_angle);
 	}
 	if (code == 124)
 	{
 		ray->p_angle -= 0.1;
 		if (ray->p_angle <= 0)
 			ray->p_angle += 2 * M_PI;
-		ray->delta_x = cos(ray->p_angle);
-		ray->delta_y = sin(ray->p_angle);
+		ray->adj_x = cos(ray->p_angle);
+		ray->adj_y = sin(ray->p_angle);
 	}
 	if (code == 126)
 	{
-		player->x += ray->delta_x / 5;
-		player->y -= ray->delta_y / 5;
+		player->x += ray->adj_x / 5;
+		player->y -= ray->adj_y / 5;
 	}
 	if (code == 125)
 	{
-		player->x -= ray->delta_x / 5;
-		player->y += ray->delta_y / 5;
+		player->x -= ray->adj_x / 5;
+		player->y += ray->adj_y / 5;
 	}
 }
 

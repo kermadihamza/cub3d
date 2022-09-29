@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/21 13:26:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:27:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_pos {
 // 				first yo = tan(ra) * rx (3) 
 // xo	->	combien on avance dans les x entre chaque croisement dans les y
 //			xo = 1
-//			yo = tan(ra) (uniquement quand on regarde les croisements horizontaux, sinon c yo)
+//			yo = tan(ra) (uniquement quand on regarde les croisements
+//				horizontaux, sinon c yo)
 // final r	->	coordonnées finales du rayon
 // 				final x = x + (n * xo) + first xo
 // opposite	->	trigo : coté opposé à l'angle du rayon,
@@ -38,14 +39,17 @@ typedef struct s_pos {
 // len_v	->	ray_len = O / sin (ra)
 
 typedef struct s_ray {
+	double	adj_x;
+	double	adj_y;
 	double	delta_x;
 	double	delta_y;
+	int		step_x;
+	int		step_y;
 	double	p_angle;
 	double	ra;
 	int		pos_in_screen;
 	t_pos	r;
-	t_pos	h;
-	t_pos	v;
+	t_pos	tile;
 	double	first_xo;
 	double	first_yo;
 	double	xo;
@@ -90,6 +94,7 @@ typedef struct s_game
 	int			color_floor;
 	int			color_roof;
 	char		*map;
+	char		**s_map;
 	t_img		img;
 	t_sprite	sprite;
 	t_pos		player;

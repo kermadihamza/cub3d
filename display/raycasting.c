@@ -6,90 +6,93 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/21 13:25:47 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:29:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	perfect_angles(t_ray *ray)
+double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 {
-	if (ray->ra == 0 || ray->ra == 2 * M_PI)
-		ray->v.x++;
-	else if (ray->ra == M_PI / 2)
-		ray->h.y--;
-	else if (ray->ra == M_PI)
-		ray->h.x--;
-	else if (ray->ra == (3 * M_PI) / 2)
-		ray->h.y++;
-}
-
-void	move_on(t_game *game, t_ray *ray, int i)
-{
-	if (i == 0)
-	{
-		if (is_hor_closer(game, ray))
-			ray->h.x += ray->first_xo;
-		else
-			ray->v.y += ray->first_yo;
-	}
-	else
-	{
-		if (is_hor_closer(game, ray))
-			ray->h.x += ray->xo;
-		else
-			ray->v.y += ray->yo;
-	}
-	if (is_hor_closer(game, ray) && ray->ra < M_PI)
-		ray->h.y -= 1;
-	else if (is_hor_closer(game, ray) && ray->ra > M_PI)
-		ray->h.y += 1;
-	else if (!is_hor_closer(game, ray) && ray->ra > M_PI / 2 && ray->ra < (3 * M_PI) / 2)
-		ray->v.x -= 1;
-	else if (!is_hor_closer(game, ray) && (ray->ra < M_PI / 2 || ray->ra < (3 * M_PI) / 2))
-		ray->v.x += 1;
-}
-
-void	check_wall(t_game *game, t_ray *ray, t_pos player)
-{
-	int		dof;
+	int	dof;
 
 	dof = 0;
-	ray->h.x = player.x;
-	ray->h.y = player.y;
-	ray->v.x = player.x;
-	ray->v.y = player.y;
+	if (ray->step_x == 1)
+		ray->ray_len = (floor(player.x + ray->step_x) - player.x) * ray->delta_x;
+	else
+		ray->ray_len = (player.x - floor(player.x)) * ray->delta_x;
+	ray->tile.x = floor(player.x + ray->step_x);
+	ray->tile.y = sin(ray->ra) * ray->ray_len + player.y;
 	while (dof < 10)
 	{
-		if (is_wall(game, (int)ray->h.x, (int)ray->h.y)
-			|| is_wall(game, (int)ray->v.x, (int)ray->v.y))
-		{
-			set_final_pos(game, ray);
+		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
+			return (-1);
+		if (is_wall(game, ray->tile.x, ray->tile.y))
 			dof = 10;
-		}
-		else if (is_perfect_angle(ray->ra))
-			perfect_angles(ray);
 		else
-			move_on(game, ray, 0);
+		{
+			ray->tile.x += ray->step_x;
+			ray->ray_len += ray->delta_x;
+			ray->tile.y = sin(ray->ra) * ray->ray_len + player.y;
+		}
 		dof ++;
 	}
-	print_ray(game, ray);
+	return (ray->ray_len);
+}
+
+double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
+{
+	int	dof;
+
+	dof = 0;
+	if (ray->step_y == 1)
+		ray->ray_len = (floor(player.y + ray->step_y) - player.y) * ray->delta_y;
+	else
+		ray->ray_len = (player.y - floor(player.y)) * ray->delta_y;
+	ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
+	ray->tile.y = floor(player.y + ray->step_y);
+	while (dof < 10)
+	{
+		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
+			return (-1);
+		if (is_wall(game, ray->tile.x, ray->tile.y))
+			dof = 10;
+		else
+		{
+			ray->tile.y += ray->step_y;
+			ray->ray_len += ray->delta_y;
+			ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
+		}
+		dof ++;
+	}
+	return (ray->ray_len);
 }
 
 void	ray_test(t_game *game, t_ray *ray, t_pos player)
 {
 	double	small;
+	double	ray_hor;
+	double	ray_vert;
 
 	ray->pos_in_screen = 0;
-	small = -1.5;
+	small = -(M_PI / 4);
 	ray->ray_len = -1;
-	while (ray->pos_in_screen < 60)
+	while (ray->pos_in_screen < WIN_W)
 	{
 		ray->ra = ray->p_angle + small;
-		init_vertical_values(ray, player);
-		init_horizontal_values(ray, player);
-		check_wall(game, ray, player);
-		small += 0.05;
+		if (ray->p_angle > 2 * M_PI)
+			ray->p_angle -= 2 * M_PI;
+		else if (ray->p_angle <= 0)
+			ray->p_angle += 2 * M_PI;
+		init_ray_values(ray, player);
+		ray_hor = check_wall_hor(game, ray, player);
+		ray_vert = check_wall_vert(game, ray, player);
+		if (ray_hor <= ray_vert)
+			ray->ray_len = ray_hor;
+		else
+			ray->ray_len = ray_vert;
+		print_ray(game, ray);
+		small += (M_PI / 2) / WIN_W;
 		ray->pos_in_screen++;
 	}
 }

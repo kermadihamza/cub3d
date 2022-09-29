@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 16:48:51 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:20:42 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	max_vert(char **map)
 	i = 0;
 	while (map[i])
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 int	max_hor(char **map, int i)
