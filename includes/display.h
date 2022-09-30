@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/09/29 17:03:39 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 12:17:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	init_color_sprite(t_game *game);
 
 int		key_press(int code, t_game *game);
 int		key_release(int code, t_key *key);
-void	key_manager(t_game *game, t_key key);
+void	key_manager(t_game *game, t_ray *ray, t_key key);
 
 #endif

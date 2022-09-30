@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 20:29:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 12:05:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 	while (dof < 10)
 	{
 		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
-			return (-1);
+			return (ray->ray_len);
 		if (is_wall(game, ray->tile.x, ray->tile.y))
 			dof = 10;
 		else
@@ -54,7 +54,7 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 	while (dof < 10)
 	{
 		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
-			return (-1);
+			return (ray->ray_len);
 		if (is_wall(game, ray->tile.x, ray->tile.y))
 			dof = 10;
 		else
