@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 18:36:25 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 16:57:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,10 @@ void	debug(t_game *game)
 void	debug_ray(t_ray *ray)
 {
 	printf("ra ->%f\n", ray->ra);
-	printf("r.x ->%f\n", ray->r.x);
-	printf("r.y ->%f\n", ray->r.y);
 	// printf("h.x ->%f\n", ray->h.x);
 	// printf("h.y ->%f\n", ray->h.y);
 	// printf("v.x ->%f\n", ray->v.x);
 	// printf("v.y ->%f\n", ray->v.y);
-	printf("first xo ->%f\n", ray->first_xo);
-	printf("first yo ->%f\n", ray->first_yo);
-	printf("xo ->%f\n", ray->xo);
-	printf("yo ->%f\n", ray->yo);
-	printf("opp ->%f\n", ray->opposite);
-	printf("adj ->%f\n", ray->adjacent);
 	printf("ray len ->%f\n\n", ray->ray_len);
 }
 

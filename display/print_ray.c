@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 20:28:51 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:45:49 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ void	print_ray(t_game *game, t_ray *ray)
 			break ;
 		else if (y >= (WIN_H / 2) - (calcul_px(ray) / 2)
 			&& y <= (WIN_H / 2) + (calcul_px(ray) / 2))
-			ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, 0xffaaaa);
+		{
+			if (ray->hor == 1)
+				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, 0xffaaaa);
+			else
+				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, 0xffffff);
+		}
 		y++;
 	}
 }

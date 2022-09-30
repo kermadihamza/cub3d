@@ -6,25 +6,20 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:59:30 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 19:24:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 17:02:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ray_values(t_ray *ray, t_pos player)
+void	init_ray_values(t_ray *ray)
 {
-	(void) player;
+	if (ray->p_angle > 2 * M_PI)
+		ray->p_angle -= 2 * M_PI;
+	else if (ray->p_angle <= 0)
+		ray->p_angle += 2 * M_PI;
 	ray->delta_x = fabs(1 / cos(ray->ra));
 	ray->delta_y = fabs(1 / sin(ray->ra));
-	// if (ray->ra < M_PI)
-	// 	ray->step_y = -1;
-	// else
-	// 	ray->step_y = 1;
-	// if (ray->ra > M_PI / 2 && ray->ra < (3 * M_PI) / 2)
-	// 	ray->step_x = -1;
-	// else if (ray->ra < M_PI / 2 || ray->ra > (3 * M_PI) / 2)
-	// 	ray->step_x = 1;
 	if (sin(ray->ra) < 0)
 		ray->step_y = -1;
 	else
@@ -33,4 +28,5 @@ void	init_ray_values(t_ray *ray, t_pos player)
 		ray->step_x = -1;
 	else
 		ray->step_x = 1;
+	ray->hor = 0;
 }

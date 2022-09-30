@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 20:27:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/09/30 19:14:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,8 @@ typedef struct s_ray {
 	double	p_angle;
 	double	ra;
 	int		pos_in_screen;
-	t_pos	r;
 	t_pos	tile;
-	double	first_xo;
-	double	first_yo;
-	double	xo;
-	double	yo;
-	double	opposite;
-	double	adjacent;
+	int		hor;
 	double	ray_len;
 }	t_ray;
 
