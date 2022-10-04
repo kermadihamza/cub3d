@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/04 15:46:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/04 19:59:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ void	key_manager(t_game *game, t_ray *ray, t_key key)
 
 	side_x = cos(ray->p_angle + (M_PI / 2)) / 5;
 	side_y = sin(ray->p_angle + (M_PI / 2)) / 5;
-	if (key.a == 1)
+	if (key.a == 1 && !is_wall(game, game->player.x + side_x, game->player.y - side_y))
 	{
 		game->player.x += side_x;
 		game->player.y -= side_y;
 	}
-	if (key.s == 1)
+	if (key.s == 1 && !is_wall(game, game->player.x - ray->adj_x / 5, game->player.y + ray->adj_y / 5))
 	{
 		game->player.x -= ray->adj_x / 5;
 		game->player.y += ray->adj_y / 5;
 	}
-	if (key.w == 1)
+	if (key.w == 1 && !is_wall(game, game->player.x + ray->adj_x / 5, game->player.y - ray->adj_y / 5))
 	{
 		game->player.x += ray->adj_x / 5;
 		game->player.y -= ray->adj_y / 5;
 	}
-	if (key.d == 1)
+	if (key.d == 1 && !is_wall(game, game->player.x - side_x, game->player.y + side_y))
 	{
 		game->player.x -= side_x;
 		game->player.y += side_y;

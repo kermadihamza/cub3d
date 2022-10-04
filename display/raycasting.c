@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/04 18:19:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/04 19:50:06 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 	else
 		ray->ray_len = (player.x - floor(player.x)) * ray->delta_x;
 	ray->tile.x = floor(player.x + ray->step_x);
-	ray->tile.y = sin(ray->ra) * ray->ray_len + player.y;
+	ray->tile.y = -sin(ray->ra) * ray->ray_len + player.y;
 	while (10)
 	{
 		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
@@ -30,7 +30,7 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 		{
 			ray->tile.x += ray->step_x;
 			ray->ray_len += ray->delta_x;
-			ray->tile.y = sin(ray->ra) * ray->ray_len + player.y;
+			ray->tile.y = -sin(ray->ra) * ray->ray_len + player.y;
 		}
 	}
 	return (ray->ray_len);
@@ -44,8 +44,6 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 		ray->ray_len = (player.y - floor(player.y)) * ray->delta_y;
 	ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
 	ray->tile.y = floor(player.y + ray->step_y);
-	// printf("x: %f, y: %f\n", ray->tile.x, ray->tile.y);
-	// printf("ray: %f, len: %f\n", ray->ra, ray->ray_len);
 	while (10)
 	{
 		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
@@ -69,7 +67,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 	double	vertical;
 
 	ray->pos_in_screen = 0;
-	small = -(M_PI / 4);
+	small = M_PI / 4;
 	while (ray->pos_in_screen < WIN_W)
 	{
 		ray->ra = ray->p_angle + small;
@@ -77,7 +75,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 		// printf("player: %f, ray: %f (small: %f)\n", ray->p_angle, ray->ra, small);
 		horizontal = check_wall_hor(game, ray, player);
 		vertical = check_wall_vert(game, ray, player);
-		if (horizontal <= vertical)
+		if (horizontal < vertical)
 		{
 			ray->hor = 1;
 			ray->ray_len = horizontal * cos(ray->ra - ray->p_angle);
@@ -85,7 +83,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 		else
 			ray->ray_len = vertical * cos(ray->ra - ray->p_angle);
 		print_ray(game, ray);
-		small += (M_PI / 2) / WIN_W;
+		small -= (M_PI / 2) / WIN_W;
 		ray->pos_in_screen++;
 	}
 }
