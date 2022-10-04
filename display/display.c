@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/30 19:28:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:46:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ int	key_press(int code, t_game *game)
 	return (0);
 }
 
-int	key_release(int code, t_key *key)
+int	key_release(int code, t_game *game)
 {
 	if (code == 0)
-		key->a = 0;
+		game->key.a = 0;
 	if (code == 1 || code == 125)
-		key->s = 0;
+		game->key.s = 0;
 	if (code == 13 || code == 126)
-		key->w = 0;
+		game->key.w = 0;
 	if (code == 2)
-		key->d = 0;
+		game->key.d = 0;
 	return (0);
 }
 
@@ -89,6 +89,7 @@ void	key_manager(t_game *game, t_ray *ray, t_key key)
 		game->player.y += side_y;
 	}
 }
+
 
 int	display(t_game *game)
 {

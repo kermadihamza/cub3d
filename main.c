@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/30 16:39:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:44:27 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	ft_mlx_init(&game);
 	parsing(&game, ac, av);
 	mlx_hook(game.win, 2, 0, key_press, (void *)&game);
-	mlx_hook(game.win, 3, 0, key_release, (void *)&game.key);
+	mlx_hook(game.win, 3, 0, key_release, (void *)&game);
 	mlx_loop_hook(game.mlx, display, &game);
 	mlx_hook(game.win, 17, 0, ft_destroy_all, &game);
 	init_mini_map(&game);

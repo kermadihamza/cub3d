@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/30 19:32:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:19:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 {
-	if (ray->step_x == 1)
+	if (ray->step_x == 1) // regarde a droite
 		ray->ray_len = (floor(player.x + ray->step_x) - player.x) * ray->delta_x;
 	else
 		ray->ray_len = (player.x - floor(player.x)) * ray->delta_x;
@@ -38,12 +38,14 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 
 double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 {
-	if (ray->step_y == 1)
+	if (ray->step_y == 1) // regarde vers le bas
 		ray->ray_len = (floor(player.y + ray->step_y) - player.y) * ray->delta_y;
 	else
 		ray->ray_len = (player.y - floor(player.y)) * ray->delta_y;
 	ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
 	ray->tile.y = floor(player.y + ray->step_y);
+	// printf("x: %f, y: %f\n", ray->tile.x, ray->tile.y);
+	// printf("ray: %f, len: %f\n", ray->ra, ray->ray_len);
 	while (10)
 	{
 		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
@@ -68,11 +70,11 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 
 	ray->pos_in_screen = 0;
 	small = -(M_PI / 4);
-	ray->ray_len = -1;
 	while (ray->pos_in_screen < WIN_W)
 	{
 		ray->ra = ray->p_angle + small;
 		init_ray_values(ray);
+		// printf("player: %f, ray: %f (small: %f)\n", ray->p_angle, ray->ra, small);
 		horizontal = check_wall_hor(game, ray, player);
 		vertical = check_wall_vert(game, ray, player);
 		if (horizontal <= vertical)
