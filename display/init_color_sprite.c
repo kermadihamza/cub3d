@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:48:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_sprites(t_game *game, char *path, void **ptr)
 
 	*ptr = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
 	if (!(*ptr))
-		handle_errors(SPRITE_ERR, path);
+		handle_errors(game, SPRITE_ERR, path);
 }
 
 void	init_color(t_img *img, int num_color, char c)

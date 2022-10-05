@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:48:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_map_infos(t_game *game, char *str)
 	else if (str[0] == 'C' && !game->roof)
 		game->roof = copy_infos(str + 1);
 	else if (str[0] != '\n')
-		handle_errors(SYNTAX_ERR, str);
+		handle_errors(game, SYNTAX_ERR, str);
 }
 
 void	read_map(t_game *game, char *file)
@@ -63,10 +63,10 @@ void	read_map(t_game *game, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		handle_errors(UNEXIST_MAP, NULL);
+		handle_errors(game, UNEXIST_MAP, NULL);
 	game->map = malloc(sizeof (char) * 1);
 	if (!game->map)
-		handle_errors(MALLOC_F, NULL);
+		handle_errors(game, MALLOC_F, NULL);
 	game->map[0] = '\0';
 	while (game->map)
 	{

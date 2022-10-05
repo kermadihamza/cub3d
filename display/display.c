@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 14:02:09 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:46:25 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	angle_changes(t_game *game, t_ray *ray)
 int	key_press(int code, t_game *game)
 {
 	if (code == 53)
-		exit (EXIT_SUCCESS);
+		ft_destroy_all(game);
 	if (code == 0)
 		game->key.a = 1;
 	if (code == 1 || code == 125)

@@ -6,13 +6,13 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:49:53 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 16:00:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	sides(char *map)
+void	sides(t_game *game, char *map)
 {
 	int	i;
 
@@ -22,49 +22,47 @@ void	sides(char *map)
 		if (map[i] == '0' || is_personage(map[i]))
 		{
 			if (map[i - 1] && (map[i - 1] == ' ' || map[i - 1] == '\n'))
-				handle_errors(OPEN_WALL, map);
+				handle_errors(game, OPEN_WALL, map);
 			else if ((map[i + 1] && (map[i + 1] == '\n'
 						|| map[i + 1] == ' ')) || !map[i + 1])
-				handle_errors(OPEN_WALL, map);
+				handle_errors(game, OPEN_WALL, map);
 		}
 		i++;
 	}
 }
 
-void	check_coord(char **matric, int i, int j, char *map)
+void	check_coord(t_game *game, int i, int j, char *map)
 {
-	if (i == 0 || !matric[i + 1] || !matric[i - 1][j] || !matric[i + 1][j])
-		handle_errors(OPEN_WALL, map);
-	else if (matric[i - 1][j] == ' ' || matric[i - 1][j] == '\n')
-		handle_errors(OPEN_WALL, map);
-	else if (matric[i + 1][j] == ' ' || matric[i + 1][j] == '\n')
-		handle_errors(OPEN_WALL, map);
+	if (i == 0 || !game->s_map[i + 1]
+		|| !game->s_map[i - 1][j] || !game->s_map[i + 1][j])
+		handle_errors(game, OPEN_WALL, map);
+	else if (game->s_map[i - 1][j] == ' ' || game->s_map[i - 1][j] == '\n')
+		handle_errors(game, OPEN_WALL, map);
+	else if (game->s_map[i + 1][j] == ' ' || game->s_map[i + 1][j] == '\n')
+		handle_errors(game, OPEN_WALL, map);
 }
 
-void	bottom(char *map)
+void	bottom(t_game *game, char *map)
 {
 	int		i;
 	int		j;
-	char	**matric;
 
 	i = 0;
-	matric = ft_split(map, '\n');
-	while (matric[i])
+	while (game->s_map[i])
 	{
 		j = 0;
-		while (matric[i][j])
+		while (game->s_map[i][j])
 		{
-			if (matric[i][j] == '0' || is_personage(matric[i][j]))
-				check_coord(matric, i, j, map);
+			if (game->s_map[i][j] == '0' || is_personage(game->s_map[i][j]))
+				check_coord(game, i, j, map);
 			j++;
 		}
 		i++;
 	}
-	free_split(matric);
 }
 
-void	holes_in_walls(char *map)
+void	holes_in_walls(t_game *game, char *map)
 {
-	sides(map);
-	bottom(map);
+	sides(game, map);
+	bottom(game, map);
 }

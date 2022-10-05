@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 13:48:31 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:56:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void	*ft_memset(void *b, int c, size_t len);
 char	**ft_split(char const *s, char c);
 void	free_split(char **split);
-int		ft_atoi(char *str);
+int		ft_atoi(t_game *game, char *str);
 int		ft_isdigit(int c);
 t_pos	find_pos(char *map, int i);
 int		max_vert(char **map);

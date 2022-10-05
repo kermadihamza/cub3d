@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/13 21:21:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:52:48 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 void	init_map(t_game *game, char **av);
 void	parsing(t_game *game, int ac, char **av);
 void	read_map(t_game *game, char *file);
-void	parsing_rgb(char *rgb, int *color);
+void	parsing_rgb(t_game *game, char *rgb, int *color);
 
-void	handle_errors(int error, char *str);
-void	check_error_name(char *av);
-void	error_map(char *map);
-void	holes_in_walls(char *map);
+void	handle_errors(t_game *game, int error, char *str);
+void	check_error_name(t_game *game, char *av);
+void	error_map(t_game *game, char *map);
+void	holes_in_walls(t_game *game, char *map);
 void	init_color_sprite(t_game *game);
 void	init_player_pos(t_game *game);
 

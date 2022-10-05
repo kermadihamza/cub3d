@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:55:45 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strdup(const char *src)
 		i++;
 	ptr = malloc(sizeof(src[0]) * i + 1);
 	if (!ptr)
-		handle_errors(MALLOC_F, NULL);
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (src[i])
 	{

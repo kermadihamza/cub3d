@@ -6,13 +6,13 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:50:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_error_name(char *av)
+void	check_error_name(t_game *game, char *av)
 {
 	int		i;
 	int		j;
@@ -28,10 +28,10 @@ void	check_error_name(char *av)
 	}
 	end[j] = '\0';
 	if (!ft_strcmp(end, "buc."))
-		handle_errors(WRONG_NAME, av);
+		handle_errors(game, WRONG_NAME, av);
 }
 
-void	number_of_elements(char *map)
+void	number_of_elements(t_game *game, char *map)
 {
 	int	i;
 	int	character;
@@ -45,10 +45,10 @@ void	number_of_elements(char *map)
 		i++;
 	}
 	if (character != 1)
-		handle_errors(NB_ELEMENTS, map);
+		handle_errors(game, NB_ELEMENTS, map);
 }
 
-void	other_character(char *map)
+void	other_character(t_game *game, char *map)
 {
 	int	i;
 
@@ -57,16 +57,16 @@ void	other_character(char *map)
 	{
 		if (!is_personage(map[i]) && map[i] != '0' && map[i] != '1'
 			&& map[i] != '\n' && map[i] != ' ')
-			handle_errors(OTHER_CHAR, &map[i]);
+			handle_errors(game, OTHER_CHAR, &map[i]);
 		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
-			handle_errors(OTHER_CHAR, "\n");
+			handle_errors(game, OTHER_CHAR, "\n");
 		i++;
 	}
 }
 
-void	error_map(char *map)
+void	error_map(t_game *game, char *map)
 {
-	other_character(map);
-	number_of_elements(map);
-	holes_in_walls(map);
+	other_character(game, map);
+	number_of_elements(game, map);
+	holes_in_walls(game, map);
 }

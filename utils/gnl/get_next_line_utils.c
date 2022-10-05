@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:50:13 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:57:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	count = ft_strlen(s1) + ft_strlen(s2);
 	ptr = malloc(sizeof(char) * (count + 1));
 	if (!ptr)
-		handle_errors(MALLOC_F, NULL);
+		exit(EXIT_FAILURE);
 	while (s1[j])
 		ptr[i++] = s1[j++];
 	j = 0;

@@ -6,13 +6,13 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/20 13:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:48:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	handle_errors(int error, char *str)
+void	handle_errors(t_game *game, int error, char *str)
 {
 	if (error == NB_ARGUMENTS)
 		write(2, "Error.\nWrong number of arguments.\n", 35);
@@ -57,5 +57,5 @@ void	handle_errors(int error, char *str)
 		write (2, str, ft_strlen(str));
 		write (2, "\nChange it.\n", 12);
 	}
-	exit (EXIT_FAILURE);
+	ft_destroy_all(game);
 }
