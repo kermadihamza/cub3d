@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:59:30 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/04 19:40:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:35:34 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_ray_values(t_ray *ray)
 		ray->ra += 2 * M_PI;
 	ray->delta_x = fabs(1 / cos(ray->ra));
 	ray->delta_y = fabs(1 / sin(ray->ra));
-	if (sin(ray->ra) < 0) // regarde vers le bas
+	if (sin(ray->ra) < 0)
 		ray->step_y = 1;
 	else
 		ray->step_y = -1;

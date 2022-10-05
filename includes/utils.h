@@ -6,16 +6,17 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/22 15:59:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:48:31 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
+void	add_new_pos(t_pos *pos, double x, double y);
+int		is_personage(char c);
 int		ft_destroy_all(t_game *game);
 
-int		is_personage(char c);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *src);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

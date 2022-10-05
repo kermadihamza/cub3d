@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/30 16:57:55 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:53:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ void	debug(t_game *game)
 
 void	debug_ray(t_ray *ray)
 {
+	printf("p_angle ->%f\n", ray->p_angle);
+	printf("adj_x ->%f\n", ray->adj_x);
+	printf("adj_y ->%f\n", ray->adj_y);
 	printf("ra ->%f\n", ray->ra);
-	// printf("h.x ->%f\n", ray->h.x);
-	// printf("h.y ->%f\n", ray->h.y);
-	// printf("v.x ->%f\n", ray->v.x);
-	// printf("v.y ->%f\n", ray->v.y);
 	printf("ray len ->%f\n\n", ray->ray_len);
+	printf("step_x ->%d\n", ray->step_x);
+	printf("step_y ->%d\n", ray->step_y);
+	printf("delta_x ->%f\n", ray->delta_x);
+	printf("delta_y ->%f\n", ray->delta_y);
+	printf("tile.x ->%f\n", ray->tile.x);
+	printf("tile.y ->%f\n", ray->tile.y);
+	printf("hor ->%d\n", ray->hor);
+	printf("pos_in_screen ->%d\n", ray->pos_in_screen);
 }
 
 void	debug_img(t_img img)
@@ -60,23 +67,4 @@ void	debug_pos(t_pos pos)
 {
 	printf("x : %f\n", pos.x);
 	printf("y : %f\n", pos.y);
-}
-
-void	little_square_2(t_game *game, int color, t_pos pos)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 10)
-	{
-		j = 0;
-		while (j < 10)
-		{
-			mlx_pixel_put(game->mlx, game->win,
-				pos.x * 10 + i, pos.y * 10 + j, color);
-			j++;
-		}	
-		i++;
-	}
 }

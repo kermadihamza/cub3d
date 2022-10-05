@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/04 14:43:50 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:53:21 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ typedef struct s_pos {
 // len_v	->	ray_len = O / sin (ra)
 
 typedef struct s_ray {
+	double	p_angle;
 	double	adj_x;
 	double	adj_y;
-	double	delta_x;
-	double	delta_y;
+	double	ra;
+	double	ray_len;
 	int		step_x;
 	int		step_y;
-	double	p_angle;
-	double	ra;
-	int		pos_in_screen;
+	double	delta_x;
+	double	delta_y;
 	t_pos	tile;
 	int		hor;
-	double	ray_len;
+	int		pos_in_screen;
 }	t_ray;
 
 typedef struct s_img {
@@ -73,6 +73,8 @@ typedef struct s_key {
 	bool	s;
 	bool	w;
 	bool	d;
+	bool	turn_l;
+	bool	turn_r;
 }	t_key;
 
 typedef struct s_game
@@ -101,6 +103,5 @@ void	debug_img(t_img img);
 void	debug_split(char **split);
 void	debug_pos(t_pos pos);
 void	debug_ray(t_ray *ray);
-void	little_square_2(t_game *game, int color, t_pos pos);
 
 #endif

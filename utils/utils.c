@@ -6,11 +6,17 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/22 15:51:24 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:48:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	add_new_pos(t_pos *pos, double x, double y)
+{
+	pos->x += x;
+	pos->y += y;
+}
 
 int	is_personage(char c)
 {

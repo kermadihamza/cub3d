@@ -3,7 +3,7 @@ SO ./sprites/trees.xpm
 WE ./sprites/trees.xpm
 EA ./sprites/trees.xpm
 
-F 170,250,190
+F 204, 255, 204
 C 100,180,250
 
 11111111111111111111111111111

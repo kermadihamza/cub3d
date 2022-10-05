@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/04 19:50:06 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 13:55:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 {
-	if (ray->step_x == 1) // regarde a droite
-		ray->ray_len = (floor(player.x + ray->step_x) - player.x) * ray->delta_x;
+	if (ray->step_x == 1)
+		ray->ray_len = (floor(player.x + ray->step_x) - player.x)
+			* ray->delta_x;
 	else
 		ray->ray_len = (player.x - floor(player.x)) * ray->delta_x;
 	ray->tile.x = floor(player.x + ray->step_x);
@@ -38,8 +39,9 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 
 double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 {
-	if (ray->step_y == 1) // regarde vers le bas
-		ray->ray_len = (floor(player.y + ray->step_y) - player.y) * ray->delta_y;
+	if (ray->step_y == 1)
+		ray->ray_len = (floor(player.y + ray->step_y) - player.y)
+			* ray->delta_y;
 	else
 		ray->ray_len = (player.y - floor(player.y)) * ray->delta_y;
 	ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
@@ -72,7 +74,6 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 	{
 		ray->ra = ray->p_angle + small;
 		init_ray_values(ray);
-		// printf("player: %f, ray: %f (small: %f)\n", ray->p_angle, ray->ra, small);
 		horizontal = check_wall_hor(game, ray, player);
 		vertical = check_wall_vert(game, ray, player);
 		if (horizontal < vertical)
