@@ -6,24 +6,27 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 19:04:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/05 20:22:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	map_square(t_game *game, int color)
+void	map_square(t_game *game)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < 250)
+	i = 7;
+	while (i < MINI_W + MINI_SIDE * 2 + 4)
 	{
-		j = 0;
-		while (j < 150)
+		j = 7;
+		while (j < MINI_H + MINI_SIDE * 2 + 4)
 		{
-			ft_mlx_pixel_put(&game->img, i, j, color);
+			if (j < MINI_SIDE || j > MINI_H + MINI_SIDE * 2 || i < MINI_SIDE || i > MINI_W + MINI_SIDE * 2)
+				ft_mlx_pixel_put(&game->img, i, j, PURPLE);
+			else
+				ft_mlx_pixel_put(&game->img, i, j, WHITE);
 			j++;
 		}	
 		i++;
@@ -63,7 +66,7 @@ void	ft_draw_line(t_game *game, double angle, t_pos pos, int len)
 	pente = by / bx;
 	while (sqrtf(((d * pente) * (d * pente)) + d * d) <= len)
 	{
-		ft_mlx_pixel_put(&game->img, pos.x + d, pos.y - (d * pente), 0xFF0000);
+		ft_mlx_pixel_put(&game->img, pos.x + d, pos.y - (d * pente), RED);
 		if (bx < 0)
 			d -= 0.025;
 		else
@@ -71,31 +74,67 @@ void	ft_draw_line(t_game *game, double angle, t_pos pos, int len)
 	}
 }
 
+int	is_inside_map(t_game *game, int x, int y)
+{
+	double	max_hor;
+	double	max_vert;
+	double	dist_x;
+	double	dist_y;
+
+	max_hor = MINI_W / 10;
+	max_vert = MINI_H / 10;
+	dist_x = fabs(game->player.x - x);
+	dist_y = fabs(game->player.y - y);
+	if (dist_x <= max_hor / 2 && dist_y <= max_vert / 2)
+		return (1);
+	return (0);
+}
+
+t_pos	dist_player_tile(t_game *game, int x, int y)
+{
+	t_pos	dist;
+
+	dist.x = (MINI_W / 20 - (game->player.x - x)) * 10 + MINI_SIDE;
+	dist.y = (MINI_H / 20 - (game->player.y - y)) * 10 + MINI_SIDE;
+	return (dist);
+}
+
+void	draw_minimap(t_game *game)
+{
+	int		x;
+	int		y;
+	t_pos	tile;
+
+	y = 0;
+	while (game->s_map[y])
+	{
+		x = 0;
+		while (game->s_map[y][x])
+		{
+			if (is_inside_map(game, x, y) && game->s_map[y][x] == '1')
+			{
+				tile = dist_player_tile(game, x, y);
+				little_square(game, WHITE, tile);
+			}
+			else if (is_inside_map(game, x, y) && (game->s_map[y][x] == '0' || is_personage(game->s_map[y][x])))
+			{
+				tile = dist_player_tile(game, x, y);
+				little_square(game, PURPLE, tile);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	init_mini_map(t_game *game)
 {
-	int		i;
 	t_pos	pos;
 
-	i = 0;
-	ft_memset(&pos, 0, sizeof (t_pos));
-	map_square(game, 0xFFFFFF);
-	while (game->map[i])
-	{
-		if (game->map[i] == '1' && pos.x < 250 && pos.y < 150)
-			little_square(game, 0xFFFFFF, pos);
-		else if ((game->map[i] == '0' || is_personage(game->map[i]))
-			&& pos.x < 250 && pos.y < 150)
-			little_square(game, 0x0000FF, pos);
-		pos.x += 10;
-		if (game->map[i] == '\n')
-		{
-			pos.x = 0;
-			pos.y += 10;
-		}
-		i++;
-	}
-	pos.x = game->player.x * 10 - 5;
-	pos.y = game->player.y * 10 - 5;
-	little_square(game, 0xFF0000, pos);
+	pos.x = MINI_W / 2 - 5 + MINI_SIDE;
+	pos.y = MINI_H / 2 - 5 + MINI_SIDE;
+	map_square(game);
+	draw_minimap(game);
+	little_square(game, RED, pos);
 	ft_draw_line(game, game->ray.p_angle, pos, 25);
 }
