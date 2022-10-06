@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:48:24 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 17:57:32 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*copy_infos(char *src)
 		i++;
 	if (dest[i] == '\n')
 		dest[i] = '\0';
+	i = 0;
 	return (dest);
 }
 

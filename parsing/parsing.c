@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:59:01 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 17:58:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	parsing(t_game *game, int ac, char **av)
 	read_map(game, av[1]);
 	game->s_map = ft_split(game->map, '\n');
 	error_map(game, game->map);
+	debug(game);
 	parsing_rgb(game, game->floor, &game->color_floor);
 	parsing_rgb(game, game->roof, &game->color_roof);
 	init_player_pos(game);

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:50:17 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 18:04:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	number_of_elements(t_game *game, char *map)
 	while (map[i])
 	{
 		if (is_personage(map[i]))
+		{
+			game->player_dir = map[i];
 			character++;
+		}
 		i++;
 	}
 	if (character != 1)

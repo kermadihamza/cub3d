@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 13:53:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 17:46:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_game
 	int			color_roof;
 	char		*map;
 	char		**s_map;
+	char		player_dir;
 	t_img		img;
 	t_sprite	sprite;
 	t_pos		player;

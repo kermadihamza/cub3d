@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:10:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 13:34:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 18:05:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	little_square(t_game *game, int color, t_pos pos)
 	int	j;
 
 	i = 0;
-	while (i < 9)
+	while (i < TILE_SIZE)
 	{
 		j = 0;
-		while (j < 9)
+		while (j < TILE_SIZE)
 		{
 			if (pos.x + i < MINI_W + MINI_SIDE && pos.x + i > MINI_SIDE * 2
 				&& pos.y + j > MINI_SIDE * 2 && pos.y + j < MINI_H + MINI_SIDE)
@@ -69,7 +69,7 @@ void	ft_draw_line(t_game *game, double angle, t_pos pos, int len)
 	pente = by / bx;
 	while (sqrtf(((d * pente) * (d * pente)) + d * d) <= len)
 	{
-		ft_mlx_pixel_put(&game->img, pos.x + d, pos.y - (d * pente), RED);
+		ft_mlx_pixel_put(&game->img, pos.x + d + 5, pos.y - (d * pente) + 5, RED);
 		if (bx < 0)
 			d -= 0.025;
 		else
