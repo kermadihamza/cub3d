@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:56:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/06 13:15:07 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,12 @@ void	calcul_ray_len(t_ray *ray, t_pos player, t_pos *pos, double *len);
 int		is_hor_closer(t_game *game, t_ray *ray);
 void	set_final_pos(t_game *game, t_ray *ray);
 int		is_outside_map(int x, int y, char **map);
+
+//display
+
+int		is_inside_map(t_game *game, int x, int y);
+void	minimap_background(t_game *game);
+void	little_square(t_game *game, int color, t_pos pos);
+void	ft_draw_line(t_game *game, double angle, t_pos pos, int len);
 
 #endif
