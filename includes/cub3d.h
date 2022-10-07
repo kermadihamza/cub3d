@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 19:11:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 21:28:39 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define MINI_W 240
 # define MINI_SIDE 10
 # define TILE_SIZE 10
-# define SPRITE_SIZE 64
 # define WALL_SIZE 640
 
 # define PINK 0xeeccff

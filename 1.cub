@@ -1,7 +1,7 @@
-NO ./sprites/trees1.xpm
-SO ./sprites/trees1.xpm
-WE ./sprites/trees1.xpm
-EA ./sprites/trees1.xpm
+NO ./sprites/wall.xpm
+SO ./sprites/wall.xpm
+WE ./sprites/wall.xpm
+EA ./sprites/wall.xpm
 
 F 204, 255, 204
 C 100,180,250

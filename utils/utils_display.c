@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:10:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 18:05:18 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 21:23:05 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	ft_draw_line(t_game *game, double angle, t_pos pos, int len)
 	pente = by / bx;
 	while (sqrtf(((d * pente) * (d * pente)) + d * d) <= len)
 	{
-		ft_mlx_pixel_put(&game->img, pos.x + d + 5, pos.y - (d * pente) + 5, RED);
+		ft_mlx_pixel_put(&game->img, pos.x + d + 5,
+			pos.y - (d * pente) + 5, RED);
 		if (bx < 0)
 			d -= 0.025;
 		else

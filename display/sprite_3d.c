@@ -6,42 +6,42 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:06:14 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 19:37:16 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 22:29:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	find_color_in_sprite(t_ray *ray, double y, void *sprite)
+int	get_color(t_img sprite, t_pos pos)
 {
 	char	*tab;
 	int		color;
-	t_img	img;
-	double	expand_x;
-	double	expand_y;
-	double	percent_x;
-	double	percent_y;
-	double	wall_min_y = (WIN_H / 2) - (WIN_H /ray->ray_len) / 2;
-	double		px_x;
-	int		px_y;
-	int		fx;
 
-	expand_y = WIN_H / SPRITE_SIZE;
-	expand_x = WIN_W / SPRITE_SIZE;
-	percent_x = (WIN_W / ray->ray_len) / WIN_W;
-	percent_y = (WIN_H / ray->ray_len) / WIN_H;
+	color = 0;
+	if (pos.x >= 0 && pos.x <= sprite.len && pos.y >= 0 && pos.y <= sprite.len)
+	{
+		tab = sprite.addr + ((int)pos.y * sprite.line_length + (int)pos.x
+				* (sprite.bpp / 8));
+		color = *(unsigned int *)tab;
+	}
+	return (color);
+}
+
+int	find_color_in_sprite(t_ray *ray, double y, t_img sprite)
+{
+	double	expand_y;
+	double	percent_y;
+	double	wall_min_y;
+	t_pos	pos;
 
 	if (ray->hor == 1)
-		px_x = ray->tile_hor.x - floor(ray->tile_hor.x);
+		pos.x = ray->tile_hor.x - floor(ray->tile_hor.x);
 	else
-		px_x = ray->tile_vert.y - floor(ray->tile_vert.y);
-
-	fx = px_x * SPRITE_SIZE;
-	px_y = ((y - wall_min_y) / percent_y) / expand_y;
-	img.addr = mlx_get_data_addr(sprite, &img.bpp, &img.line_length, &img.endian);
-	
-	
-	tab = img.addr + (px_y * img.line_length + fx * (img.bpp / 8));
-	color = *(unsigned int*)tab;
-	return (color);
+		pos.x = ray->tile_vert.y - floor(ray->tile_vert.y);
+	pos.x *= sprite.len;
+	expand_y = WIN_H / sprite.len + 1;
+	percent_y = (WIN_H / ray->ray_len) / WIN_H;
+	wall_min_y = (WIN_H / 2) - (WIN_H / ray->ray_len) / 2;
+	pos.y = ((y - wall_min_y) / percent_y) / expand_y;
+	return (get_color(sprite, pos));
 }

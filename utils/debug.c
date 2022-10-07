@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 19:28:50 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 21:15:29 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	debug(t_game *game)
 {
-	printf("NO ->%s\n", game->sprite.north);
-	printf("SO ->%s\n", game->sprite.south);
-	printf("WE ->%s\n", game->sprite.west);
-	printf("EA ->%s\n", game->sprite.east);
+	printf("NO ->%s\n", game->sprite.n_path);
+	printf("SO ->%s\n", game->sprite.s_path);
+	printf("WE ->%s\n", game->sprite.w_path);
+	printf("EA ->%s\n", game->sprite.e_path);
 	printf("F ->%s\n", game->floor);
 	printf("C ->%s\n", game->roof);
 	printf("player_dir ->%c\n", game->player_dir);
