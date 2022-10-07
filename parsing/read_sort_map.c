@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 17:57:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 15:49:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	sort_map_infos(t_game *game, char *str)
 		game->map = ft_strjoin(game->map, str);
 	else if (is_personage(str[0]) && str[1] && (str[1] == '0' || str[1] == '1'))
 		game->map = ft_strjoin(game->map, str);
-	else if (str[0] == 'N' && str[1] && str[1] == 'O' && !game->north)
-		game->north = copy_infos(str + 2);
-	else if (str[0] == 'S' && str[1] && str[1] == 'O' && !game->south)
-		game->south = copy_infos(str + 2);
-	else if (str[0] == 'E' && str[1] && str[1] == 'A' && !game->east)
-		game->east = copy_infos(str + 2);
-	else if (str[0] == 'W' && str[1] && str[1] == 'E' && !game->west)
-		game->west = copy_infos(str + 2);
+	else if (str[0] == 'N' && str[1] && str[1] == 'O' && !game->sprite.n_path)
+		game->sprite.n_path = copy_infos(str + 2);
+	else if (str[0] == 'S' && str[1] && str[1] == 'O' && !game->sprite.s_path)
+		game->sprite.s_path = copy_infos(str + 2);
+	else if (str[0] == 'E' && str[1] && str[1] == 'A' && !game->sprite.e_path)
+		game->sprite.e_path = copy_infos(str + 2);
+	else if (str[0] == 'W' && str[1] && str[1] == 'E' && !game->sprite.w_path)
+		game->sprite.w_path = copy_infos(str + 2);
 	else if (str[0] == 'F' && !game->floor)
 		game->floor = copy_infos(str + 1);
 	else if (str[0] == 'C' && !game->roof)

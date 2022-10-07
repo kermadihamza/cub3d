@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 20:18:26 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 19:21:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 			* ray->delta_x;
 	else
 		ray->ray_len = (player.x - floor(player.x)) * ray->delta_x;
-	ray->tile.x = floor(player.x + ray->step_x);
-	ray->tile.y = -sin(ray->ra) * ray->ray_len + player.y;
+	ray->tile_vert.x = floor(player.x + ray->step_x);
+	ray->tile_vert.y = -sin(ray->ra) * ray->ray_len + player.y;
 	while (10)
 	{
-		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
+		if (is_outside_map(ray->tile_vert.x, ray->tile_vert.y, game->s_map))
 			return (ray->ray_len);
-		if (is_wall(game, ray->tile.x, ray->tile.y))
+		if (is_wall(game, ray->tile_vert.x, ray->tile_vert.y))
 			return (ray->ray_len);
 		else
 		{
-			ray->tile.x += ray->step_x;
+			ray->tile_vert.x += ray->step_x;
 			ray->ray_len += ray->delta_x;
-			ray->tile.y = -sin(ray->ra) * ray->ray_len + player.y;
+			ray->tile_vert.y = -sin(ray->ra) * ray->ray_len + player.y;
 		}
 	}
 	return (ray->ray_len);
@@ -44,19 +44,19 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 			* ray->delta_y;
 	else
 		ray->ray_len = (player.y - floor(player.y)) * ray->delta_y;
-	ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
-	ray->tile.y = floor(player.y + ray->step_y);
+	ray->tile_hor.x = cos(ray->ra) * ray->ray_len + player.x;
+	ray->tile_hor.y = floor(player.y + ray->step_y);
 	while (10)
 	{
-		if (is_outside_map(ray->tile.x, ray->tile.y, game->s_map))
+		if (is_outside_map(ray->tile_hor.x, ray->tile_hor.y, game->s_map))
 			return (ray->ray_len);
-		if (is_wall(game, ray->tile.x, ray->tile.y))
+		if (is_wall(game, ray->tile_hor.x, ray->tile_hor.y))
 			return (ray->ray_len);
 		else
 		{
-			ray->tile.y += ray->step_y;
+			ray->tile_hor.y += ray->step_y;
 			ray->ray_len += ray->delta_y;
-			ray->tile.x = cos(ray->ra) * ray->ray_len + player.x;
+			ray->tile_hor.x = cos(ray->ra) * ray->ray_len + player.x;
 		}
 	}
 	return (ray->ray_len);

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/05 15:48:24 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 15:49:42 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	init_color_sprite(t_game *game)
 {
 	init_color(&game->img, game->color_floor, 'F');
 	init_color(&game->img, game->color_roof, 'C');
-	init_sprites(game, game->north, &game->sprite.north);
-	init_sprites(game, game->south, &game->sprite.south);
-	init_sprites(game, game->east, &game->sprite.east);
-	init_sprites(game, game->west, &game->sprite.west);
+	init_sprites(game, game->sprite.n_path, &game->sprite.north);
+	init_sprites(game, game->sprite.s_path, &game->sprite.south);
+	init_sprites(game, game->sprite.e_path, &game->sprite.east);
+	init_sprites(game, game->sprite.w_path, &game->sprite.west);
 }

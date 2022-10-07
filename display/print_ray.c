@@ -6,11 +6,39 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 19:13:05 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 18:11:05 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	if_no_sprite(t_game *game, t_ray *ray, double y)
+{
+	if (ray->hor == 1 && sin(ray->ra) < 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, PINK);
+	else if (ray->hor == 1 && sin(ray->ra) >= 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, YELLOW);
+	else if (ray->hor == 0 && cos(ray->ra) < 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, WHITE);
+	else if (ray->hor == 0 && cos(ray->ra) >= 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, WHITE);
+}
+
+void	with_sprite(t_game *game, t_ray *ray, double y)
+{
+	if (ray->hor == 1 && sin(ray->ra) >= 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
+			find_color_in_sprite(ray, y, game->sprite.south));
+	else if (ray->hor == 1 && sin(ray->ra) < 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
+			find_color_in_sprite(ray, y, game->sprite.north));
+	else if (ray->hor == 0 && cos(ray->ra) >= 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
+			find_color_in_sprite(ray, y, game->sprite.east));
+	else if (ray->hor == 0 && cos(ray->ra) < 0)
+		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
+			find_color_in_sprite(ray, y, game->sprite.west));
+}
 
 double	calcul_px(t_ray *ray)
 {
@@ -30,14 +58,10 @@ void	print_ray(t_game *game, t_ray *ray)
 		if (y >= (WIN_H / 2) - (calcul_px(ray) / 2)
 			&& y <= (WIN_H / 2) + (calcul_px(ray) / 2))
 		{
-			if (ray->hor == 1 && sin(ray->ra) < 0)
-				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, PINK);
-			else if (ray->hor == 1 && sin(ray->ra) >= 0)
-				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, YELLOW);
-			else if (ray->hor == 0 && cos(ray->ra) < 0)
-				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, WHITE);
-			else if (ray->hor == 0 && cos(ray->ra) >= 0)
-				ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, WHITE);
+			if (!game->sprite.north || !game->sprite.south || !game->sprite.east || !game->sprite.west)
+				if_no_sprite(game, ray, y);
+			else
+				with_sprite(game, ray, y);
 		}
 		y++;
 	}

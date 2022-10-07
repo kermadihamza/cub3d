@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/04 14:44:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 18:13:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_ray_values(t_ray *ray);
 void	print_ray(t_game *game, t_ray *ray);
 void	ft_draw_line(t_game *game, double angle, t_pos pos, int len);
 void	init_color_sprite(t_game *game);
+int		find_color_in_sprite(t_ray *ray, double y, void *sprite);
 
 int		key_press(int code, t_game *game);
 int		key_release(int code, t_game *game);

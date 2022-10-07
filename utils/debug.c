@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 17:52:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/07 19:28:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	debug(t_game *game)
 {
-	printf("NO ->%s\n", game->north);
-	printf("SO ->%s\n", game->south);
-	printf("WE ->%s\n", game->west);
-	printf("EA ->%s\n", game->east);
+	printf("NO ->%s\n", game->sprite.north);
+	printf("SO ->%s\n", game->sprite.south);
+	printf("WE ->%s\n", game->sprite.west);
+	printf("EA ->%s\n", game->sprite.east);
 	printf("F ->%s\n", game->floor);
 	printf("C ->%s\n", game->roof);
 	printf("player_dir ->%c\n", game->player_dir);
@@ -37,8 +37,8 @@ void	debug_ray(t_ray *ray)
 	printf("step_y ->%d\n", ray->step_y);
 	printf("delta_x ->%f\n", ray->delta_x);
 	printf("delta_y ->%f\n", ray->delta_y);
-	printf("tile.x ->%f\n", ray->tile.x);
-	printf("tile.y ->%f\n", ray->tile.y);
+	printf("tile.x ->%f\n", ray->tile_hor.x);
+	printf("tile.y ->%f\n", ray->tile_hor.y);
 	printf("hor ->%d\n", ray->hor);
 	printf("pos_in_screen ->%d\n", ray->pos_in_screen);
 }
