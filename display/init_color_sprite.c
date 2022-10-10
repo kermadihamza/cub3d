@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/07 22:29:40 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:43:42 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 void	init_sprites(t_game *game, char *path, t_img *sprite)
 {
-	int		width;
+	int width;
+	int height;
 
-	sprite->img = mlx_xpm_file_to_image(game->mlx, path, &width, &sprite->len);
-	if (!(sprite->img))
+	sprite->img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
+	if (!(sprite->img) || !height || !width)
 		handle_errors(game, SPRITE_ERR, path);
 	sprite->addr = mlx_get_data_addr(sprite->img, &sprite->bpp,
 			&sprite->line_length, &sprite->endian);
+	sprite->width = width;
+	sprite->height = height;
 }
 
 void	init_color(t_img *img, int num_color, char c)

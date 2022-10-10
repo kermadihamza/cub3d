@@ -1,6 +1,6 @@
-NO ./sprites/wall.xpm
+NO ./sprites/background1.xpm
 SO ./sprites/wall.xpm
-WE ./sprites/wall.xpm
+WE ./sprites/background1.xpm
 EA ./sprites/wall.xpm
 
 F 204, 255, 204

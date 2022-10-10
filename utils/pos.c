@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/09/29 20:20:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:47:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ t_pos	find_pos(char *map, int i)
 		if (map[j] == '\n')
 			count++;
 		if (map[j] == '\n' && count == 1)
-			pos.x = i - j - 1;
+			pos.x = i - j - 1 + 0.05;
 		j--;
 	}	
-	pos.y = count;
+	pos.y = count + 0.05;
 	return (pos);
 }
 

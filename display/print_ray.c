@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 21:23:29 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:46:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	with_sprite(t_game *game, t_ray *ray, double y)
 {
 	if (ray->hor == 1 && sin(ray->ra) >= 0)
 		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
-			find_color_in_sprite(ray, y, game->sprite.south));
+			find_color_in_sprite(ray, y, game->sprite.north));
 	else if (ray->hor == 1 && sin(ray->ra) < 0)
 		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
-			find_color_in_sprite(ray, y, game->sprite.north));
+			find_color_in_sprite(ray, y, game->sprite.south));
 	else if (ray->hor == 0 && cos(ray->ra) >= 0)
 		ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y,
 			find_color_in_sprite(ray, y, game->sprite.east));

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 21:28:57 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/10 12:38:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_img {
 	int		bpp;
 	int		line_length;
 	int		endian;
-	int		len;
+	double	height;
+	double	width;
 }	t_img;
 
 typedef struct s_sprite {
