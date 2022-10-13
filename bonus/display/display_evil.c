@@ -6,112 +6,87 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/13 12:37:25 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/13 19:50:26 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_near_player(double player, double other)
+void	init_evil_values(t_game *game, t_img *evil)
 {
-	double	max;
-	double	min;
-
-	max = player + (M_PI / 4);
-	min = player - (M_PI / 4);
-	return (other >= min && other <= max);
+	t_pos	dist;
+	double	cosi = fabs(cos(game->ray.p_angle));
+	double	sinu = fabs(sin(game->ray.p_angle));
+	
+	dist.x = fabs(evil->pos.x - game->player.x);
+	dist.y = fabs(evil->pos.y - game->player.y);
+	evil->dist_player = hypot(dist.x, dist.y);
+	evil->angle_from_player = acos((dist.x * cosi + dist.y * sinu) / (evil->dist_player * hypot(cosi, sinu)));
+	while (evil->angle_from_player <= 0)
+		evil->angle_from_player += 2 * M_PI;
+	while (evil->angle_from_player >= 2 * M_PI)
+		evil->angle_from_player -= 2 * M_PI;
+	// printf("angle %f\nplayer angle: %f\n\n", evil->angle_from_player, game->ray.p_angle);
 }
 
-int	is_in_screen(double x, double y)
+t_pos	calculate_size_on_screen(t_img *evil)
 {
-	return (x >= 0 && x <= WIN_W && y >= 0 && y <= WIN_H);
-}
-
-t_pos	calculate_size_on_screen(t_pos player, t_pos evil)
-{
-	double	dist_x;
-	double	dist_y;
-	double	temp;
 	t_pos	size;
 	
-	dist_x = evil.x - player.x;
-	dist_y = evil.y - player.y;
-	temp = hypot(dist_x, dist_y);
-	size.x = WIN_H / temp;
-	size.y = WIN_W / temp;
+	size.x = WIN_H / evil->dist_player;
+	size.y = WIN_W / evil->dist_player;
 	return (size);
 }
 
-double	calculate_posx_on_screen(t_game *game, t_pos player, t_pos evil)
+double	calculate_x(double p_angle, t_img *evil)
 {
-	double	dist_x;
-	double	dist_y;
-	double	angle;
-	double	diff;
+	// double	diff;
 	double	opp;
 	
-	dist_x = fabs(evil.x - player.x);
-	dist_y = fabs(evil.y - player.y);
-	angle = atan(dist_y / dist_x);
-	if (game->ray.p_angle <= M_PI)
-		diff = (game->ray.p_angle - angle);
+	(void) p_angle;
+	// if (p_angle <= M_PI)
+	// 	diff = p_angle - evil->angle_from_player;
+	// else
+	// 	diff = -fabs((2 * M_PI - p_angle) + evil->angle_from_player);
+
+	opp = evil->dist_player * sin(evil->angle_from_player);
+	if (tan(evil->angle_from_player) > tan(p_angle))
+		opp = -fabs(opp);
 	else
-		diff = -fabs((2 * M_PI - game->ray.p_angle) + angle);
-
-	printf("angle %f, diff %f\n", angle, diff);
-
-	opp = hypot(dist_x, dist_y) * sin(diff);
-	if (diff <= M_PI / 4 && diff >= -(M_PI / 4))
-		return ((WIN_W / 2) + (opp * (WIN_W / hypot(dist_x, dist_y))));
-	else
-		return (-1);
-}
-
-double	calculate_posy_on_screen(double	size)
-{
-	double	y;
-
-	y = (WIN_H / 2) - (size / 2);
-	return (y);
+	opp = fabs(opp);
+	// printf("opp %f\n", opp);
+	return ((WIN_W / 2) + (opp * (WIN_W / evil->dist_player)));
 }
 
 void	print_evil(t_game *game, t_img sprite, t_pos origin, t_pos size)
 {
-	int		color;
-	int		x;
-	int		y;
 	t_pos	pos;
+	int		color;
 
-	y = 0;
-	while (y < sprite.height * (size.y / sprite.height) && y + origin.y < WIN_H && y + origin.y >= 0)
+	pos.y = 0;
+	while (pos.y < sprite.height * (size.y / sprite.height) && pos.y + origin.y < WIN_H && pos.y + origin.y >= 0)
 	{
-		x = 0;
-		while (x < sprite.width  * (size.x / sprite.width) && x + origin.x < WIN_W && x + origin.x >= 0)
+		pos.x = 0;
+		while (pos.x < sprite.width  * (size.x / sprite.width) && pos.x + origin.x < WIN_W && pos.x + origin.x >= 0)
 		{
-			pos.x = x;
-			pos.y = y;
-			if (pos.x < 4 || pos.y < 4)
-				color = RED;
-			else
-				color = WHITE;
+			color = WHITE;
 			// color = get_color(sprite, pos);
 			// if (color && is_in_screen(pos.x + origin.x, pos.y + origin.y))
 				ft_mlx_pixel_put(&game->img, pos.x + origin.x, pos.y + origin.y, color);
-			x++;
+			pos.x++;
 		}
-		y++;
+		pos.y++;
 	}
 }
 
-void	display_evil(t_game *game, t_pos player, t_pos evil)
+void	display_evil(t_game *game, t_img *evil)
 {
 	t_pos	origin;
 	t_pos	size;
 
-	size = calculate_size_on_screen(player, evil);
-	origin.x = calculate_posx_on_screen(game, player, evil);
-	origin.y = calculate_posy_on_screen(size.y);
+	init_evil_values(game, evil);
+	size = calculate_size_on_screen(evil);
+	origin.x = calculate_x(game->ray.p_angle, evil);
+	origin.y = (WIN_H / 2) - (size.y / 2);
 	print_evil(game, game->sprite.evil, origin, size);
-	printf("origin x %f\n", origin.x);
-	printf("origin y %f\n\n", origin.y);
 }

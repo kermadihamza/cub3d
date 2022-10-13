@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:29:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/13 18:08:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		is_inside_map(t_game *game, int x, int y);
 void	minimap_background(t_game *game);
 void	little_square(t_game *game, int color, t_pos pos);
 void	ft_draw_line(t_game *game, double angle, t_pos pos, int len);
+int		is_in_screen(double x, double y);
 
 #endif

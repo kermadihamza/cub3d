@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 18:47:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/13 18:19:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,6 @@ typedef struct s_pos {
 	double	x;
 	double	y;
 }	t_pos;
-
-///////// COMMENTAIRES
-// ------> calculs pour les murs verticaux en regardant vers le haut <-------
-// ra 	->	ray angle, ra = p_angle - i (ou + i)
-// r.x	->	position x, y du rayon a chaque croisement
-// 			rx = x arrondi vers le haut (1)
-//			ry = y + first yo + yo (4)
-// first xo	->	premier offset, plus petit (= xo - x et yo - y)
-// 				first xo = rx - x (2)
-// 				first yo = tan(ra) * rx (3) 
-// xo	->	combien on avance dans les x entre chaque croisement dans les y
-//			xo = 1
-//			yo = tan(ra) (uniquement quand on regarde les croisements
-//				horizontaux, sinon c yo)
-// final r	->	coordonnées finales du rayon
-// 				final x = x + (n * xo) + first xo
-// opposite	->	trigo : coté opposé à l'angle du rayon,
-//				permet de calculer la longueur du rayon (meme chose pour adj)
-// 				O = (n * yo) + first yo
-// len_v	->	ray_len = O / sin (ra)
 
 typedef struct s_ray {
 	double	p_angle;
@@ -55,6 +35,7 @@ typedef struct s_ray {
 }	t_ray;
 
 typedef struct s_img {
+	char	*path;
 	void	*img;
 	char	*addr;
 	int		bpp;
@@ -62,17 +43,16 @@ typedef struct s_img {
 	int		endian;
 	double	height;
 	double	width;
+	double	dist_player;
+	double	angle_from_player;
+	t_pos	pos;
 }	t_img;
 
 typedef struct s_sprite {
 	t_img	north;
-	char	*n_path;
 	t_img	south;
-	char	*s_path;
 	t_img	east;
-	char	*e_path;
 	t_img	west;
-	char	*w_path;
 	t_img	evil;
 }	t_sprite;
 
@@ -99,7 +79,6 @@ typedef struct s_game
 	t_img		img;
 	t_sprite	sprite;
 	t_pos		player;
-	t_pos		evil;
 	t_key		key;
 	t_ray		ray;
 }	t_game;

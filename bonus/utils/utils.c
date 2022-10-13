@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 14:27:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/13 18:08:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	add_new_pos(t_pos *pos, double x, double y)
 {
 	pos->x += x;
 	pos->y += y;
+}
+
+int	is_in_screen(double x, double y)
+{
+	return (x >= 0 && x <= WIN_W && y >= 0 && y <= WIN_H);
 }
 
 int	is_personage(char c)

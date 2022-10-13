@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/11 19:27:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/13 18:05:06 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int		key_press(int code, t_game *game);
 int		key_release(int code, t_game *game);
 void	key_manager(t_game *game, t_ray *ray, t_key key);
 
-void	display_evil(t_game *game, t_pos evil, t_pos player);
+void	display_evil(t_game *game, t_img *evil);
 
 #endif
