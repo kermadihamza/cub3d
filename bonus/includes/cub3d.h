@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/10 14:37:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 12:18:02 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@
 # define MINI_SIDE 10
 # define TILE_SIZE 10
 # define WALL_SIZE 640
+# define FOV (M_PI / 2)
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3
 # define WHITE 0xffffff
 # define PURPLE 0x4d4dff
 # define RED 0xff0000
+
+# define NOT_PIXEL 9961608
+# define STILL_NOT_PIXEL -16777216
 
 #endif

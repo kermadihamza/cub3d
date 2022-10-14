@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:29:20 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 12:05:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,17 @@ void	with_sprite(t_game *game, t_ray *ray, double y)
 			find_color_in_sprite(ray, y, game->sprite.east));
 }
 
-double	calcul_px(t_ray *ray)
-{
-	double	res;
-
-	res = WIN_H / ray->ray_len;
-	return (res);
-}
-
 void	print_ray(t_game *game, t_ray *ray)
 {
 	double	y;
+	double	rescale;
 
 	y = 0;
+	rescale = WIN_H / ray->ray_len;
 	while (y < WIN_H)
 	{
-		if (y >= (WIN_H / 2) - (calcul_px(ray) / 2)
-			&& y <= (WIN_H / 2) + (calcul_px(ray) / 2))
+		if (y >= (WIN_H / 2) - (rescale / 2)
+			&& y <= (WIN_H / 2) + (rescale / 2))
 		{
 			if (!game->sprite.north.img || !game->sprite.south.img
 				|| !game->sprite.east.img || !game->sprite.west.img)

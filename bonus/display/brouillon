@@ -6,3 +6,35 @@
 		// angle *= (WIN_W / (M_PI / 2));
 		// return (angle);
 
+void	init_evil_values(t_game *game, t_img *evil)
+{
+	t_pos	dist;
+	double	cosi = cos(game->ray.p_angle);
+	double	sinu = -sin(game->ray.p_angle);
+	
+	dist.x = evil->pos.x - game->player.x;
+	dist.y = evil->pos.y - game->player.y;
+	evil->dist_player = hypot(dist.x, dist.y);
+	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);
+	if (evil->angle_from_player > M_PI)
+		evil->angle_from_player -= 2 * M_PI;
+	if (evil->angle_from_player < -M_PI)
+		evil->angle_from_player += 2 * M_PI;
+}
+
+#define FOV (M_PI / 2)
+double	calculate_x(t_img *evil)
+{
+	return (evil->angle_from_player + FOV / 2) / FOV * WIN_W;
+}
+
+ca marche
+
+On etait tres tres proche mais il y avait des problemes de signes comme attendu.
+Genre il y avait des fabs partout mais en fait les signes etaient completement 
+importants dans le processus (pour savoir si le monstre est devant ou derriere nous par exemple)
+
+et puis je suis reste bloque pendent des heures a me demander pourquoi ca ne marchait pas
+avant de me rappeler que l''axe des y etait vers le bas et que par consequent il fallait inverse le signe de "sinu"
+
+et puis j'ai trouve un moyen plus simple pour calculer la position dans "calculate_x"

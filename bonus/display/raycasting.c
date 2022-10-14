@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:46:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 12:03:56 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 	double	vertical;
 
 	ray->pos_in_screen = 0;
-	small = M_PI / 4;
+	small = FOV / 2;
 	while (ray->pos_in_screen < WIN_W)
 	{
 		ray->ra = ray->p_angle + small;
@@ -84,7 +84,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 		else
 			ray->ray_len = vertical * cos(ray->ra - ray->p_angle);
 		print_ray(game, ray);
-		small -= (M_PI / 2) / WIN_W;
+		small -= FOV / WIN_W;
 		ray->pos_in_screen++;
 	}
 }

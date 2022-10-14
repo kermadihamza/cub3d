@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:06:14 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/10 12:40:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 12:57:09 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,19 @@ int	get_color(t_img sprite, t_pos pos)
 
 int	find_color_in_sprite(t_ray *ray, double y, t_img sprite)
 {
-	double	expand_y;
-	double	percent_y;
-	double	wall_min_y;
 	t_pos	pos;
+	double	expand_y;
+	double	wall_min_y;
 	double	unit_hor;
 	
 	unit_hor = sprite.width / sprite.height;
+	expand_y = WIN_H / sprite.height;
 	if (ray->hor == 1)
 		pos.x = ray->tile_hor.x - (floor(ray->tile_hor.x / unit_hor) * unit_hor);
 	else
 		pos.x = ray->tile_vert.y - (floor(ray->tile_vert.y / unit_hor) * unit_hor);
-	pos.x *= sprite.width / unit_hor;
-	expand_y = WIN_H / sprite.height + 1;
-	percent_y = (WIN_H / ray->ray_len) / WIN_H;
+	pos.x *= sprite.height;
 	wall_min_y = (WIN_H / 2) - (WIN_H / ray->ray_len) / 2;
-	pos.y = ((y - wall_min_y) / percent_y) / expand_y;
+	pos.y = ((y - wall_min_y) * ray->ray_len) / expand_y;
 	return (get_color(sprite, pos));
 }
