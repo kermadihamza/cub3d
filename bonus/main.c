@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 17:44:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:21:14 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int ac, char **av)
 	mlx_hook(game.win, 2, 0, key_press, (void *)&game);
 	mlx_hook(game.win, 3, 0, key_release, (void *)&game);
 	mlx_loop_hook(game.mlx, display, &game);
+	mlx_hook(game.win, 6, 0, mouse_move, &game);
 	mlx_hook(game.win, 17, 0, ft_destroy_all, &game);
 	init_mini_map(&game);
 	mlx_loop(game.mlx);

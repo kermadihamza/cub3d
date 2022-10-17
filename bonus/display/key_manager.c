@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 15:42:18 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:12:00 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,18 @@ int	key_release(int code, t_game *game)
 		game->key.turn_l = 0;
 	if (code == 124)
 		game->key.turn_r = 0;
+	return (0);
+}
+
+int mouse_move(int x, int y, t_game *game)
+{
+	if (x > 0 && x < WIN_W / 2 - 100)
+		game->ray.p_angle = +0.2;
+	if (x > WIN_W / 2 + 100 && x < WIN_W)
+		game->ray.p_angle = -0.2;
+	if ((x > WIN_W / 2 - 100) & (WIN_W / 2 + 100))
+		game->ray.p_angle = 0;
+	(void)y;
 	return (0);
 }
 

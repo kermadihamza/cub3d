@@ -6,11 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-<<<<<<< HEAD:includes/game.h
-/*   Updated: 2022/09/14 16:07:43 by hakermad         ###   ########.fr       */
-=======
-/*   Updated: 2022/10/14 14:47:15 by lrondia          ###   ########.fr       */
->>>>>>> e56728c97f223d33c662c7102e6337ad6e9bc2c8:bonus/includes/game.h
+/*   Updated: 2022/10/14 14:58:46 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
