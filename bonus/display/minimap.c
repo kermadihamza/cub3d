@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:25:55 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:33:40 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	draw_minimap(t_game *game)
 {
 	int		x;
 	int		y;
-	t_pos	tile;
 
 	y = 0;
 	while (game->s_map[y])
@@ -34,21 +33,12 @@ void	draw_minimap(t_game *game)
 		while (game->s_map[y][x])
 		{
 			if (game->s_map[y][x] == '1')
-			{
-				tile = tile_final_pos(game, x, y);
-				little_square(game, WHITE, tile);
-			}
+				little_square(game, WHITE, tile_final_pos(game, x, y));
 			else if (game->s_map[y][x] == '0'
 				|| is_personage(game->s_map[y][x]))
-			{
-				tile = tile_final_pos(game, x, y);
-				little_square(game, PURPLE, tile);
-			}
+				little_square(game, PURPLE, tile_final_pos(game, x, y));
 			else if (game->s_map[y][x] == 'M')
-			{
-				tile = tile_final_pos(game, x, y);
-				little_square(game, GREEN, tile);
-			}
+				little_square(game, GREEN, tile_final_pos(game, x, y));
 			x++;
 		}
 		y++;

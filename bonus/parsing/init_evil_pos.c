@@ -6,11 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:31:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/14 16:58:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:29:40 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 void	init_evil_pos(t_game *game)
 {

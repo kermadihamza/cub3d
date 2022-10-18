@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:25:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:30:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ void	print_evil(t_game *game, t_pos origin, t_pos size, t_evil evil)
 		pos.x = 0;
 		while (pos.x < size.x && pos.x + origin.x < WIN_W)
 		{
-			color = get_color(game->sprite.evil, get_pos(pos, size, game->sprite.evil));
+			color = get_color(game->sprite.evil,
+					get_pos(pos, size, game->sprite.evil));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
 				&& is_in_screen(pos.x + origin.x, pos.y + origin.y))
-				ft_mlx_pixel_put(&game->img, pos.x + origin.x, pos.y + origin.y, color);
+				ft_mlx_pixel_put(&game->img,
+					pos.x + origin.x, pos.y + origin.y, color);
 			pos.x++;
 		}
 		pos.y++;
