@@ -6,22 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/13 18:08:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:04:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	add_new_pos(t_pos *pos, double x, double y)
-{
-	pos->x += x;
-	pos->y += y;
-}
-
-int	is_in_screen(double x, double y)
-{
-	return (x >= 0 && x <= WIN_W && y >= 0 && y <= WIN_H);
-}
 
 int	is_personage(char c)
 {

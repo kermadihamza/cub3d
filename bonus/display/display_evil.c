@@ -6,63 +6,52 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/14 14:43:57 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:25:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_evil_values(t_game *game, t_img *evil)
+int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 {
-	t_pos	dist;
-	double	cosi = cos(game->ray.p_angle);
-	double	sinu = -sin(game->ray.p_angle);
-	
-	dist.x = evil->pos.x - game->player.x;
-	dist.y = evil->pos.y - game->player.y;
-	evil->dist_player = hypot(dist.x, dist.y);
-	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);
-	while (evil->angle_from_player > M_PI)
-		evil->angle_from_player -= 2 * M_PI;
-	while (evil->angle_from_player < -M_PI)
-		evil->angle_from_player += 2 * M_PI;
+	double	horizontal;
+	double	vertical;
+	t_ray	ray;
+	t_pos	pos;
+
+	pos.x = MINI_W / 2 - 5 + MINI_SIDE;
+	pos.y = MINI_H / 2 - 5 + MINI_SIDE;
+	ray.ra = (game->ray.p_angle - evil.angle_from_player) - small;
+	init_ray_values(&ray);
+	horizontal = check_wall_hor(game, &ray, game->player);
+	vertical = check_wall_vert(game, &ray, game->player);
+	if (horizontal < vertical)
+		ray.ray_len = horizontal;
+	else
+		ray.ray_len = vertical;
+	if ((small != 0 && ray.ray_len < evil.dist_player_right)
+		|| (small == 0 && ray.ray_len < evil.dist_player_left))
+		return (1);
+	return (0);
 }
 
-t_pos	calculate_size_on_screen(t_img *evil)
-{
-	t_pos	size;
-	
-	size.y = WIN_W / evil->dist_player;
-	size.x = size.y * (evil->width / evil->height);
-	return (size);
-}
-
-double	calculate_x(t_img *evil)
-{
-	return (evil->angle_from_player + FOV / 2) / FOV * WIN_W;
-}
-
-t_pos	get_pos(t_pos pos, t_pos size, t_img *sprite)
-{
-	t_pos	final;
-
-	final.x = pos.x / (size.x / sprite->width);
-	final.y = pos.y / (size.y / sprite->height);
-	return (final);
-}
-
-void	print_evil(t_game *game, t_img *sprite, t_pos origin, t_pos size)
+void	print_evil(t_game *game, t_pos origin, t_pos size, t_evil evil)
 {
 	t_pos	pos;
 	int		color;
+	double	small;
 
 	pos.y = 0;
+	small = FOV / (WIN_W / size.x);
+	if (is_there_a_wall_ahead(game, evil, small)
+		|| is_there_a_wall_ahead(game, evil, 0))
+		return ;
 	while (pos.y < size.y && pos.y + origin.y < WIN_H)
 	{
 		pos.x = 0;
 		while (pos.x < size.x && pos.x + origin.x < WIN_W)
 		{
-			color = get_color(*sprite, get_pos(pos, size, sprite));
+			color = get_color(game->sprite.evil, get_pos(pos, size, game->sprite.evil));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
 				&& is_in_screen(pos.x + origin.x, pos.y + origin.y))
 				ft_mlx_pixel_put(&game->img, pos.x + origin.x, pos.y + origin.y, color);
@@ -72,14 +61,20 @@ void	print_evil(t_game *game, t_img *sprite, t_pos origin, t_pos size)
 	}
 }
 
-void	display_evil(t_game *game, t_img *evil)
+void	display_evil(t_game *game, t_evil *evil)
 {
+	int		i;
 	t_pos	origin;
 	t_pos	size;
 
-	init_evil_values(game, evil);
-	size = calculate_size_on_screen(evil);
-	origin.x = calculate_x(evil);
-	origin.y = (WIN_H / 2) - (size.y / 2);
-	print_evil(game, evil, origin, size);
+	i = 0;
+	while (i < game->nb_evil)
+	{
+		init_evil_values(game, &evil[i]);
+		size = calculate_size_on_screen(evil[i], game->sprite.evil);
+		origin.x = (evil[i].angle_from_player + FOV / 2) / FOV * WIN_W;
+		origin.y = (WIN_H / 2) - (size.y / 2);
+		print_evil(game, origin, size, evil[i]);
+		i++;
+	}
 }

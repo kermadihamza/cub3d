@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/14 14:47:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:24:34 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ typedef struct s_img {
 	int		endian;
 	double	height;
 	double	width;
-	double	dist_player;
-	double	angle_from_player;
-	t_pos	pos;
 }	t_img;
 
 typedef struct s_sprite {
@@ -55,6 +52,13 @@ typedef struct s_sprite {
 	t_img	west;
 	t_img	evil;
 }	t_sprite;
+
+typedef struct s_evil {
+	double	dist_player_left;
+	double	dist_player_right;
+	double	angle_from_player;
+	t_pos	pos;
+}	t_evil;
 
 typedef struct s_key {
 	bool	a;
@@ -76,6 +80,8 @@ typedef struct s_game
 	char		*map;
 	char		**s_map;
 	char		player_dir;
+	int			nb_evil;
+	t_evil		*evil;
 	t_img		img;
 	t_sprite	sprite;
 	t_pos		player;

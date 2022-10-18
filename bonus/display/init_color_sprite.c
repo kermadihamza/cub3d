@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/13 17:02:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:52:23 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	init_color_sprite(t_game *game)
 	init_sprites(game, game->sprite.east.path, &game->sprite.east);
 	init_sprites(game, game->sprite.west.path, &game->sprite.west);
 	init_sprites(game, "./sprites/evil.xpm", &game->sprite.evil);
+
 }

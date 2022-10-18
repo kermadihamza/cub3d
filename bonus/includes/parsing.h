@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:52:48 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:37:48 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	error_map(t_game *game, char *map);
 void	holes_in_walls(t_game *game, char *map);
 void	init_color_sprite(t_game *game);
 void	init_player_pos(t_game *game);
+void	init_evil_pos(t_game *game);
 
 #endif
