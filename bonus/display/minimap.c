@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/14 12:27:45 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 12:25:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_minimap(t_game *game)
 			else if (game->s_map[y][x] == 'M')
 			{
 				tile = tile_final_pos(game, x, y);
-				little_square(game, RED, tile);
+				little_square(game, GREEN, tile);
 			}
 			x++;
 		}

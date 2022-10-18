@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   init_evil_pos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/17 12:58:06 by lrondia          ###   ########.fr       */
+/*   Created: 2022/10/14 16:31:55 by lrondia           #+#    #+#             */
+/*   Updated: 2022/10/14 16:58:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+# include "cub3d.h"
 
-void	parsing(t_game *game, int ac, char **av)
+void	init_evil_pos(t_game *game)
 {
-	if (ac != 2)
-		handle_errors(game, NB_ARGUMENTS, NULL);
-	check_error_name(game, av[1]);
-	read_map(game, av[1]);
-	game->s_map = ft_split(game->map, '\n');
-	error_map(game, game->map);
-	parsing_rgb(game, game->floor, &game->color_floor);
-	parsing_rgb(game, game->roof, &game->color_roof);
-	init_player_pos(game);
-	init_evil_pos(game);
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (game->map[i])
+	{
+		if (game->map[i] == 'M')
+			game->nb_evil++;
+		i++;
+	}
+	i = 0;
+	game->evil = malloc (sizeof(t_evil) * game->nb_evil);
+	while (game->map[i] && n < game->nb_evil)
+	{
+		if (game->map[i] == 'M')
+		{
+			game->evil[n].pos = find_pos(game->map, i);
+			n++;
+		}
+		i++;
+	}
 }

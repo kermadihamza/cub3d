@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/13 17:54:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:39:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	init_player_pos(t_game *game)
 	{
 		if (is_personage(game->map[i]))
 			game->player = find_pos(game->map, i);
-		if (game->map[i] == 'M')
-			game->sprite.evil.pos = find_pos(game->map, i);
 		i++;
 	}
 	if (game->player_dir == 'N')

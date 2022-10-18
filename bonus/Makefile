@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/11 18:43:17 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/17 15:08:15 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,13 @@ SRCS = 	main.c\
 		parsing/parsing_rgb.c\
 		parsing/read_sort_map.c\
 		parsing/init_player_pos.c\
+		parsing/init_evil_pos.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
 		utils/pos.c\
 		utils/utils.c\
-		utils/utils_raycasting.c\
+		utils/orientation.c\
+		utils/size_map.c\
 		utils/utils_display.c\
 		utils/libft.c\
 		utils/ft_atoi.c\
@@ -37,6 +39,7 @@ SRCS = 	main.c\
 		display/print_ray.c\
 		display/sprite_3d.c\
 		display/display_evil.c\
+		display/init_evil_values.c\
 		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)
