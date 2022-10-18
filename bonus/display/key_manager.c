@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 15:42:18 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 14:16:14 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	angle_changes(t_game *game, t_ray *ray)
 {
 	if (game->key.turn_l == 1)
 	{
-		ray->p_angle += 0.1;
-		if (ray->p_angle > 2 * M_PI)
-			ray->p_angle -= 2 * M_PI;
-		ray->adj_x = cos(ray->p_angle) / 5;
-		ray->adj_y = sin(ray->p_angle) / 5;
+		game->player.angle += 0.1;
+		if (game->player.angle > 2 * M_PI)
+			game->player.angle -= 2 * M_PI;
+		ray->adj_x = cos(game->player.angle) / 5;
+		ray->adj_y = sin(game->player.angle) / 5;
 	}
 	if (game->key.turn_r == 1)
 	{
-		ray->p_angle -= 0.1;
-		if (ray->p_angle <= 0)
-			ray->p_angle += 2 * M_PI;
-		ray->adj_x = cos(ray->p_angle) / 5;
-		ray->adj_y = sin(ray->p_angle) / 5;
+		game->player.angle -= 0.1;
+		if (game->player.angle <= 0)
+			game->player.angle += 2 * M_PI;
+		ray->adj_x = cos(game->player.angle) / 5;
+		ray->adj_y = sin(game->player.angle) / 5;
 	}
 }
 
@@ -73,19 +73,19 @@ void	key_manager(t_game *game, t_ray *ray, t_key key)
 	double	side_x;
 	double	side_y;
 
-	side_x = cos(ray->p_angle + (M_PI / 2)) / 5;
-	side_y = sin(ray->p_angle + (M_PI / 2)) / 5;
-	if (key.a == 1 && !is_wall(game, game->player.x + side_x,
-			game->player.y - side_y))
-		add_new_pos(&game->player, side_x, -side_y);
-	if (key.s == 1 && !is_wall(game, game->player.x - ray->adj_x,
-			game->player.y + ray->adj_y))
-		add_new_pos(&game->player, -ray->adj_x, ray->adj_y);
-	if (key.w == 1 && !is_wall(game, game->player.x + ray->adj_x,
-			game->player.y - ray->adj_y))
-		add_new_pos(&game->player, ray->adj_x, -ray->adj_y);
-	if (key.d == 1 && !is_wall(game, game->player.x - side_x,
-			game->player.y + side_y))
-		add_new_pos(&game->player, -side_x, side_y);
+	side_x = cos(game->player.angle + (M_PI / 2)) / 5;
+	side_y = sin(game->player.angle + (M_PI / 2)) / 5;
+	if (key.a == 1 && !is_wall(game, game->player.pos.x + side_x,
+			game->player.pos.y - side_y))
+		add_new_pos(&game->player.pos, side_x, -side_y);
+	if (key.s == 1 && !is_wall(game, game->player.pos.x - ray->adj_x,
+			game->player.pos.y + ray->adj_y))
+		add_new_pos(&game->player.pos, -ray->adj_x, ray->adj_y);
+	if (key.w == 1 && !is_wall(game, game->player.pos.x + ray->adj_x,
+			game->player.pos.y - ray->adj_y))
+		add_new_pos(&game->player.pos, ray->adj_x, -ray->adj_y);
+	if (key.d == 1 && !is_wall(game, game->player.pos.x - side_x,
+			game->player.pos.y + side_y))
+		add_new_pos(&game->player.pos, -side_x, side_y);
 	angle_changes(game, ray);
 }

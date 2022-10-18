@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:33:40 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 14:15:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_pos	tile_final_pos(t_game *game, int x, int y)
 {
 	t_pos	dist;
 
-	dist.x = (MINI_W / 20 - (game->player.x - x)) * TILE_SIZE + MINI_SIDE;
-	dist.y = (MINI_H / 20 - (game->player.y - y)) * TILE_SIZE + MINI_SIDE;
+	dist.x = (MINI_W / 20 - (game->player.pos.x - x)) * TILE_SIZE + MINI_SIDE;
+	dist.y = (MINI_H / 20 - (game->player.pos.y - y)) * TILE_SIZE + MINI_SIDE;
 	return (dist);
 }
 
@@ -54,6 +54,6 @@ void	init_mini_map(t_game *game)
 	minimap_background(game);
 	draw_minimap(game);
 	little_square(game, RED, pos);
-	ft_draw_line(game, game->ray.p_angle + M_PI / 4, pos, 25);
-	ft_draw_line(game, game->ray.p_angle - M_PI / 4, pos, 25);
+	ft_draw_line(game, game->player.angle + M_PI / 4, pos, 25);
+	ft_draw_line(game, game->player.angle - M_PI / 4, pos, 25);
 }

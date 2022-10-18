@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:31:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 14:15:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	init_evil_values(t_game *game, t_evil *evil)
 	double	cosi;
 	double	sinu;
 
-	cosi = cos(game->ray.p_angle);
-	sinu = -sin(game->ray.p_angle);
-	dist.x = evil->pos.x - game->player.x;
-	dist.y = evil->pos.y - game->player.y;
+	cosi = cos(game->player.angle);
+	sinu = -sin(game->player.angle);
+	dist.x = evil->pos.x - game->player.pos.x;
+	dist.y = evil->pos.y - game->player.pos.y;
 	evil->dist_player_left = hypot(dist.x, dist.y);
 	evil->dist_player_right = hypot(dist.x + 1, dist.y);
 	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);

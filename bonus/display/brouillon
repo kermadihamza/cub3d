@@ -9,11 +9,11 @@
 void	init_evil_values(t_game *game, t_img *evil)
 {
 	t_pos	dist;
-	double	cosi = cos(game->ray.p_angle);
-	double	sinu = -sin(game->ray.p_angle);
+	double	cosi = cos(game->player.angle);
+	double	sinu = -sin(game->player.angle);
 	
-	dist.x = evil->pos.x - game->player.x;
-	dist.y = evil->pos.y - game->player.y;
+	dist.x = evil->pos.x - game->player.pos.x;
+	dist.y = evil->pos.y - game->player.pos.y;
 	evil->dist_player = hypot(dist.x, dist.y);
 	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);
 	if (evil->angle_from_player > M_PI)

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/13 17:03:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/18 14:17:45 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	debug(t_game *game)
 	printf("EA ->%s\n", game->sprite.east.path);
 	printf("F ->%s\n", game->floor);
 	printf("C ->%s\n", game->roof);
-	printf("player_dir ->%c\n", game->player_dir);
+	printf("player_dir ->%c\n", game->player.dir);
 	printf("F color ->%d\n", game->color_floor);
 	printf("C color ->%d\n\n", game->color_roof);
 	printf("map ->%s\n", game->map);
+	printf("p_angle ->%f\n", game->player.angle);
 }
 
 void	debug_ray(t_ray *ray)
 {
-	printf("p_angle ->%f\n", ray->p_angle);
 	printf("adj_x ->%f\n", ray->adj_x);
 	printf("adj_y ->%f\n", ray->adj_y);
 	printf("ra ->%f\n", ray->ra);
