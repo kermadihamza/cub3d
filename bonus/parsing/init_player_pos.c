@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 14:14:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 21:58:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@ void	init_player_pos(t_game *game)
 		game->player.angle = M_PI + 0.01;
 	game->ray.adj_x = cos(game->player.angle) / 5;
 	game->ray.adj_y = sin(game->player.angle) / 5;
+	game->player.weapon_max = 1;
+	game->key.third_p = 1;
+	game->player.life = 3;
 }

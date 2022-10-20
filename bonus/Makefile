@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/18 15:59:06 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/20 22:40:14 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS = 	main.c\
 		utils/bloc_transfer.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
-		display/key_manager.c\
+		action/key_manager.c\
+		action/action.c\
 		display/ft_mlx_pixel_put.c\
 		display/init_color_sprite.c\
 		display/minimap.c\
@@ -41,6 +42,8 @@ SRCS = 	main.c\
 		display/sprite_3d.c\
 		display/display_evil.c\
 		display/init_evil_values.c\
+		display/display_player.c\
+		display/numbers.c\
 		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:36:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 20:02:56 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "get_next_line.h"
 # include "utils.h"
 # include "display.h"
+# include "action.h"
 
 # define WIN_H 1080
 # define WIN_W 1620
@@ -33,7 +34,6 @@
 # define MINI_SIDE 10
 # define TILE_SIZE 10
 # define WALL_SIZE 640
-# define FOV (M_PI / 2)
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3

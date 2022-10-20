@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 12:09:20 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:26:42 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,22 @@ typedef struct s_sprite {
 	t_img	west;
 	t_img	all_sprites;
 	t_img	evil;
-	double	width;
-	double	height;
+	t_img	player;
+	t_img	numbers;
+	t_img	*num;
+	double	num_w;
+	double	num_h;
+	double	w;
+	double	h;
 }	t_sprite;
 
 typedef struct s_evil {
 	double	dist_player_left;
 	double	dist_player_right;
 	double	angle_from_player;
+	double	life;
 	t_pos	pos;
+	t_pos	scale;
 }	t_evil;
 
 typedef struct s_key {
@@ -76,18 +83,27 @@ typedef struct s_key {
 	bool	d;
 	bool	turn_l;
 	bool	turn_r;
+	bool	third_p;
 }	t_key;
 
 typedef struct s_player {
 	t_pos	pos;
 	char	dir;
 	double	angle;
+	int		cur_weapon;
+	int		weapon_max;
+	bool	fork;
+	bool	flame;
+	bool	morgenstern;
+	bool	attack;
+	double	life;
 }	t_player;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	double		fov;
 	char		*floor;
 	char		*roof;
 	int			color_floor;

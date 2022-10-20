@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_evil_pos.c                                    :+:      :+:    :+:   */
+/*   action.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 16:31:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 20:20:48 by lrondia          ###   ########.fr       */
+/*   Created: 2022/10/20 20:02:13 by lrondia           #+#    #+#             */
+/*   Updated: 2022/10/20 20:03:07 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef ACTION_H
+# define ACTION_H
 
-void	init_evil_pos(t_game *game)
-{
-	int	i;
-	int	n;
+void	action(t_game *game, t_player *p, t_evil *evil);
 
-	i = 0;
-	n = 0;
-	while (game->map[i])
-	{
-		if (game->map[i] == 'M')
-			game->nb_evil++;
-		i++;
-	}
-	i = 0;
-	game->evil = malloc (sizeof(t_evil) * game->nb_evil);
-	while (game->map[i] && n < game->nb_evil)
-	{
-		if (game->map[i] == 'M')
-		{
-			game->evil[n].pos = find_pos(game->map, i);
-			game->evil[n].life = 3;
-			n++;
-		}
-		i++;
-	}
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/17 15:02:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:13:59 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ void	display_evil(t_game *game, t_evil *evil);
 t_pos	get_pos(t_pos pos, t_pos size, t_img sprite);
 t_pos	calculate_size_on_screen(t_evil evil, t_img	evil_sprite);
 void	init_evil_values(t_game *game, t_evil *evil);
+
+void	display_player(t_game *game, t_img sprite);
+void	numbers(t_game *game);
 
 #endif

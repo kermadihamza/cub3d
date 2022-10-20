@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/19 12:48:44 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 20:19:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,8 @@ void	init_evil_values(t_game *game, t_evil *evil)
 		evil->angle_from_player -= 2 * M_PI;
 	while (evil->angle_from_player < -M_PI)
 		evil->angle_from_player += 2 * M_PI;
-}
-
-t_pos	calculate_size_on_screen(t_evil evil, t_img	evil_sprite)
-{
-	t_pos	size;
-
-	size.y = WIN_W / evil.dist_player_left;
-	size.x = size.y * (evil_sprite.width / evil_sprite.height);
-	return (size);
+	evil->scale.y = WIN_W / evil->dist_player_left;
+	evil->scale.x = evil->scale.y * (game->sprite.evil.width / game->sprite.evil.height);
 }
 
 t_pos	get_pos(t_pos pos, t_pos size, t_img sprite)

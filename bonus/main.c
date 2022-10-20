@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 17:44:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 22:32:34 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	ft_mlx_init(t_game *game)
 		handle_errors(game, MLX_INIT, NULL);
 	game->win = mlx_new_window(game->mlx, WIN_W, WIN_H, "cub3d");
 	if (!game->win)
-	{
-		free (game->mlx);
 		handle_errors(game, MLX_INIT, NULL);
-	}
 	game->img.img = mlx_new_image(game->mlx, WIN_W, WIN_H);
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp,
 			&game->img.line_length, &game->img.endian);

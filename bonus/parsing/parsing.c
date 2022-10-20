@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/17 12:58:06 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 19:40:51 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	parsing(t_game *game, int ac, char **av)
 {
 	if (ac != 2)
 		handle_errors(game, NB_ARGUMENTS, NULL);
+	ft_memset(&game->player, 0, sizeof (t_player));
 	check_error_name(game, av[1]);
 	read_map(game, av[1]);
 	game->s_map = ft_split(game->map, '\n');

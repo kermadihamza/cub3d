@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 12:30:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 18:56:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_split(char **split);
 int		ft_atoi(t_game *game, char *str);
 int		ft_isdigit(int c);
 t_pos	find_pos(char *map, int i);
-t_pos	pos(double	x, double y);
+t_pos	posi(double	x, double y);
 int		max_vert(char **map);
 int		max_hor(char **map, int i);
 int		is_north(double ray);
