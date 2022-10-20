@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/17 15:08:15 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/18 15:59:06 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = 	main.c\
 		utils/libft.c\
 		utils/ft_atoi.c\
 		utils/ft_split.c\
+		utils/bloc_transfer.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
 		display/key_manager.c\

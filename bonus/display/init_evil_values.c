@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 14:15:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/19 12:48:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_evil_values(t_game *game, t_evil *evil)
 	dist.x = evil->pos.x - game->player.pos.x;
 	dist.y = evil->pos.y - game->player.pos.y;
 	evil->dist_player_left = hypot(dist.x, dist.y);
-	evil->dist_player_right = hypot(dist.x + 1, dist.y);
+	evil->dist_player_right = hypot(dist.x, dist.y);
 	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);
 	while (evil->angle_from_player > M_PI)
 		evil->angle_from_player -= 2 * M_PI;

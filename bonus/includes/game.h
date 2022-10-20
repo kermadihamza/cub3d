@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 14:13:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/20 12:09:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_ray {
 	int		pos_in_screen;
 }	t_ray;
 
+typedef struct s_rect {
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+} t_rect;
+
 typedef struct s_img {
 	char	*path;
 	void	*img;
@@ -49,7 +56,10 @@ typedef struct s_sprite {
 	t_img	south;
 	t_img	east;
 	t_img	west;
+	t_img	all_sprites;
 	t_img	evil;
+	double	width;
+	double	height;
 }	t_sprite;
 
 typedef struct s_evil {
