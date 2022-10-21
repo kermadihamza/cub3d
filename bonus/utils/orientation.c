@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:57:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/17 16:53:48 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:04:08 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	is_in_screen(double x, double y)
 {
 	return (x >= 0 && x <= WIN_W && y >= 0 && y <= WIN_H);
+}
+
+int	is_door(t_game *game, int x, int y)
+{
+	if (!is_outside_map(x, y, game->s_map) && game->s_map[y][x]
+		&& game->s_map[y][x] == 'P')
+		return (1);
+	return (0);
 }
 
 int	is_wall(t_game *game, int x, int y)

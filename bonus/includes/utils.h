@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 18:56:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:04:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		is_west(double ray);
 // raycasting
 
 int		is_wall(t_game *game, int x, int y);
+int		is_door(t_game *game, int x, int y);
 int		is_outside_map(int x, int y, char **map);
 
 //display

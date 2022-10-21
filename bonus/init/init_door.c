@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_evil_pos.c                                    :+:      :+:    :+:   */
+/*   init_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 16:31:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 20:20:48 by lrondia          ###   ########.fr       */
+/*   Created: 2022/10/21 12:24:51 by lrondia           #+#    #+#             */
+/*   Updated: 2022/10/21 12:31:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_evil_pos(t_game *game)
+void	init_door_pos(t_game *game)
 {
 	int	i;
 	int	n;
@@ -21,18 +21,18 @@ void	init_evil_pos(t_game *game)
 	n = 0;
 	while (game->map[i])
 	{
-		if (game->map[i] == 'M')
-			game->nb_evil++;
+		if (game->map[i] == 'P')
+			game->nb_door++;
 		i++;
 	}
 	i = 0;
-	game->evil = malloc (sizeof(t_evil) * game->nb_evil);
-	while (game->map[i] && n < game->nb_evil)
+	game->door = malloc (sizeof(t_door) * game->nb_door);
+	while (game->map[i] && n < game->nb_door)
 	{
-		if (game->map[i] == 'M')
+		if (game->map[i] == 'P')
 		{
-			game->evil[n].pos = find_pos(game->map, i);
-			game->evil[n].life = 3;
+			game->door[n].pos = find_pos(game->map, i);
+			game->door[n].life = 1;
 			n++;
 		}
 		i++;

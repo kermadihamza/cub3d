@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:01:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 18:36:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	return (0);
 }
 
-void	print_evil(t_game *game, t_pos origin, t_evil evil)
+void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 {
 	t_pos	pos;
 	int		color;
@@ -55,8 +55,8 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil)
 		pos.x = 0;
 		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W)
 		{
-			color = get_color(game->sprite.evil,
-					get_pos(pos, evil.scale, game->sprite.evil));
+			color = get_color(sprite,
+					get_pos(pos, evil.scale, sprite));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
 				&& is_in_screen(pos.x + origin.x, pos.y + origin.y))
 				ft_mlx_pixel_put(&game->img,
@@ -66,44 +66,63 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil)
 		pos.y++;
 	}
 }
+	// 	printf("%f\n", evil[i].dist_player_left);
+	// 	printf("FINAL far = %f, prev %d\n", far, prev);
 
-int	other_monster(t_game *game, t_evil *evil, int n)
+int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 {
 	int		i;
-	double	small;
+	int		count;
+	int		final;
+	double	tmp;
+	double	far;
 
 	i = 0;
-	small = (game->fov / (WIN_W / evil[n].scale.x)) / 2;
+	final = 0;
+	count = 0;
+	far = evil[0].dist_player_left;
 	while (i < game->nb_evil)
 	{
-		if (i != n && evil[i].dist_player_left < evil[n].dist_player_left
-			&& evil[i].angle_from_player <= evil[n].angle_from_player + small
-			&& evil[i].angle_from_player >= evil[n].angle_from_player - small)
-			return (1);
+		// printf("far = %f\n", far);
+		if (evil[i].dist_player_left > far)
+			far = evil[i].dist_player_left;
 		i++;
 	}
-	return (0);
+	i = 0;
+	tmp = far;
+	while (i < game->nb_evil)
+	{
+		if (evil[i].dist_player_left < far && count < prev)
+		{
+			far = evil[i].dist_player_left;
+			final = i;
+			count++;
+		}
+		i++;
+	}
+	return (final);
 }
 
 void	display_evil(t_game *game, t_evil *evil)
 {
 	int		i;
+	int		n;
 	t_pos	origin;
 
 	i = 0;
 	while (i < game->nb_evil)
 	{
 		init_evil_values(game, &evil[i]);
-		// init_evil_values(game &door[i])
 		i++;
 	}
 	i = 0;
 	while (i < game->nb_evil)
 	{
-		origin.x = (evil[i].angle_from_player + game->fov / 2) / game->fov * WIN_W;
-		origin.y = (WIN_H / 2) - (evil[i].scale.y / 2);
-		// if (!other_monster(game, evil, i))
-			print_evil(game, origin, evil[i]);
+		n = find_farthest_evil(game, evil, i);
+		// printf("n %d, i %d\n", n, i);
+		origin.x = (evil[n].angle_from_player + game->fov / 2) / game->fov * WIN_W;
+		origin.y = (WIN_H / 2) - (evil[n].scale.y / 2);
+		print_evil(game, origin, evil[n], game->sprite.evil);
 		i++;
 	}
 }

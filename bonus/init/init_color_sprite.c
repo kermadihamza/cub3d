@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/21 11:34:09 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:32:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	init_color_sprite(t_game *game)
 	game->sprite.h = (game->sprite.all_sprites.height) / 5;
 	game->sprite.evil.width = game->sprite.w;
 	game->sprite.evil.height = game->sprite.h;
+	game->sprite.door.width = game->sprite.w;
+	game->sprite.door.height = game->sprite.h;
 	game->sprite.player.width = game->sprite.w;
 	game->sprite.player.height = game->sprite.h;
 	
@@ -81,6 +83,7 @@ void	init_color_sprite(t_game *game)
 	init_sprites(game, "./sprites/all_sprites.xpm", &game->sprite.all_sprites);
 	init_sprites(game, "./sprites/numbers.xpm", &game->sprite.numbers);
 
+	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door, posi(4, 1));
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.evil, posi(1, 1));
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.player,
 		posi(game->player.cur_weapon, 2));

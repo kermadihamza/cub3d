@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 12:33:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:37:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	print_ray(t_game *game, t_ray *ray)
 		if (y >= (WIN_H / 2) - (rescale / 2)
 			&& y <= (WIN_H / 2) + (rescale / 2))
 		{
+			if (ray->door > 0)
+				print_door(game, ray, y);
 			if (!game->sprite.north.img || !game->sprite.south.img
 				|| !game->sprite.east.img || !game->sprite.west.img)
 				if_no_sprite(game, ray, y);

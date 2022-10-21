@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/20 22:40:14 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/21 12:25:56 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,13 @@ SRCS = 	main.c\
 		parsing/parsing.c\
 		parsing/parsing_rgb.c\
 		parsing/read_sort_map.c\
-		parsing/init_player_pos.c\
-		parsing/init_evil_pos.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
+		init/init_player_pos.c\
+		init/init_evil.c\
+		init/init_door.c\
+		init/init_color_sprite.c\
+		init/init_ray_values.c\
 		utils/pos.c\
 		utils/utils.c\
 		utils/orientation.c\
@@ -33,16 +36,14 @@ SRCS = 	main.c\
 		action/key_manager.c\
 		action/action.c\
 		display/ft_mlx_pixel_put.c\
-		display/init_color_sprite.c\
 		display/minimap.c\
 		display/display.c\
 		display/raycasting.c\
-		display/init_ray_values.c\
 		display/print_ray.c\
 		display/sprite_3d.c\
 		display/display_evil.c\
-		display/init_evil_values.c\
 		display/display_player.c\
+		display/door.c\
 		display/numbers.c\
 		utils/debug.c\
 

@@ -1,16 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_evil_values.c                                 :+:      :+:    :+:   */
+/*   init_evil.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 20:19:44 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:25:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_evil_pos(t_game *game)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (game->map[i])
+	{
+		if (game->map[i] == 'M')
+			game->nb_evil++;
+		i++;
+	}
+	i = 0;
+	game->evil = malloc (sizeof(t_evil) * game->nb_evil);
+	while (game->map[i] && n < game->nb_evil)
+	{
+		if (game->map[i] == 'M')
+		{
+			game->evil[n].pos = find_pos(game->map, i);
+			game->evil[n].life = 3;
+			n++;
+		}
+		i++;
+	}
+}
 
 void	init_evil_values(t_game *game, t_evil *evil)
 {

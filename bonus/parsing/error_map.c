@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 14:14:06 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:05:41 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	other_character(t_game *game, char *map)
 	while (map[i])
 	{
 		if (!is_personage(map[i]) && map[i] != '0' && map[i] != '1'
-			&& map[i] != '\n' && map[i] != ' ' && map[i] != 'M')
+			&& map[i] != '\n' && map[i] != ' ' && map[i] != 'M' && map[i] != 'P')
 			handle_errors(game, OTHER_CHAR, &map[i]);
 		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
 			handle_errors(game, OTHER_CHAR, "\n");
