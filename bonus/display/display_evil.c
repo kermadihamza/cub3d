@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 21:57:36 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:01:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	display_evil(t_game *game, t_evil *evil)
 	while (i < game->nb_evil)
 	{
 		init_evil_values(game, &evil[i]);
+		// init_evil_values(game &door[i])
 		i++;
 	}
 	i = 0;
@@ -101,7 +102,7 @@ void	display_evil(t_game *game, t_evil *evil)
 	{
 		origin.x = (evil[i].angle_from_player + game->fov / 2) / game->fov * WIN_W;
 		origin.y = (WIN_H / 2) - (evil[i].scale.y / 2);
-		if (!other_monster(game, evil, i))
+		// if (!other_monster(game, evil, i))
 			print_evil(game, origin, evil[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 22:26:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:28:15 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_player {
 	double	angle;
 	int		cur_weapon;
 	int		weapon_max;
+	int		n_dead;
 	bool	fork;
 	bool	flame;
 	bool	morgenstern;

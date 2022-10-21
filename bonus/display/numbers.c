@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:33:07 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 22:39:34 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:29:09 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	set_number(t_game *game, t_img *num, int i, t_pos origin)
 
 void	numbers(t_game *game)
 {
-	set_number(game, game->sprite.num, game->player.weapon_max, posi(WIN_W - 150, 50));
+	set_number(game, game->sprite.num, game->player.n_dead, posi(WIN_W - 150, 50));
 }
