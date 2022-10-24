@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:10:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 09:44:01 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,5 @@ void	handle_errors(t_game *game, int error, char *str);
 void	check_error_name(t_game *game, char *av);
 void	error_map(t_game *game, char *map);
 void	holes_in_walls(t_game *game, char *map);
-void	init_color_sprite(t_game *game);
-void	init_player_pos(t_game *game);
-void	init_evil_pos(t_game *game);
-void	init_door_pos(t_game *game);
 
 #endif

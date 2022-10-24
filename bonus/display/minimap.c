@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 16:41:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:08:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_minimap(t_game *game)
 		{
 			if (game->s_map[y][x] == '1')
 				little_square(game, WHITE, tile_final_pos(game, x, y));
-			else if (game->s_map[y][x] == '0'
+			else if (game->s_map[y][x] == '0' || game->s_map[y][x] == 'M'
 				|| is_personage(game->s_map[y][x]))
 				little_square(game, PURPLE, tile_final_pos(game, x, y));
 			else if (game->s_map[y][x] == 'P')

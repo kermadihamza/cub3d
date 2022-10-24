@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/21 12:25:56 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/24 09:40:43 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS = 	main.c\
 		init/init_player_pos.c\
 		init/init_evil.c\
 		init/init_door.c\
-		init/init_color_sprite.c\
+		init/sprite_factory.c\
+		init/sprite_factory_utils.c\
 		init/init_ray_values.c\
 		utils/pos.c\
 		utils/utils.c\

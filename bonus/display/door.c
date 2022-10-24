@@ -6,20 +6,54 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 16:48:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:29:31 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_door(t_game *game, t_ray *ray, double y)
+int	find_color_in_door(t_door *door, double y, t_img sprite)
 {
-	int	color;
+	t_pos	pos;
+	double	expand_y;
+	double	wall_min_y;
 
-	color = find_color_in_sprite(ray, y, game->sprite.door);
-	// printf("%x\n", color);
-	// printf("x %d, y %f\n", ray->pos_in_screen, y);
-	ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, color);
+	expand_y = WIN_H / sprite.height;
+	if (door->len_hor < door->len_vert)
+		pos.x = door->tile_hor.x - floor(door->tile_hor.x);
+	else
+		pos.x = door->tile_vert.y - floor(door->tile_vert.y);
+	pos.x *= sprite.height;
+	wall_min_y = (WIN_H / 2) - (WIN_H / door->len) / 2;
+	pos.y = ((y - wall_min_y) * door->len) / expand_y;
+	return (get_color(sprite, pos));
+}
+
+
+void	print_door(t_game *game, t_door *door)
+{
+	int	y;
+	int	color;
+	double	rescale;
+
+	y = 0;
+	if (door->len_hor < door->len_vert)
+		door->len = door->len_hor;
+	else
+		door->len = door->len_vert;
+	if (door->len > game->ray.ray_len)
+		return ;
+	rescale = WIN_H / door->len;
+	while (y < WIN_H)
+	{
+		color = find_color_in_door(door, y, game->sprite.door);
+		if (y >= (WIN_H / 2) - (rescale / 2) && y <= (WIN_H / 2) + (rescale / 2)
+			&& (color != NOT_PIXEL && color != STILL_NOT_PIXEL))
+			ft_mlx_pixel_put(&game->img, game->ray.pos_in_screen, y, color);
+		y++;
+	}
+	door->len_hor = 10000;
+	door->len_vert = 10000;
 }
 
 void	display_door(t_game *game, t_evil *door)

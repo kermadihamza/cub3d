@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:59:30 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 16:09:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:27:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ void	init_ray_values(t_ray *ray)
 	else
 		ray->step_x = 1;
 	ray->hor = 0;
-	ray->door = 0;
 }

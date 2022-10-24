@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 20:02:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 09:42:11 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "utils.h"
 # include "display.h"
 # include "action.h"
+# include "init.h"
 
 # define WIN_H 1080
 # define WIN_W 1620

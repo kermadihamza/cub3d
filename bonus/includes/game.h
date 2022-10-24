@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 16:12:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:50:22 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_ray {
 	double	adj_y;
 	double	ra;
 	double	ray_len;
-	double	door;
 	int		step_x;
 	int		step_y;
 	double	delta_x;
@@ -31,9 +30,6 @@ typedef struct s_ray {
 	t_pos	tile;
 	t_pos	tile_vert;
 	t_pos	tile_hor;
-	t_pos	tile_door;
-	t_pos	tile_door_vert;
-	t_pos	tile_door_hor;
 	int		hor;
 	int		pos_in_screen;
 }	t_ray;
@@ -66,7 +62,7 @@ typedef struct s_sprite {
 	t_img	door;
 	t_img	player;
 	t_img	numbers;
-	t_img	*num;
+	t_img	num[10];
 	double	num_w;
 	double	num_h;
 	double	w;
@@ -74,9 +70,12 @@ typedef struct s_sprite {
 }	t_sprite;
 
 typedef struct s_door {
-	double	dist_player_left;
-	double	dist_player_right;
-	double	angle_from_player;
+	double	len_hor;
+	double	len_vert;
+	double	len;
+	t_pos	tile;
+	t_pos	tile_vert;
+	t_pos	tile_hor;
 	t_pos	pos;
 	t_pos	scale;
 }	t_door;
@@ -129,6 +128,7 @@ typedef struct s_game
 	int			nb_door;
 	t_evil		*evil;
 	t_evil		*door;
+	t_door		door_f;
 	t_img		img;
 	t_sprite	sprite;
 	t_key		key;

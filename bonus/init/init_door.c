@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 12:24:51 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:31:18 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:09:21 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ void	init_door_pos(t_game *game)
 		}
 		i++;
 	}
+	game->door_f.len_hor = 10000;
+	game->door_f.len_vert = 10000;
 }
