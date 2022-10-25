@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:32:16 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 14:44:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:20:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,26 @@ void	init_height_width(t_game *game)
 	int	i;
 
 	i = 0;
-	game->sprite.w = (game->sprite.all_sprites.width) / 10;
+	game->sprite.w = (game->sprite.all_sprites.width) / 15;
 	game->sprite.h = (game->sprite.all_sprites.height) / 5;
-	game->sprite.evil.width = game->sprite.w;
-	game->sprite.evil.height = game->sprite.h;
-	game->sprite.door.width = game->sprite.w * 2;
-	game->sprite.door.height = game->sprite.h;
+	game->sprite.table.width = game->sprite.w;
+	game->sprite.table.height = game->sprite.h;
 	game->sprite.player.width = game->sprite.w;
 	game->sprite.player.height = game->sprite.h;
+	while (i < 4)
+	{
+		game->sprite.door[i].width = game->sprite.w * 2;
+		game->sprite.door[i].height = game->sprite.h;
+		i++;
+	}
+	i = 0;
+	while (i < 7)
+	{
+		game->sprite.evil[i].width = game->sprite.w;
+		game->sprite.evil[i].height = game->sprite.h;
+		i++;
+	}
+	i = 0;
 	while (i < 10)
 	{
 		game->sprite.num[i].width = game->sprite.numbers.width / 10;
@@ -50,11 +62,22 @@ void	sprite_blt(t_game *game)
 	int	i;
 
 	i = 0;
-	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door, posi(4, 1));
-	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.evil, posi(1, 1));
-	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door, posi(1, 3));
+	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.table, posi(8, 0));
+	// ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door, posi(0, 3));
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.player,
 		posi(game->player.cur_weapon, 2));
+	while (i < 4)
+	{
+		ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door[i], posi(i, 3));
+		i++;
+	}
+	i = 0;
+	while (i < 7)
+	{
+		ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.evil[i], posi(i, 1));
+		i++;
+	}
+	i = 0;
 	while (i < 10)
 	{
 		ft_new_image_blt(game, &game->sprite.numbers, &game->sprite.num[i], posi(i, 0));

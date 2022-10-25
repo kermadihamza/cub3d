@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/24 09:42:11 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:40:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@
 
 # define NOT_PIXEL 9961608
 # define STILL_NOT_PIXEL -16777216
+
+# define SPEED 1
+# define SPEEDI 4
 
 #endif

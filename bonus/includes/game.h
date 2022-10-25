@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 14:37:00 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:42:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,11 @@ typedef struct s_sprite {
 	t_img	east;
 	t_img	west;
 	t_img	all_sprites;
-	t_img	evil;
-	t_img	door;
+	t_img	evil[7];
+	t_img	door[4];
 	t_img	player;
 	t_img	numbers;
+	t_img	table;
 	t_img	num[10];
 	double	num_w;
 	double	num_h;
@@ -78,6 +79,8 @@ typedef struct s_door {
 	t_pos	tile_hor;
 	t_pos	pos;
 	t_pos	scale;
+	int		time;
+	bool	open;
 }	t_door;
 
 typedef struct s_evil {
@@ -85,6 +88,7 @@ typedef struct s_evil {
 	double	dist_player_right;
 	double	angle_from_player;
 	double	life;
+	int		time;
 	t_pos	pos;
 	t_pos	scale;
 }	t_evil;

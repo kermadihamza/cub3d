@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:25:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 19:41:01 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_evil_values(t_game *game, t_evil *evil)
 	while (evil->angle_from_player < -M_PI)
 		evil->angle_from_player += 2 * M_PI;
 	evil->scale.y = WIN_W / evil->dist_player_left;
-	evil->scale.x = evil->scale.y * (game->sprite.evil.width / game->sprite.evil.height);
+	evil->scale.x = evil->scale.y * (game->sprite.w / game->sprite.h);
 }
 
 t_pos	get_pos(t_pos pos, t_pos size, t_img sprite)

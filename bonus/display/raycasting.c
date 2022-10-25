@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 14:28:51 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 18:07:48 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 	ray->tile_vert.y = -sin(ray->ra) * ray->ray_len + player.y;
 	while (!is_outside_map(ray->tile_vert.x, ray->tile_vert.y, game->s_map))
 	{
-		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y) && game->door_f.len_vert == 1000)
+		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y) && game->door_f.len_vert == -1)
 		{
 			game->door_f.tile_vert = posi(ray->tile_vert.x, ray->tile_vert.y);
 			game->door_f.len_vert = ray->ray_len;
@@ -51,7 +51,7 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 	ray->tile_hor.y = floor(player.y + ray->step_y);
 	while (!is_outside_map(ray->tile_hor.x, ray->tile_hor.y, game->s_map))
 	{
-		if (is_door(game, ray->tile_hor.x, ray->tile_hor.y) && game->door_f.len_hor == 1000)
+		if (is_door(game, ray->tile_hor.x, ray->tile_hor.y) && game->door_f.len_hor == -1)
 		{
 			game->door_f.tile_hor = posi(ray->tile_hor.x, ray->tile_hor.y);
 			game->door_f.len_hor = ray->ray_len;

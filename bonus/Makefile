@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/24 09:40:43 by lrondia          ###   ########.fr        #
+#    Updated: 2022/10/25 21:21:25 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,15 @@ SRCS = 	main.c\
 		utils/bloc_transfer.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
-		action/key_manager.c\
 		action/action.c\
+		action/attack.c\
+		action/animation.c\
+		action/key.c\
+		action/move.c\
 		display/ft_mlx_pixel_put.c\
 		display/minimap.c\
 		display/display.c\
+		display/display_one_img.c\
 		display/raycasting.c\
 		display/print_ray.c\
 		display/sprite_3d.c\

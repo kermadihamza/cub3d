@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/24 14:45:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:25:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	double	vertical;
 	t_ray	ray;
 
+	game->door_f.len_hor = -1;
+	game->door_f.len_vert = -1;
 	ray.ra = (game->player.angle - evil.angle_from_player) - small;
 	init_ray_values(&ray);
 	horizontal = check_wall_hor(game, &ray, game->player.pos);
@@ -27,7 +29,8 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	else
 		ray.ray_len = vertical;
 	if ((small != 0 && ray.ray_len < evil.dist_player_right)
-		|| (small == 0 && ray.ray_len < evil.dist_player_left))
+		|| (small == 0 && ray.ray_len < evil.dist_player_left)
+		|| game->door_f.len_hor != -1 || game->door_f.len_vert != -1)
 		return (1);
 	return (0);
 }
@@ -51,7 +54,6 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 		pos.x = 0;
 		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W)
 		{
-	
 			if (pos.x / 2 == 1)
 				color = copy;
 			else
@@ -94,10 +96,65 @@ int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 	return (res);
 }
 
+// int	choose_sprite(t_evil evil)
+// {
+// 	int	len;
+
+// 	len = 4;
+// 	if (evil.time / SPEED < 4)
+// 		return (evil.time / SPEED);
+// 	else if (evil.time / SPEED < 8)
+// 		return (len - (evil.time / SPEED) % 4);
+// 	else if (evil.time / SPEED < 9)
+// 		return ((evil.time / SPEED) % 4);
+// 	else if (evil.time / SPEED < 12)
+// 		return ((evil.time / SPEED ) % 4 + 3);
+// 	else if (evil.time / SPEED < 13)
+// 		return (len - (evil.time /SPEED) % 4);
+// 	else if (evil.time / SPEED < 16)
+// 		return ((len - ((evil.time / SPEED) % 4)) + 3);
+// 	else
+// 		return (0);
+// }
+
+static int	choose_sprite(t_evil evil)
+{
+	if (evil.time / SPEED < 4)
+		return (evil.time / SPEED);
+	else if (evil.time / SPEED == 4)
+		return (3);
+	else if (evil.time / SPEED == 5)
+		return (2);
+	else if (evil.time / SPEED == 6)
+		return (1);
+	else if (evil.time / SPEED == 7 || evil.time / SPEED == 8 || evil.time / SPEED == 15)
+		return (0);
+	else if (evil.time / SPEED == 9)
+		return (4);
+	else if (evil.time / SPEED == 10)
+		return (5);
+	else if (evil.time / SPEED == 11 || evil.time / SPEED == 12)
+		return (6);
+	else if (evil.time / SPEED == 13)
+		return (5);
+	else if (evil.time / SPEED == 14)
+		return (4);
+	else
+		return (0);
+}
+
+void	evil_time(t_evil *evil)
+{
+	evil->time++;
+	if (evil->time >= 16 * SPEED)
+		evil->time = 0;
+}
+
 void	display_evil(t_game *game, t_evil *evil)
 {
 	int		i;
 	int		n;
+	int		cs;
 	t_pos	origin;
 
 	i = 0;
@@ -113,7 +170,8 @@ void	display_evil(t_game *game, t_evil *evil)
 		n = find_farthest_evil(game, evil, n);
 		origin.x = (evil[n].angle_from_player + game->fov / 2) / game->fov * WIN_W;
 		origin.y = (WIN_H / 2) - (evil[n].scale.y / 2);
-		print_evil(game, origin, evil[n], game->sprite.evil);
+		cs = choose_sprite(evil[0]);
+		print_evil(game, origin, evil[n], game->sprite.evil[cs]);
 		i++;
 	}
 }
