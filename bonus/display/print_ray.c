@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/24 18:18:08 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:28:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	print_ray(t_game *game, t_ray *ray)
 				with_sprite(game, ray, y);
 		y++;
 	}
-	if (game->door_f.len_hor != 10000 || game->door_f.len_vert != 10000)
+	if (game->door_f.len_hor != 1000 || game->door_f.len_vert != 1000)
 		print_door(game, &game->door_f);
 }

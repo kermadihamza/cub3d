@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/24 18:29:31 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:28:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	print_door(t_game *game, t_door *door)
 
 	y = 0;
 	if (door->len_hor < door->len_vert)
-		door->len = door->len_hor;
+		door->len = door->len_hor * cos (game->ray.ra - game->player.angle);
 	else
-		door->len = door->len_vert;
+		door->len = door->len_vert * cos(game->ray.ra - game->player.angle);
 	if (door->len > game->ray.ray_len)
 		return ;
 	rescale = WIN_H / door->len;
@@ -52,8 +52,8 @@ void	print_door(t_game *game, t_door *door)
 			ft_mlx_pixel_put(&game->img, game->ray.pos_in_screen, y, color);
 		y++;
 	}
-	door->len_hor = 10000;
-	door->len_vert = 10000;
+	door->len_hor = 1000;
+	door->len_vert = 1000;
 }
 
 void	display_door(t_game *game, t_evil *door)
