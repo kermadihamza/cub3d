@@ -6,76 +6,111 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 22:02:47 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 20:37:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 
 int	is_hor_closer(double hor, double vert)
 {
 	return ((hor < vert && hor != -1 && vert != -1) || vert == -1);
 }
 
-int	find_color_in_door(t_door *door, double y, t_img sprite)
+int	find_color_in_door(t_ray *ray, double y, t_img sprite)
 {
 	t_pos	pos;
 	double	expand_y;
 	double	wall_min_y;
 
 	expand_y = WIN_H / sprite.height;
-	if (is_hor_closer(door->len_hor, door->len_vert))
-		pos.x = door->tile_hor.x - floor(door->tile_hor.x);
+	if (is_hor_closer(ray->door_hor, ray->door_vert))
+		pos.x = ray->door_tile_hor.x - floor(ray->door_tile_hor.x);
 	else
-		pos.x = door->tile_vert.y - floor(door->tile_vert.y);
+		pos.x = ray->door_tile_vert.y - floor(ray->door_tile_vert.y);
 	pos.x *= sprite.height;
-	wall_min_y = (WIN_H / 2) - (WIN_H / door->len) / 2;
-	pos.y = ((y - wall_min_y) * door->len) / expand_y;
+	wall_min_y = (WIN_H / 2) - (WIN_H / ray->door) / 2;
+	pos.y = ((y - wall_min_y) * ray->door) / expand_y;
 	return (get_color(sprite, pos));
 }
 
-static int	choose_sprite(t_door *door)
+void	door_time(t_game *game, t_door *door)
 {
-	// printf("door : %d\n", door->time);
-	if (door->time / SPEEDI < 4)
-		return (door->time / SPEEDI);
+	int	i;
+
+	i = 0;
+	while (i < game->nb_door)
+	{
+		if (door[i].time < 4 * SPEEDI && door[i].open && door[i].dist_p < 3)
+			door[i].time++;
+		else if (door[i].time > 0 && !door[i].open && door[i].dist_p < 3)
+			door[i].time--;
+		i++;
+	}
+}
+
+static int	choose_sprite(t_game *game, t_ray *ray, t_door *door)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->nb_door)
+	{
+		if (is_same_tile(door[i].pos, ray->door_tile))
+			break;
+		i++;
+	}
+	if (door[i].time / SPEEDI < 4)
+		return (door[i].time / SPEEDI);
 	else
 		return (3);
 }
 
-void	door_time(t_door *door)
-{
-	if (door->time <= 4 * SPEEDI)
-		door->time++;
-	if (door->time >= 4 * SPEEDI)
-		door->open = 0;
-}
-
-void	print_door(t_game *game, t_door *door)
+void	print_door_loop(t_game *game, t_ray *ray, t_door *door)
 {
 	int	y;
 	int	cs;
 	int	color;
 	double	rescale;
-
+	(void) door;
 	y = 0;
-	if (is_hor_closer(door->len_hor, door->len_vert))
-		door->len = door->len_hor * cos (game->ray.ra - game->player.angle);
-	else
-		door->len = door->len_vert * cos(game->ray.ra - game->player.angle);
-	if (door->len > game->ray.ray_len)
-		return ;
 	cs = 0;
-	rescale = WIN_H / door->len;
+	rescale = WIN_H / ray->door;
 	while (y < WIN_H)
 	{
-		cs = choose_sprite(door);
-		color = find_color_in_door(door, y, game->sprite.door[cs]);
+		cs = choose_sprite(game, ray, door);
+		color = find_color_in_door(ray, y, game->sprite.door[cs]);
 		if (y >= (WIN_H / 2) - (rescale / 2) && y <= (WIN_H / 2) + (rescale / 2)
 			&& (color != NOT_PIXEL && color != STILL_NOT_PIXEL))
 			ft_mlx_pixel_put(&game->img, game->ray.pos_in_screen, y, color);
 		y++;
 	}
-	door->len_hor = -1;
-	door->len_vert = -1;
+}
+
+void	print_door(t_game *game, t_ray *ray, t_door *door)
+{
+	if (is_hor_closer(ray->door_hor, ray->door_vert))
+	{
+		ray->door = ray->door_hor * cos(game->ray.ra - game->player.angle);
+		ray->door_tile = ray->door_tile_hor;
+	}
+	else
+	{
+		ray->door = ray->door_vert * cos(game->ray.ra - game->player.angle);
+		ray->door_tile = ray->door_tile_vert;
+	}
+	if (ray->door > game->ray.ray_len)
+	{
+		ray->door_hor = -1;
+		ray->door_vert = -1;
+		ray->door = -1;
+		ray->door_tile = posi(0,0);
+		return ;
+	}
+	print_door_loop(game, ray, door);
+	ray->door_hor = -1;
+	ray->door_vert = -1;
+	ray->door = -1;
+	ray->door_tile = posi(0,0);
 }

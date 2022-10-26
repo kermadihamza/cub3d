@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/25 21:27:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:15:31 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ int		get_color(t_img sprite, t_pos pos);
 
 void	display_evil(t_game *game, t_evil *evil);
 void	evil_time(t_evil *evil);
-void	door_time(t_door *door);
-void	print_door(t_game *game, t_door *door);
+void	door_time(t_game *game, t_door *door);
+void	print_door(t_game *game, t_ray *ray, t_door *door);
 void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite);
 t_pos	get_pos(t_pos pos, t_pos size, t_img sprite);
 t_pos	calculate_size_on_screen(t_evil evil, t_img	evil_sprite);
 
+int		is_hor_closer(double hor, double vert);
 void	display_one_img(t_game *game, int mult, t_img sprite, t_pos origin);
 void	display_player(t_game *game, t_img sprite);
 void	numbers(t_game *game);

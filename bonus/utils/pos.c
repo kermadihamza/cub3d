@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 18:59:33 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 20:37:40 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ t_pos	posi(double	x, double y)
 	pos.x = x;
 	pos.y = y;
 	return (pos);
+}
+
+int	is_same_tile(t_pos p1, t_pos p2)
+{
+	return ((int)p1.x == (int)p2.x && (int)p1.y == (int)p2.y);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:42:50 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 18:40:27 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ typedef struct s_ray {
 	t_pos	tile_hor;
 	int		hor;
 	int		pos_in_screen;
+	double	door_hor;
+	double	door_vert;
+	double	door;
+	t_pos	door_tile_hor;
+	t_pos	door_tile_vert;
+	t_pos	door_tile;
+	int		door_num;
 }	t_ray;
 
 typedef struct s_rect {
@@ -71,9 +78,7 @@ typedef struct s_sprite {
 }	t_sprite;
 
 typedef struct s_door {
-	double	len_hor;
-	double	len_vert;
-	double	len;
+	double	dist_p;
 	t_pos	tile;
 	t_pos	tile_vert;
 	t_pos	tile_hor;
@@ -131,8 +136,7 @@ typedef struct s_game
 	int			nb_evil;
 	int			nb_door;
 	t_evil		*evil;
-	t_evil		*door;
-	t_door		door_f;
+	t_door		*door;
 	t_img		img;
 	t_sprite	sprite;
 	t_key		key;

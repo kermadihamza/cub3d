@@ -6,11 +6,28 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:16:20 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:42:23 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 18:50:38 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+void	open_door(t_game *game, t_door *door, int code)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->nb_door)
+	{
+		if (door[i].dist_p < 3)
+		{
+			if (code == 12 && !door[i].open)
+				door[i].open = 1;
+			else if (code == 12 && door[i].open)
+				door[i].open = 0;
+		}
+		i++;
+	}
+}
 
 int	key_press(int code, t_game *game)
 {
@@ -36,8 +53,7 @@ int	key_press(int code, t_game *game)
 		handle_weapon(&game->player);
 	if (code == 49 && game->player.attack == 0)
 		game->player.attack = 1;
-	if (code == 12)
-		game->door_f.open = 1;
+	open_door(game, game->door, code);
 	// printf("%d\n", code);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:25:53 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 20:24:41 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	double	vertical;
 	t_ray	ray;
 
-	game->door_f.len_hor = -1;
-	game->door_f.len_vert = -1;
+	ray.door_hor = -1;
+	ray.door_vert = -1;
 	ray.ra = (game->player.angle - evil.angle_from_player) - small;
 	init_ray_values(&ray);
 	horizontal = check_wall_hor(game, &ray, game->player.pos);
@@ -30,7 +30,8 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 		ray.ray_len = vertical;
 	if ((small != 0 && ray.ray_len < evil.dist_player_right)
 		|| (small == 0 && ray.ray_len < evil.dist_player_left)
-		|| game->door_f.len_hor != -1 || game->door_f.len_vert != -1)
+		|| (ray.door_hor < evil.dist_player_left && ray.door_hor != -1)
+		|| (ray.door_vert < evil.dist_player_left && ray.door_vert != -1))
 		return (1);
 	return (0);
 }

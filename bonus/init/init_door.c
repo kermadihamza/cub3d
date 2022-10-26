@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 12:24:51 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:45:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/26 18:50:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_door_pos(t_game *game)
 {
-	int	i;
-	int	n;
+	int		i;
+	int		n;
 
 	i = 0;
 	n = 0;
@@ -32,12 +32,14 @@ void	init_door_pos(t_game *game)
 		if (game->map[i] == 'P')
 		{
 			game->door[n].pos = find_pos(game->map, i);
-			game->door[n].life = 1;
+			game->ray.door_tile = posi(0,0);
+			game->ray.door = -1;
+			game->ray.door_hor = -1;
+			game->ray.door_vert = -1;
+			game->door[n].time = 0;
+			game->door[n].open = 0;
 			n++;
 		}
 		i++;
 	}
-	game->door_f.len_hor = -1;
-	game->door_f.len_vert = -1;
-	game->door_f.time = 0;
 }
