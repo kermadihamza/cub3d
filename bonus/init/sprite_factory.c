@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:32:16 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:20:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:02:59 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ void	init_height_width(t_game *game)
 	game->sprite.table.height = game->sprite.h;
 	game->sprite.player.width = game->sprite.w;
 	game->sprite.player.height = game->sprite.h;
+	while (i < 3)
+	{
+		game->mess.mess_w[i].width = game->sprite.w * 2;
+		game->mess.mess_w[i].height = game->sprite.h;
+		i++;
+	}
+	i = 0;
 	while (i < 4)
 	{
 		game->sprite.door[i].width = game->sprite.w * 2;
@@ -53,7 +60,7 @@ void	init_color_sprite(t_game *game)
 	init_sprites(game, game->sprite.south.path, &game->sprite.south);
 	init_sprites(game, game->sprite.east.path, &game->sprite.east);
 	init_sprites(game, game->sprite.west.path, &game->sprite.west);
-	init_sprites(game, "./sprites/all_sprites.xpm", &game->sprite.all_sprites);
+	init_sprites(game, "./sprites/all_sprites_cpy.xpm", &game->sprite.all_sprites);
 	init_sprites(game, "./sprites/numbers.xpm", &game->sprite.numbers);
 }
 
@@ -63,9 +70,14 @@ void	sprite_blt(t_game *game)
 
 	i = 0;
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.table, posi(8, 0));
-	// ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door, posi(0, 3));
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.player,
 		posi(game->player.cur_weapon, 2));
+	while (i < 3)
+	{
+		ft_new_image_blt(game, &game->sprite.all_sprites, &game->mess.mess_w[i], posi(i, 4));
+		i++;
+	}
+	i = 0;
 	while (i < 4)
 	{
 		ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.door[i], posi(i, 3));

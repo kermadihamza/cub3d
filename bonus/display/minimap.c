@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 17:56:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:29:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	draw_minimap(t_game *game)
 		while (game->s_map[y][x])
 		{
 			if (game->s_map[y][x] == '1')
-				little_square(game, WHITE, tile_final_pos(game, x, y));
+				little_square(game, ORANGE, tile_final_pos(game, x, y));
 			else if (game->s_map[y][x] == '0' || game->s_map[y][x] == 'M'
 				|| is_personage(game->s_map[y][x]))
-				little_square(game, PURPLE, tile_final_pos(game, x, y));
+				little_square(game, WHITE, tile_final_pos(game, x, y));
 			else if (game->s_map[y][x] == 'P')
-				little_square(game, GREEN, tile_final_pos(game, x, y));
+				little_square(game, VIOLET, tile_final_pos(game, x, y));
 			x++;
 		}
 		y++;
@@ -52,8 +52,9 @@ void	init_mini_map(t_game *game)
 	pos.x = MINI_W / 2 - 5 + MINI_SIDE;
 	pos.y = MINI_H / 2 - 5 + MINI_SIDE;
 	minimap_background(game);
+	// display_one_img(game, 5, game->sprite.table, posi(10, -465));
 	draw_minimap(game);
-	little_square(game, RED, pos);
+	little_square(game, D_RED, pos);
 	ft_draw_line(game, game->player.angle + M_PI / 4, pos, 25);
 	ft_draw_line(game, game->player.angle - M_PI / 4, pos, 25);
 }

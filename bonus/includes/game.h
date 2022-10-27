@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 18:40:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:04:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,14 @@ typedef struct s_player {
 	double	life;
 }	t_player;
 
-typedef struct s_game
-{
+typedef struct s_mess {
+	int		fork;
+	int		flame;
+	int		morgenstern;
+	t_img	mess_w[3];
+}	t_mess;
+
+typedef struct s_game {
 	void		*mlx;
 	void		*win;
 	double		fov;
@@ -142,6 +148,7 @@ typedef struct s_game
 	t_key		key;
 	t_ray		ray;
 	t_player	player;
+	t_mess		mess;
 }	t_game;
 
 void	debug(t_game *game);

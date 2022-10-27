@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:55:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:22:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:11:06 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,12 @@ void	attack(t_game *game, t_player *p, t_evil *evil)
 		we_kill_ennemy(game, p, evil);
 		p->n_dead = count_dead_evils(game, evil);
 	if (p->weapon_max < 3)
-		p->weapon_max = p->n_dead;
+	{
+		if (p->n_dead > 0 && p->n_dead < 3)
+			p->weapon_max = 1;
+		else if (p->n_dead >= 3 && p->n_dead < 6)
+			p->weapon_max = 2;
+		else if (p->n_dead >= 6)
+			p->weapon_max = 3;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:10:12 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 11:45:12 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:28:19 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	minimap_background(t_game *game)
 		{
 			if (j < MINI_SIDE || j > MINI_H + MINI_SIDE * 2
 				|| i < MINI_SIDE || i > MINI_W + MINI_SIDE * 2)
-				ft_mlx_pixel_put(&game->img, i, j, PURPLE);
+				ft_mlx_pixel_put(&game->img, i, j, ORANGE);
 			else
 				ft_mlx_pixel_put(&game->img, i, j, WHITE);
 			j++;
@@ -70,7 +70,7 @@ void	ft_draw_line(t_game *game, double angle, t_pos pos, int len)
 	while (hypot(d * pente, d) <= len)
 	{
 		ft_mlx_pixel_put(&game->img, pos.x + d + 5,
-			pos.y - (d * pente) + 5, RED);
+			pos.y - (d * pente) + 5, D_RED);
 		if (bx < 0)
 			d -= 0.025;
 		else

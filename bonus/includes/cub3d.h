@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:40:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 13:29:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@
 # define MINI_SIDE 10
 # define TILE_SIZE 10
 # define WALL_SIZE 640
+# define BANNER_Y -238
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3
 # define WHITE 0xffffff
 # define PURPLE 0x4d4dff
+# define VIOLET 0xab92e0
 # define RED 0xff0000
+# define D_RED 0xc52a2a
 # define GREEN 0x00ff00
+# define BLACK 0x000000
+# define ORANGE 0xffad4e
+# define BLUE 0x6ec5ed
 
 # define NOT_PIXEL 9961608
 # define STILL_NOT_PIXEL -16777216
