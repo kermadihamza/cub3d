@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/26 17:15:31 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 20:20:23 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int		is_hor_closer(double hor, double vert);
 void	display_one_img(t_game *game, int mult, t_img sprite, t_pos origin);
 void	display_player(t_game *game, t_img sprite);
 void	numbers(t_game *game);
+
+void	thread(t_game *game);
 
 #endif

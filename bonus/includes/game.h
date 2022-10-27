@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:04:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 20:18:39 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,13 @@ typedef struct s_game {
 	t_ray		ray;
 	t_player	player;
 	t_mess		mess;
+	pthread_t	*tid;
 }	t_game;
+
+typedef struct s_arg {
+	int		i;
+	t_game	*game;
+}	t_arg;
 
 void	debug(t_game *game);
 void	debug_img(t_img img);

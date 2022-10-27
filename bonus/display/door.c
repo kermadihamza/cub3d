@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 20:37:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 19:55:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	print_door_loop(t_game *game, t_ray *ray, t_door *door)
 	int	cs;
 	int	color;
 	double	rescale;
-	(void) door;
+
 	y = 0;
 	cs = 0;
 	rescale = WIN_H / ray->door;
 	while (y < WIN_H)
 	{
 		cs = choose_sprite(game, ray, door);
-		color = find_color_in_door(ray, y, game->sprite.door[cs]);
+			color = find_color_in_door(ray, y, game->sprite.door[cs]);
 		if (y >= (WIN_H / 2) - (rescale / 2) && y <= (WIN_H / 2) + (rescale / 2)
 			&& (color != NOT_PIXEL && color != STILL_NOT_PIXEL))
 			ft_mlx_pixel_put(&game->img, game->ray.pos_in_screen, y, color);

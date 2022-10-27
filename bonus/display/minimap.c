@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:29:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 19:08:47 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	init_mini_map(t_game *game)
 	pos.x = MINI_W / 2 - 5 + MINI_SIDE;
 	pos.y = MINI_H / 2 - 5 + MINI_SIDE;
 	minimap_background(game);
-	// display_one_img(game, 5, game->sprite.table, posi(10, -465));
 	draw_minimap(game);
-	little_square(game, D_RED, pos);
+	little_square(game, BLACK, pos);
 	ft_draw_line(game, game->player.angle + M_PI / 4, pos, 25);
 	ft_draw_line(game, game->player.angle - M_PI / 4, pos, 25);
 }

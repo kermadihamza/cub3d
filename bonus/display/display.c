@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:12:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 19:58:15 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	display(t_game *game)
 	sprite_factory(game);
 	action(game, &game->ray, game->key);
 	door_time(game, game->door);
+	thread(game);
 	raycasting(game, &game->ray, game->player.pos);
 	init_mini_map(game);
 	display_evil(game, game->evil);

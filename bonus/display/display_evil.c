@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 20:24:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 19:51:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	else
 		ray.ray_len = vertical;
 	if ((small != 0 && ray.ray_len < evil.dist_player_right)
-		|| (small == 0 && ray.ray_len < evil.dist_player_left)
-		|| (ray.door_hor < evil.dist_player_left && ray.door_hor != -1)
+		|| (small == 0 && ray.ray_len < evil.dist_player_left))
+		return (1);
+	else if ((ray.door_hor < evil.dist_player_left && ray.door_hor != -1)
 		|| (ray.door_vert < evil.dist_player_left && ray.door_vert != -1))
 		return (1);
 	return (0);
@@ -96,27 +97,6 @@ int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 	}
 	return (res);
 }
-
-// int	choose_sprite(t_evil evil)
-// {
-// 	int	len;
-
-// 	len = 4;
-// 	if (evil.time / SPEED < 4)
-// 		return (evil.time / SPEED);
-// 	else if (evil.time / SPEED < 8)
-// 		return (len - (evil.time / SPEED) % 4);
-// 	else if (evil.time / SPEED < 9)
-// 		return ((evil.time / SPEED) % 4);
-// 	else if (evil.time / SPEED < 12)
-// 		return ((evil.time / SPEED ) % 4 + 3);
-// 	else if (evil.time / SPEED < 13)
-// 		return (len - (evil.time /SPEED) % 4);
-// 	else if (evil.time / SPEED < 16)
-// 		return ((len - ((evil.time / SPEED) % 4)) + 3);
-// 	else
-// 		return (0);
-// }
 
 static int	choose_sprite(t_evil evil)
 {

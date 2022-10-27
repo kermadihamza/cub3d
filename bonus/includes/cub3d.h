@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:29:00 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 20:18:11 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <math.h>
+# include <pthread.h>
 # include "game.h"
 # include "parsing.h"
 # include "get_next_line.h"
@@ -37,6 +38,8 @@
 # define WALL_SIZE 640
 # define BANNER_Y -238
 
+#define N_THREAD 4
+
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3
 # define WHITE 0xffffff
@@ -45,7 +48,7 @@
 # define RED 0xff0000
 # define D_RED 0xc52a2a
 # define GREEN 0x00ff00
-# define BLACK 0x000000
+# define BLACK 0x404040
 # define ORANGE 0xffad4e
 # define BLUE 0x6ec5ed
 

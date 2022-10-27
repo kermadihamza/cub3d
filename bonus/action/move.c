@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:15:04 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 20:55:25 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/27 18:58:41 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ void	angle_changes(t_game *game, t_ray *ray)
 	}
 }
 
-int	can_go(t_game *game, double side_x, double side_y)
+int	can_go(t_game *game, t_pos start, double side_x, double side_y)
 {
 	t_pos	pos;
 	int	i;
 
 	i = 0;
-	pos = posi(game->player.pos.x + side_x, game->player.pos.y + side_y);
+	side_x *= 2;
+	side_y *= 2;
+	pos = posi(start.x + side_x, start.y + side_y);
 	while (i < game->nb_door)
 	{
 		if (is_same_tile(game->door[i].pos, pos))
@@ -61,14 +63,30 @@ void	move(t_game *game, t_ray *ray, t_key key)
 	i = 0;
 	side_x = cos(game->player.angle + (M_PI / 2)) / 5;
 	side_y = sin(game->player.angle + (M_PI / 2)) / 5;
-	if (key.a == 1 && can_go(game, side_x, -side_y))
+	if (key.a == 1 && can_go(game, game->player.pos, side_x, -side_y))
+	{ 
+		if (can_go(game, game->evil[0].pos, -side_x, side_y))
+			add_new_pos(&game->evil[0].pos, -side_x, side_y);
 		add_new_pos(&game->player.pos, side_x, -side_y);
-	if (key.s == 1 && can_go(game, -ray->adj_x, side_y))
+	}
+	if (key.s == 1 && can_go(game, game->player.pos, -ray->adj_x, side_y))
+	{
+		if (can_go(game, game->evil[0].pos, ray->adj_x, -ray->adj_y))
+			add_new_pos(&game->evil[0].pos, ray->adj_x, -ray->adj_y);
 		add_new_pos(&game->player.pos, -ray->adj_x, ray->adj_y);
-	if (key.w == 1 && can_go(game, side_x, -ray->adj_y))
+	}
+	if (key.w == 1 && can_go(game, game->player.pos, side_x, -ray->adj_y))
+	{
+		if (can_go(game, game->evil[0].pos, -ray->adj_x, ray->adj_y))
+			add_new_pos(&game->evil[0].pos, -ray->adj_x, ray->adj_y);
 		add_new_pos(&game->player.pos, ray->adj_x, -ray->adj_y);
-	if (key.d == 1 && can_go(game, -side_x, side_y))
+	}
+	if (key.d == 1 && can_go(game, game->player.pos, -side_x, side_y))
+	{
+		if (can_go(game, game->evil[0].pos, side_x, -side_y))
+			add_new_pos(&game->evil[0].pos, side_x, -side_y);
 		add_new_pos(&game->player.pos, -side_x, side_y);
+	}
 	while (i < game->nb_door)
 	{
 		dist.x = game->door[i].pos.x - game->player.pos.x;
