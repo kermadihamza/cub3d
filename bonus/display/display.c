@@ -6,49 +6,27 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 19:58:15 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 16:56:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-	
-void	message_new_weapon(t_game *game, t_mess *mess, int dead)
-{
-	int		mult;
-	t_pos	pos;
-
-	mult = 3;
-	pos = posi(WIN_W / 2 - (mess->mess_w[0].width / 2) * mult, BANNER_Y);
-	if (dead == 1 && mess->fork < 30)
-	{	
-		mess->fork ++;
-		display_one_img(game, mult, mess->mess_w[0], pos);
-	}
-	else if (dead == 3 && mess->flame < 50)
-	{	
-		mess->flame ++;
-		display_one_img(game, mult, mess->mess_w[1], pos);
-	}
-	else if (dead == 6 && mess->morgenstern < 50)
-	{	
-		mess->morgenstern ++;
-		display_one_img(game, mult, mess->mess_w[2], pos);
-	}
-}
 
 int	display(t_game *game)
 {
+	game->ray.pos_in_screen = 0;
+	door_time(game, game->door);
 	sprite_factory(game);
 	action(game, &game->ray, game->key);
-	door_time(game, game->door);
-	thread(game);
-	raycasting(game, &game->ray, game->player.pos);
+	raycasting(game, &game->ray, 0, WIN_W);
+	// thread(game, routine_bg);
+	// thread(game, routine_raycasting);
 	init_mini_map(game);
 	display_evil(game, game->evil);
 	evil_time(&game->evil[0]);
 	numbers(game);
 	display_player(game, game->sprite.player);
-	message_new_weapon(game, &game->mess, game->player.n_dead);
+	messages(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }

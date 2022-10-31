@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 19:57:34 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:07:58 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,25 @@ void	longuest_ray(t_game *game, t_ray *ray, double horizontal, double vertical)
 		ray->ray_len = vertical * cos(a);
 }
 
-void	raycasting(t_game *game, t_ray *ray, t_pos player)
+void	raycasting(t_game *game, t_ray *ray, int start, int end)
 {
 	double	small;
 	double	horizontal;
 	double	vertical;
 
-	ray->pos_in_screen = 0;
-	small = game->fov / 2;
-	while (ray->pos_in_screen < WIN_W)
+	small = (game->fov / 2) - (game->fov / WIN_W) * start;
+	// printf("%d\n", start);
+	while (start < end)
 	{
+		ray->pos_in_screen = start;
+		// printf("%d\n", ray->pos_in_screen);
 		ray->ra = game->player.angle + atan(small);
 		init_ray_values(ray);
-		horizontal = check_wall_hor(game, ray, player);
-		vertical = check_wall_vert(game, ray, player);
+		horizontal = check_wall_hor(game, ray, game->player.pos);
+		vertical = check_wall_vert(game, ray, game->player.pos);
 		longuest_ray(game, ray, horizontal, vertical);
 		print_ray(game, ray);
 		small -= game->fov / WIN_W;
-		ray->pos_in_screen++;
+		start ++;
 	}
 }

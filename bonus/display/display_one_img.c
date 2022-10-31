@@ -6,13 +6,13 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:37:27 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:03:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 18:00:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_one_img(t_game *game, int mult, t_img sprite, t_pos origin)
+void	display_one_img(t_game *game, double mult, t_img sprite, t_pos origin)
 {
 	t_pos	pos;
 	int	color;

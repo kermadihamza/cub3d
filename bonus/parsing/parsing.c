@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:08:39 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 11:10:48 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ void	parsing(t_game *game, int ac, char **av)
 	init_player_pos(game);
 	init_evil_pos(game);
 	init_door_pos(game);
+	init_color_sprite(game);
+	// sprite_factory(game);
 }

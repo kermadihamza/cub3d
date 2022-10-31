@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 20:37:57 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:16:13 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	minimap_background(t_game *game);
 void	little_square(t_game *game, int color, t_pos pos);
 void	ft_draw_line(t_game *game, double angle, t_pos pos, int len);
 int		is_in_screen(double x, double y);
+int		is_near_evil(t_pos p, t_pos e);
 
 void	bloc_transfer(t_img *src, t_img *dst, t_pos d, t_rect r);
 t_rect	init_rect(int x, int y, int width, int height);

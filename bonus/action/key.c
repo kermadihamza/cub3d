@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:16:20 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 18:50:38 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:55:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	open_door(t_game *game, t_door *door, int code)
 		}
 		i++;
 	}
+}
+
+void	key_attack(t_game *game, int code)
+{
+	if (code == 49 && !game->player.attack && !game->player.max)
+		game->player.attack = 1;
 }
 
 int	key_press(int code, t_game *game)
@@ -51,8 +57,7 @@ int	key_press(int code, t_game *game)
 		game->key.third_p = 0;
 	if (code == 14)
 		handle_weapon(&game->player);
-	if (code == 49 && game->player.attack == 0)
-		game->player.attack = 1;
+	key_attack(game, code);
 	open_door(game, game->door, code);
 	// printf("%d\n", code);
 	return (0);
@@ -73,6 +78,9 @@ int	key_release(int code, t_game *game)
 	if (code == 124)
 		game->key.turn_r = 0;
 	if (code == 49 && game->player.attack == 1)
+	{
+		game->player.max = 0;
 		game->player.attack = 0;
+	}
 	return (0);
 }

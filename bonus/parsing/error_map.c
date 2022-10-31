@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/21 12:05:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:31:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,32 @@ void	other_character(t_game *game, char *map)
 	}
 }
 
+void	check_doors(t_game *game, char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'P')
+			{
+				if ((map[y - 1] && map[y - 1][x] != '1') || (map[y + 1] && map[y + 1][x] != '1'))
+					handle_errors(game, DOOR_WALL, "\n");
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	error_map(t_game *game, char *map)
 {
 	other_character(game, map);
 	number_of_elements(game, map);
 	holes_in_walls(game, map);
+	check_doors(game, game->s_map);
 }

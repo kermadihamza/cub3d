@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 20:18:39 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 16:50:49 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_sprite {
 	t_img	numbers;
 	t_img	table;
 	t_img	num[10];
+	t_img	damage;
 	double	num_w;
 	double	num_h;
 	double	w;
@@ -119,6 +120,7 @@ typedef struct s_player {
 	bool	flame;
 	bool	morgenstern;
 	bool	attack;
+	bool	max;
 	double	life;
 }	t_player;
 
@@ -126,6 +128,7 @@ typedef struct s_mess {
 	int		fork;
 	int		flame;
 	int		morgenstern;
+	int		damage;
 	t_img	mess_w[3];
 }	t_mess;
 
@@ -149,7 +152,6 @@ typedef struct s_game {
 	t_ray		ray;
 	t_player	player;
 	t_mess		mess;
-	pthread_t	*tid;
 }	t_game;
 
 typedef struct s_arg {

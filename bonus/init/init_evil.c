@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 19:52:01 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 14:48:54 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_evil_pos(t_game *game)
 		if (game->map[i] == 'M')
 		{
 			game->evil[n].pos = find_pos(game->map, i);
-			game->evil[n].life = 3;
+			game->evil[n].life = 5;
 			n++;
 		}
 		i++;

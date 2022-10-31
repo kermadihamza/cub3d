@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:10:40 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:54:08 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	init_player_pos(t_game *game)
 	game->player.weapon_max = 0;
 	game->key.third_p = 1;
 	game->player.life = 300;
+	game->player.max = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 20:18:11 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:26:46 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define WALL_SIZE 640
 # define BANNER_Y -238
 
-#define N_THREAD 4
+#define N_THREAD 1
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3

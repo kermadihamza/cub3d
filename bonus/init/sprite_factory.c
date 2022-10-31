@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:32:16 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 13:02:59 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 16:56:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	init_height_width(t_game *game)
 	game->sprite.table.height = game->sprite.h;
 	game->sprite.player.width = game->sprite.w;
 	game->sprite.player.height = game->sprite.h;
+	game->sprite.damage.width = game->sprite.w;
+	game->sprite.damage.height = game->sprite.h;
 	while (i < 3)
 	{
 		game->mess.mess_w[i].width = game->sprite.w * 2;
@@ -60,7 +62,7 @@ void	init_color_sprite(t_game *game)
 	init_sprites(game, game->sprite.south.path, &game->sprite.south);
 	init_sprites(game, game->sprite.east.path, &game->sprite.east);
 	init_sprites(game, game->sprite.west.path, &game->sprite.west);
-	init_sprites(game, "./sprites/all_sprites_cpy.xpm", &game->sprite.all_sprites);
+	init_sprites(game, "./sprites/all_sprites.xpm", &game->sprite.all_sprites);
 	init_sprites(game, "./sprites/numbers.xpm", &game->sprite.numbers);
 }
 
@@ -70,6 +72,7 @@ void	sprite_blt(t_game *game)
 
 	i = 0;
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.table, posi(8, 0));
+	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.damage, posi(9, 0));
 	ft_new_image_blt(game, &game->sprite.all_sprites, &game->sprite.player,
 		posi(game->player.cur_weapon, 2));
 	while (i < 3)
@@ -99,7 +102,9 @@ void	sprite_blt(t_game *game)
 
 void	sprite_factory(t_game *game)
 {
+	// init_color_sprite(game);
+	init_color(&game->img, game->color_floor, 'F');
+	init_color(&game->img, game->color_roof, 'C');
 	init_height_width(game);
-	init_color_sprite(game);
 	sprite_blt(game);
 }
