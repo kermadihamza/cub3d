@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 14:48:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 15:11:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_evil_pos(t_game *game)
 		{
 			game->evil[n].pos = find_pos(game->map, i);
 			game->evil[n].life = 5;
+			game->evil[n].time = 0;
 			n++;
 		}
 		i++;
@@ -49,14 +50,14 @@ void	init_evil_values(t_game *game, t_evil *evil)
 	sinu = -sin(game->player.angle);
 	dist.x = evil->pos.x - game->player.pos.x;
 	dist.y = evil->pos.y - game->player.pos.y;
-	evil->dist_player_left = hypot(dist.x, dist.y);
-	evil->dist_player_right = hypot(dist.x, dist.y);
-	evil->angle_from_player = atan2(dist.y, dist.x) - atan2(sinu, cosi);
-	while (evil->angle_from_player > M_PI)
-		evil->angle_from_player -= 2 * M_PI;
-	while (evil->angle_from_player < -M_PI)
-		evil->angle_from_player += 2 * M_PI;
-	evil->scale.y = WIN_W / evil->dist_player_left;
+	evil->dist_p_left = hypot(dist.x, dist.y);
+	evil->dist_p_right = hypot(dist.x, dist.y);
+	evil->p_angle = atan2(dist.y, dist.x) - atan2(sinu, cosi);
+	while (evil->p_angle > M_PI)
+		evil->p_angle -= 2 * M_PI;
+	while (evil->p_angle < -M_PI)
+		evil->p_angle += 2 * M_PI;
+	evil->scale.y = WIN_W / evil->dist_p_left;
 	evil->scale.x = evil->scale.y * (game->sprite.w / game->sprite.h);
 }
 

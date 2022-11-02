@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 20:37:40 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:19:45 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	add_new_pos(t_pos *pos, double x, double y)
 	pos->y += y;
 }
 
-t_pos	posi(double	x, double y)
+t_pos	posi(double x, double y)
 {
 	t_pos	pos;
 

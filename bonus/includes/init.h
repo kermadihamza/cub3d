@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:41:14 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 11:02:14 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:55:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define INIT_H
 
 void	sprite_factory(t_game *game);
-void	init_height_width(t_game *game);
+void	init_height_width(t_game *game, t_sprite *sprite);
 void	init_color_sprite(t_game *game);
 void	init_color(t_img *img, int num_color, char c);
 void	init_sprites(t_game *game, char *path, t_img *sprite);

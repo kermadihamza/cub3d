@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 12:07:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 12:13:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ double	check_wall_vert(t_game *game, t_ray *ray, t_pos player)
 	ray->tile_vert.y = -sin(ray->ra) * ray->ray_len + player.y;
 	while (!is_outside_map(ray->tile_vert.x, ray->tile_vert.y, game->s_map))
 	{
-		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y) && ray->door_vert == -1)
+		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y)
+			&& ray->door_vert == -1)
 		{
 			ray->door_tile_vert = posi(ray->tile_vert.x, ray->tile_vert.y);
 			ray->door_vert = ray->ray_len;
@@ -51,7 +52,8 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 	ray->tile_hor.y = floor(player.y + ray->step_y);
 	while (!is_outside_map(ray->tile_hor.x, ray->tile_hor.y, game->s_map))
 	{
-		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y) && ray->door_hor == -1)
+		if (is_door(game, ray->tile_vert.x, ray->tile_vert.y)
+			&& ray->door_hor == -1)
 		{
 			ray->door_tile_hor = posi(ray->tile_vert.x, ray->tile_vert.y);
 			ray->door_hor = ray->ray_len;
@@ -68,18 +70,18 @@ double	check_wall_hor(t_game *game, t_ray *ray, t_pos player)
 	return (ray->ray_len);
 }
 
-void	longuest_ray(t_game *game, t_ray *ray, double horizontal, double vertical)
+void	longuest_ray(t_game *game, t_ray *ray, double hor, double vert)
 {
 	double	a;
 
 	a = ray->ra - game->player.angle;
-	if (horizontal < vertical)
+	if (hor < vert)
 	{
 		ray->hor = 1;
-		ray->ray_len = horizontal * cos(a);
+		ray->ray_len = hor * cos(a);
 	}
 	else
-		ray->ray_len = vertical * cos(a);
+		ray->ray_len = vert * cos(a);
 }
 
 void	raycasting(t_game *game, t_ray *ray, int start, int end)
@@ -89,11 +91,9 @@ void	raycasting(t_game *game, t_ray *ray, int start, int end)
 	double	vertical;
 
 	small = (game->fov / 2) - (game->fov / WIN_W) * start;
-	// printf("%d\n", start);
 	while (start < end)
 	{
 		ray->pos_in_screen = start;
-		// printf("%d\n", ray->pos_in_screen);
 		ray->ra = game->player.angle + atan(small);
 		init_ray_values(ray);
 		horizontal = check_wall_hor(game, ray, game->player.pos);

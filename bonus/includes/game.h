@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 16:50:49 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 17:29:39 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_rect {
 	int	y;
 	int	width;
 	int	height;
-} t_rect;
+}	t_rect;
 
 typedef struct s_img {
 	char	*path;
@@ -72,6 +72,7 @@ typedef struct s_sprite {
 	t_img	table;
 	t_img	num[10];
 	t_img	damage;
+	t_img	lose;
 	double	num_w;
 	double	num_h;
 	double	w;
@@ -90,9 +91,9 @@ typedef struct s_door {
 }	t_door;
 
 typedef struct s_evil {
-	double	dist_player_left;
-	double	dist_player_right;
-	double	angle_from_player;
+	double	dist_p_left;
+	double	dist_p_right;
+	double	p_angle;
 	double	life;
 	int		time;
 	t_pos	pos;

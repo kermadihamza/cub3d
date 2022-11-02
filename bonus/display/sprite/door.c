@@ -6,17 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/27 19:55:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:40:07 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
-int	is_hor_closer(double hor, double vert)
-{
-	return ((hor < vert && hor != -1 && vert != -1) || vert == -1);
-}
 
 int	find_color_in_door(t_ray *ray, double y, t_img sprite)
 {
@@ -42,7 +36,7 @@ void	door_time(t_game *game, t_door *door)
 	i = 0;
 	while (i < game->nb_door)
 	{
-		if (door[i].time < 4 * SPEEDI && door[i].open && door[i].dist_p < 3)
+		if (door[i].time < 4 * SPEED && door[i].open && door[i].dist_p < 3)
 			door[i].time++;
 		else if (door[i].time > 0 && !door[i].open && door[i].dist_p < 3)
 			door[i].time--;
@@ -58,20 +52,20 @@ static int	choose_sprite(t_game *game, t_ray *ray, t_door *door)
 	while (i < game->nb_door)
 	{
 		if (is_same_tile(door[i].pos, ray->door_tile))
-			break;
+			break ;
 		i++;
 	}
-	if (door[i].time / SPEEDI < 4)
-		return (door[i].time / SPEEDI);
+	if (door[i].time / SPEED < 4)
+		return (door[i].time / SPEED);
 	else
 		return (3);
 }
 
 void	print_door_loop(t_game *game, t_ray *ray, t_door *door)
 {
-	int	y;
-	int	cs;
-	int	color;
+	int		y;
+	int		cs;
+	int		color;
 	double	rescale;
 
 	y = 0;
@@ -105,12 +99,12 @@ void	print_door(t_game *game, t_ray *ray, t_door *door)
 		ray->door_hor = -1;
 		ray->door_vert = -1;
 		ray->door = -1;
-		ray->door_tile = posi(0,0);
+		ray->door_tile = posi(0, 0);
 		return ;
 	}
 	print_door_loop(game, ray, door);
 	ray->door_hor = -1;
 	ray->door_vert = -1;
 	ray->door = -1;
-	ray->door_tile = posi(0,0);
+	ray->door_tile = posi(0, 0);
 }

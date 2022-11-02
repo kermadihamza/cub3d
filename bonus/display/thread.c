@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:57:25 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 11:26:41 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 12:08:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ void	*routine_bg(void *arg)
 	int		i;
 	int		start;
 	int		end;
-	t_game *game;
+	t_game	*game;
 
 	i = ((t_arg *)arg)->i;
 	game = ((t_arg *)arg)->game;
 	start = (WIN_W / N_THREAD) * i;
 	end = start + (WIN_W / N_THREAD);
 	sprite_factory(game);
-	// init_color(&game->img, game->color_floor, 'F');
-	// init_color(&game->img, game->color_roof, 'C');
 	return (arg);
 }
 
@@ -34,14 +32,12 @@ void	*routine_raycasting(void *arg)
 	int		i;
 	int		start;
 	int		end;
-	t_game *game;
+	t_game	*game;
 
 	i = ((t_arg *)arg)->i;
 	game = ((t_arg *)arg)->game;
 	start = (WIN_W / N_THREAD) * i;
 	end = start + (WIN_W / N_THREAD);
-	// printf("start %d\n", start);
-	// printf("end   %d\n", end);
 	raycasting(game, &game->ray, start, end);
 	return (arg);
 }

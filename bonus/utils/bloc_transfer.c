@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:43:02 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/20 12:46:45 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:20:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_rect	init_rect(int x, int y, int width, int height)
 {
-	t_rect rect;
+	t_rect	rect;
 
 	rect.x = x;
 	rect.y = y;
@@ -32,7 +32,6 @@ void	bloc_transfer(t_img *src, t_img *dst, t_pos d, t_rect r)
 	int		color;
 
 	y = 0;
-	
 	while (y < r.height)
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/31 15:15:40 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/02 15:12:13 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS = 	main.c\
 		utils/ft_atoi.c\
 		utils/ft_split.c\
 		utils/bloc_transfer.c\
+		utils/ft_mlx_pixel_put.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
 		action/action.c\
@@ -39,25 +40,25 @@ SRCS = 	main.c\
 		action/animation.c\
 		action/key.c\
 		action/move.c\
-		display/ft_mlx_pixel_put.c\
-		display/minimap.c\
 		display/display.c\
-		display/display_one_img.c\
-		display/raycasting.c\
-		display/print_ray.c\
-		display/sprite_3d.c\
-		display/display_evil.c\
-		display/display_player.c\
-		display/door.c\
-		display/numbers.c\
-		display/messages.c\
 		display/thread.c\
+		display/raycasting/raycasting.c\
+		display/raycasting/print_ray.c\
+		display/sprite/sprite_3d.c\
+		display/sprite/display_evil.c\
+		display/sprite/evil_time.c\
+		display/sprite/display_player.c\
+		display/sprite/door.c\
+		display/sprite/numbers.c\
+		display/sprite/messages.c\
+		display/sprite/display_one_img.c\
+		display/minimap.c\
 		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -I ./includes #-fsanitize=address
 
 MLX = /usr/local/lib/
 FRAMEWORK = -framework OpenGL -framework AppKit

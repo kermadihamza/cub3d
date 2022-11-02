@@ -6,11 +6,12 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:16:20 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 12:55:28 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:46:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 void	open_door(t_game *game, t_door *door, int code)
 {
 	int	i;
@@ -59,7 +60,6 @@ int	key_press(int code, t_game *game)
 		handle_weapon(&game->player);
 	key_attack(game, code);
 	open_door(game, game->door, code);
-	// printf("%d\n", code);
 	return (0);
 }
 

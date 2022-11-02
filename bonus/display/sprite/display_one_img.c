@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:37:27 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 18:00:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:17:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	display_one_img(t_game *game, double mult, t_img sprite, t_pos origin)
 {
+	int		color;
 	t_pos	pos;
-	int	color;
 
 	pos.y = 0;
 	while (pos.y < sprite.height * mult && pos.y + origin.y < WIN_H)
@@ -23,12 +23,13 @@ void	display_one_img(t_game *game, double mult, t_img sprite, t_pos origin)
 		pos.x = 0;
 		while (pos.x < sprite.width * mult && pos.x + origin.x < WIN_W)
 		{
-			color = get_color(sprite, posi(pos.x / mult, pos.y /mult));
+			color = get_color(sprite, posi(pos.x / mult, pos.y / mult));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
 				&& is_in_screen(pos.x, pos.y + origin.y))
-				{
-					ft_mlx_pixel_put(&game->img, pos.x + origin.x, pos.y + origin.y, color);
-				}
+			{
+				ft_mlx_pixel_put(&game->img, pos.x + origin.x,
+					pos.y + origin.y, color);
+			}
 			pos.x++;
 		}
 		pos.y++;

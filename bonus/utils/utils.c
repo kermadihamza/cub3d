@@ -6,11 +6,22 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/17 15:04:44 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 16:21:06 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_hor_closer(double hor, double vert)
+{
+	return ((hor < vert && hor != -1 && vert != -1) || vert == -1);
+}
+
+int	is_map_letter(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0'
+		|| c == '1' || c == 'M' || c == 'P' || c == ' ' || c == '\n');
+}
 
 int	is_personage(char c)
 {

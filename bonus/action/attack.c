@@ -6,11 +6,17 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:55:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 16:47:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 17:36:48 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_near_evil(t_pos p, t_pos e, int dist)
+{
+	return (p.x >= e.x - dist && p.x < e.x + dist
+		&& p.y >= e.y - dist && p.y < e.y + dist);
+}
 
 void	ennemy_kills_us(t_game *game, t_player *p, t_evil *evil)
 {
@@ -19,23 +25,15 @@ void	ennemy_kills_us(t_game *game, t_player *p, t_evil *evil)
 	i = 0;
 	while (i < game->nb_evil)
 	{
-		if (p->pos.x >= evil[i].pos.x - 1 && p->pos.x < evil[i].pos.x + 1
-			&& p->pos.y >= evil[i].pos.y - 1 && p->pos.y < evil[i].pos.y + 1
-			&& evil[i].life > 0)
+		if (is_near_evil(p->pos, evil[i].pos, 1) && evil[i].life > 0)
 		{
 			p->life -= 0.1;
-			if (p->life <= 0)
-				exit (EXIT_SUCCESS);
-			break;
+			if (p->life <= -3)
+				ft_destroy_all(game);
+			break ;
 		}
 		i++;
 	}
-}
-
-int	is_near_evil(t_pos p, t_pos e)
-{
-	return (p.x >= e.x - 2 && p.x < e.x + 2
-			&& p.y >= e.y - 2 && p.y < e.y + 2);
 }
 
 void	we_kill_ennemy(t_game *game, t_player *p, t_evil *evil)
@@ -46,7 +44,7 @@ void	we_kill_ennemy(t_game *game, t_player *p, t_evil *evil)
 	p->max = 1;
 	while (i < game->nb_evil)
 	{
-		if (is_near_evil(p->pos, evil[i].pos) && evil[i].life >= 0)
+		if (is_near_evil(p->pos, evil[i].pos, 2) && evil[i].life >= 0)
 		{
 			if (p->cur_weapon == 0)
 				evil[i].life -= 1;
@@ -57,7 +55,7 @@ void	we_kill_ennemy(t_game *game, t_player *p, t_evil *evil)
 			else if (p->cur_weapon == 3)
 				evil[i].life -= 5;
 			game->mess.damage = 1;
-			break;
+			break ;
 		}
 		i++;
 	}

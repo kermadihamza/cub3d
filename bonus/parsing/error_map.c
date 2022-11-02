@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 12:31:36 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:41:49 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void	other_character(t_game *game, char *map)
 	i = 0;
 	while (map[i])
 	{
-		if (!is_personage(map[i]) && map[i] != '0' && map[i] != '1'
-			&& map[i] != '\n' && map[i] != ' ' && map[i] != 'M' && map[i] != 'P')
+		if (!is_map_letter(map[i]))
 			handle_errors(game, OTHER_CHAR, &map[i]);
 		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
 			handle_errors(game, OTHER_CHAR, "\n");
@@ -80,7 +79,8 @@ void	check_doors(t_game *game, char **map)
 		{
 			if (map[y][x] == 'P')
 			{
-				if ((map[y - 1] && map[y - 1][x] != '1') || (map[y + 1] && map[y + 1][x] != '1'))
+				if ((map[y - 1] && map[y - 1][x] != '1')
+					|| (map[y + 1] && map[y + 1][x] != '1'))
 					handle_errors(game, DOOR_WALL, "\n");
 			}
 			x++;

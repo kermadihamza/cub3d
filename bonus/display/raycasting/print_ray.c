@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:36:54 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/26 19:46:38 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 12:13:58 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_ray(t_game *game, t_ray *ray)
 	{
 		if (y >= (WIN_H / 2) - (rescale / 2)
 			&& y <= (WIN_H / 2) + (rescale / 2))
-				with_sprite(game, ray, y);
+			with_sprite(game, ray, y);
 		y++;
 	}
 	if (ray->door_hor != -1 || ray->door_vert != -1)

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/31 18:00:53 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:41:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	print_ray(t_game *game, t_ray *ray);
 void	ft_draw_line(t_game *game, double angle, t_pos pos, int len);
 int		find_color_in_sprite(t_ray *ray, double y, t_img sprite);
 int		get_color(t_img sprite, t_pos pos);
-void	sprite_blt(t_game *game);
+void	sprite_blt(t_game *game, t_sprite *sprite, t_img origin);
 
 void	display_evil(t_game *game, t_evil *evil);
 void	evil_time(t_evil *evil);
+int		choose_evil_sprite(int time);
 void	door_time(t_game *game, t_door *door);
 void	print_door(t_game *game, t_ray *ray, t_door *door);
 void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite);

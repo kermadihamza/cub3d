@@ -1,7 +1,7 @@
-NO ./sprites/background1.xpm
-SO ./sprites/background1.xpm
-WE ./sprites/background1.xpm
-EA ./sprites/background1.xpm
+NO ./assets/background1.xpm
+SO ./assets/background1.xpm
+WE ./assets/background1.xpm
+EA ./assets/background1.xpm
 
 F 204, 255, 204
 C 100,180,250

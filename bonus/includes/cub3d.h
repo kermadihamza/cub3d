@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 12:26:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:39:56 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define WALL_SIZE 640
 # define BANNER_Y -238
 
-#define N_THREAD 1
+# define N_THREAD 1
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3
@@ -55,7 +55,6 @@
 # define NOT_PIXEL 9961608
 # define STILL_NOT_PIXEL -16777216
 
-# define SPEED 1
-# define SPEEDI 4
+# define SPEED 2
 
 #endif

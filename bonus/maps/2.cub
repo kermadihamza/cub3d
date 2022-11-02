@@ -1,7 +1,7 @@
-NO ./sprites/trees.xpm
-SO ./sprites/trees.xpm
-WE ./sprites/trees.xpm
-EA ./sprites/trees.xpm
+NO ./assets/trees.xpm
+SO ./assets/trees.xpm
+WE ./assets/trees.xpm
+EA ./assets/trees.xpm
 
 F 170,250,190
 C 100,180,250
