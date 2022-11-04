@@ -6,18 +6,24 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 15:12:06 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/04 15:36:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+	// if (!small)
+	// 	ft_draw_line(game, ray.ra, pos, evil.dist_p * 10);
+	// if (small)
+	// 	ft_draw_line(game, ray.ra, pos, evil.dist_p_right * 10);
 
 int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 {
 	double	horizontal;
 	double	vertical;
 	t_ray	ray;
+	t_pos	pos;
 
+	pos = posi(MINI_W / 2 - 5 + MINI_SIDE, MINI_H / 2 - 5 + MINI_SIDE);
 	ray.door_hor = -1;
 	ray.door_vert = -1;
 	ray.ra = (game->player.angle - evil.p_angle) - small;
@@ -28,11 +34,12 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 		ray.ray_len = horizontal;
 	else
 		ray.ray_len = vertical;
-	if ((small != 0 && ray.ray_len < evil.dist_p_right)
-		|| (small == 0 && ray.ray_len < evil.dist_p_left))
+	if ((small != 0 && ray.ray_len < evil.dist_p))
 		return (1);
-	else if ((ray.door_hor < evil.dist_p_left && ray.door_hor != -1)
-		|| (ray.door_vert < evil.dist_p_left && ray.door_vert != -1))
+	if (small == 0 && ray.ray_len < evil.dist_p)
+		return (1);
+	else if ((ray.door_hor < evil.dist_p && ray.door_hor != -1)
+		|| (ray.door_vert < evil.dist_p && ray.door_vert != -1))
 		return (1);
 	return (0);
 }
@@ -45,8 +52,10 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 
 	pos.y = 0;
 	small = game->fov / (WIN_W / evil.scale.x);
-	if (is_there_a_wall_ahead(game, evil, small)
-		|| is_there_a_wall_ahead(game, evil, 0) || evil.life <= 0)
+	// printf("%f\n", evil.scale.x);
+	if (is_there_a_wall_ahead(game, evil, 0) || evil.life <= 0)
+		return ;
+	if (is_there_a_wall_ahead(game, evil, small))
 		return ;
 	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
 	{
@@ -74,17 +83,17 @@ int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 	res = 0;
 	while (i < game->nb_evil)
 	{
-		if (evil[i].dist_p_left < evil[res].dist_p_left)
+		if (evil[i].dist_p < evil[res].dist_p)
 			res = i;
 		i++;
 	}
 	i = 0;
 	while (i < game->nb_evil)
 	{
-		if (evil[i].dist_p_left > evil[res].dist_p_left && prev != -1
-			&& evil[i].dist_p_left < evil[prev].dist_p_left)
+		if (evil[i].dist_p > evil[res].dist_p && prev != -1
+			&& evil[i].dist_p < evil[prev].dist_p)
 			res = i;
-		else if (evil[i].dist_p_left > evil[res].dist_p_left && prev == -1)
+		else if (evil[i].dist_p > evil[res].dist_p && prev == -1)
 			res = i;
 		i++;
 	}

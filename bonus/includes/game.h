@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 17:29:39 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/04 15:36:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ typedef struct s_door {
 }	t_door;
 
 typedef struct s_evil {
-	double	dist_p_left;
-	double	dist_p_right;
+	double	dist_p;
 	double	p_angle;
 	double	life;
 	int		time;

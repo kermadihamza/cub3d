@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 16:16:16 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/04 15:46:07 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		max_hor(char **map, int i);
 int		is_north(double ray);
 int		is_west(double ray);
 int		is_map_letter(char c);
+int		how_many(char c, char *str);
 
 // raycasting
 
