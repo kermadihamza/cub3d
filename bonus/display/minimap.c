@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:09:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 16:37:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:02:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_minimap(t_game *game)
 	}
 }
 
-void	init_mini_map(t_game *game)
+void	minimap(t_game *game)
 {
 	t_pos	pos;
 

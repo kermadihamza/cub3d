@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:11:33 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/18 14:17:45 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 17:56:27 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	debug(t_game *game)
 
 void	debug_ray(t_ray *ray)
 {
-	printf("adj_x ->%f\n", ray->adj_x);
-	printf("adj_y ->%f\n", ray->adj_y);
 	printf("ra ->%f\n", ray->ra);
 	printf("ray len ->%f\n\n", ray->ray_len);
 	printf("step_x ->%d\n", ray->step_x);

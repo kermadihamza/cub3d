@@ -6,55 +6,49 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/24 15:48:31 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:28:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_color(t_img *img, int num_color, char c)
+void	height_width_loop(t_game *game, t_sprite *sprite)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < WIN_W)
+	while (i < 10)
 	{
-		j = 0;
-		while (j < WIN_H / 2)
+		if (i < 3)
 		{
-			if (c == 'F')
-				ft_mlx_pixel_put(img, i, j + (WIN_H / 2), num_color);
-			else
-				ft_mlx_pixel_put(img, i, j, num_color);
-			j++;
+			game->mess.mess_w[i].width = sprite->w * 2;
+			game->mess.mess_w[i].height = sprite->h;
 		}
+		if (i < 4)
+		{
+			sprite->door[i].width = sprite->w * 2;
+			sprite->door[i].height = sprite->h;
+		}
+		if (i < 7)
+		{
+			sprite->evil[i].width = sprite->w;
+			sprite->evil[i].height = sprite->h;
+		}
+		sprite->num[i].width = sprite->numbers.width / 10;
+		sprite->num[i].height = sprite->numbers.height;
 		i++;
 	}
 }
 
-void	init_sprites(t_game *game, char *path, t_img *sprite)
+void	init_height_width(t_game *game, t_sprite *sprite)
 {
-	int	width;
-	int	height;
-
-	sprite->img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
-	if (!(sprite->img) || !height || !width)
-		handle_errors(game, SPRITE_ERR, path);
-	sprite->addr = mlx_get_data_addr(sprite->img, &sprite->bpp,
-			&sprite->line_length, &sprite->endian);
-	sprite->width = width;
-	sprite->height = height;
-}
-
-void	ft_new_image_blt(t_game *game, t_img *src, t_img *dst, t_pos start)
-{
-	t_rect	rect;
-
-	dst->img = mlx_new_image(game->mlx, dst->width, dst->height);
-	dst->addr = mlx_get_data_addr(dst->img, &dst->bpp,
-			&dst->line_length, &dst->endian);
-	rect = init_rect(start.x * dst->width, start.y * dst->height,
-			dst->width, dst->height);
-	bloc_transfer(src, dst, posi(0, 0), rect);
+	sprite->w = (sprite->all_sprites.width) / 15;
+	sprite->h = (sprite->all_sprites.height) / 5;
+	sprite->table.width = sprite->w;
+	sprite->table.height = sprite->h;
+	sprite->player.width = sprite->w;
+	sprite->player.height = sprite->h;
+	sprite->damage.width = sprite->w;
+	sprite->damage.height = sprite->h;
+	height_width_loop(game, sprite);
 }

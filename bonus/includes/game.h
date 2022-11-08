@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 15:36:36 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:19:44 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ typedef struct s_pos {
 }	t_pos;
 
 typedef struct s_ray {
-	double	adj_x;
-	double	adj_y;
 	double	ra;
 	double	ray_len;
 	int		step_x;
@@ -111,6 +109,8 @@ typedef struct s_key {
 
 typedef struct s_player {
 	t_pos	pos;
+	double	adj_x;
+	double	adj_y;
 	char	dir;
 	double	angle;
 	int		cur_weapon;
@@ -149,7 +149,7 @@ typedef struct s_game {
 	t_img		img;
 	t_sprite	sprite;
 	t_key		key;
-	t_ray		ray;
+	t_ray		ray[N_THREAD];
 	t_player	player;
 	t_mess		mess;
 }	t_game;

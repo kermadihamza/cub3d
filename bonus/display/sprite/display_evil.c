@@ -6,15 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 15:36:53 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:30:54 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-	// if (!small)
-	// 	ft_draw_line(game, ray.ra, pos, evil.dist_p * 10);
-	// if (small)
-	// 	ft_draw_line(game, ray.ra, pos, evil.dist_p_right * 10);
 
 int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 {
@@ -34,9 +30,7 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 		ray.ray_len = horizontal;
 	else
 		ray.ray_len = vertical;
-	if ((small != 0 && ray.ray_len < evil.dist_p))
-		return (1);
-	if (small == 0 && ray.ray_len < evil.dist_p)
+	if (ray.ray_len < evil.dist_p)
 		return (1);
 	else if ((ray.door_hor < evil.dist_p && ray.door_hor != -1)
 		|| (ray.door_vert < evil.dist_p && ray.door_vert != -1))
@@ -52,10 +46,8 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 
 	pos.y = 0;
 	small = game->fov / (WIN_W / evil.scale.x);
-	// printf("%f\n", evil.scale.x);
-	if (is_there_a_wall_ahead(game, evil, 0) || evil.life <= 0)
-		return ;
-	if (is_there_a_wall_ahead(game, evil, small))
+	if (evil.life <= 0 || is_there_a_wall_ahead(game, evil, 0)
+		|| is_there_a_wall_ahead(game, evil, small))
 		return ;
 	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
 	{

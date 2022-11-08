@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   display_floor_roof.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:19:59 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 18:54:32 by lrondia          ###   ########.fr       */
+/*   Created: 2022/11/08 18:51:56 by lrondia           #+#    #+#             */
+/*   Updated: 2022/11/08 19:31:28 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	parsing(t_game *game, int ac, char **av)
+void	display_floor_roof(t_game *game, int start, int end)
 {
-	if (ac != 2)
-		handle_errors(game, NB_ARGUMENTS, NULL);
-	ft_memset(&game->player, 0, sizeof (t_player));
-	check_error_name(game, av[1]);
-	read_map(game, av[1]);
-	game->s_map = ft_split(game->map, '\n');
-	error_map(game, game->map);
-	parsing_rgb(game, game->floor, &game->color_floor);
-	parsing_rgb(game, game->roof, &game->color_roof);
+	int	y;
+
+	while (start < end)
+	{
+		y = 0;
+		while (y < WIN_H / 2)
+		{
+			ft_mlx_pixel_put(&game->img, start, y + (WIN_H / 2),
+				game->color_floor);
+			ft_mlx_pixel_put(&game->img, start, y, game->color_roof);
+			y++;
+		}
+		start++;
+	}
 }

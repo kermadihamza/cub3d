@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/25 21:27:47 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:20:43 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	third_person(t_game *game)
 		game->fov = M_PI / 2;
 }
 
-void	action(t_game *game, t_ray *ray, t_key key)
+void	action(t_game *game, t_key key)
 {
-	move(game, ray, key);
+	move(game, &game->player, key);
 	third_person(game);
 	attack(game, &game->player, game->evil);
-	angle_changes(game, ray);
+	angle_changes(game);
 }

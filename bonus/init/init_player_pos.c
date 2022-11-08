@@ -6,13 +6,13 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:02:26 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 16:11:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:57:16 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_player_pos(t_game *game)
+void	init_player_pos(t_game *game, t_player *p)
 {
 	int	i;
 
@@ -20,21 +20,21 @@ void	init_player_pos(t_game *game)
 	while (game->map[i])
 	{
 		if (is_personage(game->map[i]))
-			game->player.pos = find_pos(game->map, i);
+			p->pos = find_pos(game->map, i);
 		i++;
 	}
-	if (game->player.dir == 'N')
-		game->player.angle = M_PI / 2 + 0.01;
-	else if (game->player.dir == 'S')
-		game->player.angle = (3 * M_PI) / 2 + 0.01;
-	else if (game->player.dir == 'E')
-		game->player.angle = 0.01;
-	else if (game->player.dir == 'W')
-		game->player.angle = M_PI + 0.01;
-	game->ray.adj_x = cos(game->player.angle) / 5;
-	game->ray.adj_y = sin(game->player.angle) / 5;
-	game->player.weapon_max = 0;
+	if (p->dir == 'N')
+		p->angle = M_PI / 2 + 0.01;
+	else if (p->dir == 'S')
+		p->angle = (3 * M_PI) / 2 + 0.01;
+	else if (p->dir == 'E')
+		p->angle = 0.01;
+	else if (p->dir == 'W')
+		p->angle = M_PI + 0.01;
+	p->adj_x = cos(p->angle) / 5;
+	p->adj_y = sin(p->angle) / 5;
+	p->weapon_max = 0;
 	game->key.third_p = 1;
-	game->player.life = 3;
-	game->player.max = 0;
+	p->life = ME_LIFE;
+	p->max = 0;
 }

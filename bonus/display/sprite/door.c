@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 14:40:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 17:50:05 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	print_door_loop(t_game *game, t_ray *ray, t_door *door)
 			color = find_color_in_door(ray, y, game->sprite.door[cs]);
 		if (y >= (WIN_H / 2) - (rescale / 2) && y <= (WIN_H / 2) + (rescale / 2)
 			&& (color != NOT_PIXEL && color != STILL_NOT_PIXEL))
-			ft_mlx_pixel_put(&game->img, game->ray.pos_in_screen, y, color);
+			ft_mlx_pixel_put(&game->img, ray->pos_in_screen, y, color);
 		y++;
 	}
 }
@@ -86,15 +86,15 @@ void	print_door(t_game *game, t_ray *ray, t_door *door)
 {
 	if (is_hor_closer(ray->door_hor, ray->door_vert))
 	{
-		ray->door = ray->door_hor * cos(game->ray.ra - game->player.angle);
+		ray->door = ray->door_hor * cos(ray->ra - game->player.angle);
 		ray->door_tile = ray->door_tile_hor;
 	}
 	else
 	{
-		ray->door = ray->door_vert * cos(game->ray.ra - game->player.angle);
+		ray->door = ray->door_vert * cos(ray->ra - game->player.angle);
 		ray->door_tile = ray->door_tile_vert;
 	}
-	if (ray->door > game->ray.ray_len)
+	if (ray->door > ray->ray_len)
 	{
 		ray->door_hor = -1;
 		ray->door_vert = -1;

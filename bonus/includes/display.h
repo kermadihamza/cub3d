@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/11/02 14:41:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:03:05 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void	ft_mlx_pixel_put(t_img *img, int x, int y, int num_color);
 int		display(t_game *game);
-void	init_mini_map(t_game *game);
+void	display_floor_roof(t_game *game, int start, int end);
+void	minimap(t_game *game);
 void	raycasting(t_game *game, t_ray *ray, int start, int end);
 double	check_wall_vert(t_game *game, t_ray *ray, t_pos player);
 double	check_wall_hor(t_game *game, t_ray *ray, t_pos player);

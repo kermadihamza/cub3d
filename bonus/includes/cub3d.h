@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 16:54:36 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:12:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <math.h>
 # include <pthread.h>
+# include "define.h"
 # include "game.h"
 # include "parsing.h"
 # include "get_next_line.h"
@@ -28,33 +29,5 @@
 # include "display.h"
 # include "action.h"
 # include "init.h"
-
-# define WIN_H 1080
-# define WIN_W 1620
-# define MINI_H 200
-# define MINI_W 300
-# define MINI_SIDE 10
-# define TILE_SIZE 10
-# define WALL_SIZE 640
-# define BANNER_Y -238
-
-# define N_THREAD 2
-
-# define PINK 0xeeccff
-# define YELLOW 0xffe6b3
-# define WHITE 0xffffff
-# define PURPLE 0x4d4dff
-# define VIOLET 0xab92e0
-# define RED 0xff0000
-# define D_RED 0xc52a2a
-# define GREEN 0x00ff00
-# define BLACK 0x404040
-# define ORANGE 0xffad4e
-# define BLUE 0x6ec5ed
-
-# define NOT_PIXEL 9961608
-# define STILL_NOT_PIXEL -16777216
-
-# define SPEED 2
 
 #endif

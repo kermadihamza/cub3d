@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:07:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 17:30:01 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:03:21 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	message_new_weapon(t_game *game, t_mess *mess, int dead)
 
 	mult = 3;
 	pos = posi(WIN_W / 2 - (mess->mess_w[0].width / 2) * mult, BANNER_Y);
-	if (dead == 1 && mess->fork < 50)
+	if (dead == 1 && mess->fork < 75)
 	{	
 		mess->fork ++;
 		display_one_img(game, mult, mess->mess_w[0], pos);
 	}
-	else if (dead == 3 && mess->flame < 50)
+	else if (dead == 3 && mess->flame < 75)
 	{	
 		mess->flame ++;
 		display_one_img(game, mult, mess->mess_w[1], pos);
 	}
-	else if (dead == 6 && mess->morgenstern < 50)
+	else if (dead == 6 && mess->morgenstern < 75)
 	{	
 		mess->morgenstern ++;
 		display_one_img(game, mult, mess->mess_w[2], pos);
@@ -47,15 +47,15 @@ void	display_attack(t_game *game, t_player p, t_sprite sprite)
 	{
 		if (game->mess.damage)
 		{
-			if (game->mess.damage < 10)
+			if (game->mess.damage < 20)
 				display_one_img(game, 5, sprite.damage, posi(WIN_W / 2, -60));
-			if (p.cur_weapon == 0 && game->mess.damage < 10)
+			if (p.cur_weapon == 0 && game->mess.damage < 20)
 				display_one_img(game, 3.8, sprite.num[1], pos);
-			else if (p.cur_weapon == 1 && game->mess.damage < 10)
+			else if (p.cur_weapon == 1 && game->mess.damage < 20)
 				display_one_img(game, 3.8, sprite.num[2], pos);
-			else if (p.cur_weapon == 2 && game->mess.damage < 10)
+			else if (p.cur_weapon == 2 && game->mess.damage < 20)
 				display_one_img(game, 3.8, sprite.num[3], pos);
-			else if (p.cur_weapon == 3 && game->mess.damage < 10)
+			else if (p.cur_weapon == 3 && game->mess.damage < 20)
 				display_one_img(game, 3.8, sprite.num[5], pos);
 			game->mess.damage++;
 			if (game->mess.damage >= 15)

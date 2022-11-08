@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/08 16:59:31 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/08 18:59:37 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,30 +17,20 @@ SRCS = 	main.c\
 		parsing/read_sort_map.c\
 		parsing/error_map.c\
 		parsing/error_walls.c\
+		init/initialization.c\
 		init/init_player_pos.c\
 		init/init_evil.c\
 		init/init_door.c\
 		init/sprite_factory.c\
 		init/sprite_factory_utils.c\
 		init/init_ray_values.c\
-		utils/pos.c\
-		utils/utils.c\
-		utils/orientation.c\
-		utils/size_map.c\
-		utils/utils_display.c\
-		utils/libft.c\
-		utils/ft_atoi.c\
-		utils/ft_split.c\
-		utils/bloc_transfer.c\
-		utils/ft_mlx_pixel_put.c\
-		utils/gnl/get_next_line.c\
-		utils/gnl/get_next_line_utils.c\
 		action/action.c\
 		action/attack.c\
 		action/animation.c\
 		action/key.c\
 		action/move.c\
 		display/display.c\
+		display/display_floor_roof.c\
 		display/thread.c\
 		display/raycasting/raycasting.c\
 		display/raycasting/print_ray.c\
@@ -53,6 +43,18 @@ SRCS = 	main.c\
 		display/sprite/messages.c\
 		display/sprite/display_one_img.c\
 		display/minimap.c\
+		utils/pos.c\
+		utils/utils.c\
+		utils/orientation.c\
+		utils/size_map.c\
+		utils/utils_display.c\
+		utils/libft.c\
+		utils/ft_atoi.c\
+		utils/ft_split.c\
+		utils/bloc_transfer.c\
+		utils/ft_mlx_pixel_put.c\
+		utils/gnl/get_next_line.c\
+		utils/gnl/get_next_line_utils.c\
 		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)

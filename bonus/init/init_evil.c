@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 16:09:46 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:01:08 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	init_evil_pos(t_game *game)
 	i = 0;
 	n = 0;
 	game->nb_evil = how_many('M', game->map);
-	game->evil = malloc (sizeof(t_evil) * game->nb_evil);
+	game->evil = malloc(sizeof(t_evil) * game->nb_evil);
 	while (game->map[i] && n < game->nb_evil)
 	{
 		if (game->map[i] == 'M')
 		{
 			game->evil[n].pos = find_pos(game->map, i);
-			game->evil[n].life = 5;
+			game->evil[n].life = EVIL_LIFE;
 			game->evil[n].time = 0;
 			n++;
 		}
