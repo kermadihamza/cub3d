@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 16:54:36 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@
 
 # define WIN_H 1080
 # define WIN_W 1620
-# define MINI_H 140
-# define MINI_W 240
+# define MINI_H 200
+# define MINI_W 300
 # define MINI_SIDE 10
 # define TILE_SIZE 10
 # define WALL_SIZE 640
 # define BANNER_Y -238
 
-# define N_THREAD 1
+# define N_THREAD 2
 
 # define PINK 0xeeccff
 # define YELLOW 0xffe6b3

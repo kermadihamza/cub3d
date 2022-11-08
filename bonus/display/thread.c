@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:57:25 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 12:08:44 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/08 16:53:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	thread(t_game *game, void *(*routine)(void *))
 			handle_errors(game, MALLOC_F, NULL);
 		arg->game = game;
 		arg->i = i;
-		if (pthread_create(&tid[i], NULL, routine, arg) != 0)
+		if (pthread_create(&tid[i], NULL, routine, arg))
 			handle_errors(game, MALLOC_F, NULL);
 		i++;
 	}
 	i = 0;
 	while (i < N_THREAD)
 	{
-		if (pthread_join(tid[i], (void **)&arg) != 0)
+		if (pthread_join(tid[i], (void **)&arg))
 			handle_errors(game, MALLOC_F, NULL);
 		free (arg);
 		i++;
