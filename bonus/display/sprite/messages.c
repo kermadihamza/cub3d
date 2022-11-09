@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:07:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 18:03:21 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:24:53 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ void	display_attack(t_game *game, t_player p, t_sprite sprite)
 	{
 		if (game->mess.damage)
 		{
-			if (game->mess.damage < 20)
+			if (game->mess.damage < 30)
 				display_one_img(game, 5, sprite.damage, posi(WIN_W / 2, -60));
-			if (p.cur_weapon == 0 && game->mess.damage < 20)
+			if (p.cur_weapon == 0 && game->mess.damage < 30)
 				display_one_img(game, 3.8, sprite.num[1], pos);
-			else if (p.cur_weapon == 1 && game->mess.damage < 20)
+			else if (p.cur_weapon == 1 && game->mess.damage < 30)
 				display_one_img(game, 3.8, sprite.num[2], pos);
-			else if (p.cur_weapon == 2 && game->mess.damage < 20)
+			else if (p.cur_weapon == 2 && game->mess.damage < 30)
 				display_one_img(game, 3.8, sprite.num[3], pos);
-			else if (p.cur_weapon == 3 && game->mess.damage < 20)
+			else if (p.cur_weapon == 3 && game->mess.damage < 30)
 				display_one_img(game, 3.8, sprite.num[5], pos);
 			game->mess.damage++;
-			if (game->mess.damage >= 15)
+			if (game->mess.damage >= 25)
 				game->mess.damage = 0;
 		}
 		i++;

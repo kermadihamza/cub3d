@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:51:29 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:02:30 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:19:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	display(t_game *game)
 	display_evil(game, game->evil);
 	evil_time(&game->evil[0]);
 	numbers(game);
-	display_player(game, game->sprite.player);
+	display_player(game, game->sprite.player[game->player.cur_weapon]);
 	messages(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);

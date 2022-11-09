@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:32:16 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:28:14 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:18:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,16 @@ void	sprite_blt(t_game *game, t_sprite *sprite, t_img origin)
 
 	ft_new_image_blt(game, &origin, &sprite->table, posi(8, 0));
 	ft_new_image_blt(game, &origin, &sprite->damage, posi(9, 0));
-	ft_new_image_blt(game, &origin, &sprite->player,
-		posi(game->player.cur_weapon, 2));
 	i = 0;
 	while (i < 10)
 	{
 		if (i < 3)
 			ft_new_image_blt(game, &origin, &game->mess.mess_w[i], posi(i, 4));
 		if (i < 4)
+		{
+			ft_new_image_blt(game, &origin, &sprite->player[i], posi(i, 2));
 			ft_new_image_blt(game, &origin, &sprite->door[i], posi(i, 3));
+		}
 		if (i < 7)
 			ft_new_image_blt(game, &origin, &sprite->evil[i], posi(i, 1));
 		ft_new_image_blt(game, &sprite->numbers, &sprite->num[i], posi(i, 0));

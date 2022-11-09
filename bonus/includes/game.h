@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:19:44 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:18:33 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_sprite {
 	t_img	all_sprites;
 	t_img	evil[7];
 	t_img	door[4];
-	t_img	player;
+	t_img	player[4];
 	t_img	numbers;
 	t_img	table;
 	t_img	num[10];

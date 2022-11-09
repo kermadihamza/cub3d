@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:55:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 15:48:28 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:26:21 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	we_kill_ennemy(t_game *game, t_player *p, t_evil *evil)
 	p->max = 1;
 	while (i < game->nb_evil)
 	{
-		if (is_near_evil(p->pos, evil[i].pos, 2) && evil[i].life >= 0)
+		if (is_near_evil(p->pos, evil[i].pos, 2) && evil[i].life > 0)
 		{
 			if (p->cur_weapon == 0)
 				evil[i].life -= 1;
