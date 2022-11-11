@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:46:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:43:58 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	raycasting(t_game *game, t_ray *ray, t_pos player)
 	small = M_PI / 4;
 	while (ray->pos_in_screen < WIN_W)
 	{
-		ray->ra = ray->p_angle + small;
+		ray->ra = ray->p_angle + atan(small);
 		init_ray_values(ray);
 		horizontal = check_wall_hor(game, ray, player);
 		vertical = check_wall_vert(game, ray, player);

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 16:33:32 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:41:49 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	number_of_elements(t_game *game, char *map)
 	{
 		if (is_personage(map[i]))
 		{
-			game->player_dir = map[i];
+			game->player.dir = map[i];
 			character++;
 		}
 		i++;
@@ -58,12 +58,34 @@ void	other_character(t_game *game, char *map)
 	i = 0;
 	while (map[i])
 	{
-		if (!is_personage(map[i]) && map[i] != '0' && map[i] != '1'
-			&& map[i] != '\n' && map[i] != ' ' && map[i] != 'M')
+		if (!is_map_letter(map[i]))
 			handle_errors(game, OTHER_CHAR, &map[i]);
 		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
 			handle_errors(game, OTHER_CHAR, "\n");
 		i++;
+	}
+}
+
+void	check_doors(t_game *game, char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'P')
+			{
+				if ((map[y - 1] && map[y - 1][x] != '1')
+					|| (map[y + 1] && map[y + 1][x] != '1'))
+					handle_errors(game, DOOR_WALL, "\n");
+			}
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -72,4 +94,5 @@ void	error_map(t_game *game, char *map)
 	other_character(game, map);
 	number_of_elements(game, map);
 	holes_in_walls(game, map);
+	check_doors(game, game->s_map);
 }

@@ -6,35 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 19:03:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/02 11:19:45 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-char	is_north(double ray)
-{
-	while (ray >= 2 * M_PI)
-		ray -= 2 * M_PI;
-	while (ray < 0)
-		ray += 2 * M_PI;
-	if (ray > 0 && ray <= M_PI)
-		return (1);
-	else
-		return (0);
-}
-
-char	is_west(double ray)
-{
-	while (ray >= 2 * M_PI)
-		ray -= 2 * M_PI;
-	while (ray < 0)
-		ray += 2 * M_PI;
-	if (ray > M_PI / 2 && ray <= (3 * M_PI) / 2)
-		return (1);
-	else
-		return (0);
-}
 
 t_pos	find_pos(char *map, int i)
 {
@@ -56,22 +32,22 @@ t_pos	find_pos(char *map, int i)
 	return (pos);
 }
 
-int	max_vert(char **map)
+void	add_new_pos(t_pos *pos, double x, double y)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i - 1);
+	pos->x += x;
+	pos->y += y;
 }
 
-int	max_hor(char **map, int i)
+t_pos	posi(double x, double y)
 {
-	int	j;
+	t_pos	pos;
 
-	j = 0;
-	while (map[i][j])
-		j++;
-	return (j);
+	pos.x = x;
+	pos.y = y;
+	return (pos);
+}
+
+int	is_same_tile(t_pos p1, t_pos p2)
+{
+	return ((int)p1.x == (int)p2.x && (int)p1.y == (int)p2.y);
 }

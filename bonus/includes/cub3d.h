@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/17 13:53:11 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:01:17 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,14 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <math.h>
+# include <pthread.h>
+# include "define.h"
 # include "game.h"
 # include "parsing.h"
 # include "get_next_line.h"
 # include "utils.h"
 # include "display.h"
-
-# define WIN_H 1080
-# define WIN_W 1620
-# define MINI_H 140
-# define MINI_W 240
-# define MINI_SIDE 10
-# define TILE_SIZE 10
-# define WALL_SIZE 640
-# define FOV (M_PI / 2)
-
-# define PINK 0xeeccff
-# define YELLOW 0xffe6b3
-# define WHITE 0xffffff
-# define PURPLE 0x4d4dff
-# define RED 0xff0000
-
-# define NOT_PIXEL 9961608
-# define STILL_NOT_PIXEL -16777216
+# include "action.h"
+# include "init.h"
 
 #endif

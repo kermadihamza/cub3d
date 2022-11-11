@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ray_values.c                                  :+:      :+:    :+:   */
+/*   size_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 13:59:30 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:31:41 by lrondia          ###   ########.fr       */
+/*   Created: 2022/10/17 15:06:33 by lrondia           #+#    #+#             */
+/*   Updated: 2022/10/18 12:28:22 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ray_values(t_ray *ray)
+int	max_vert(char **map)
 {
-	while (ray->ra >= 2 * M_PI)
-		ray->ra -= 2 * M_PI;
-	while (ray->ra < 0)
-		ray->ra += 2 * M_PI;
-	ray->delta_x = fabs(1 / cos(ray->ra));
-	ray->delta_y = fabs(1 / sin(ray->ra));
-	
-	if (is_north(ray->ra))
-		ray->step_y = -1;
-	else
-		ray->step_y = 1;
-	if (is_west(ray->ra))
-		ray->step_x = -1;
-	else
-		ray->step_x = 1;
-	ray->hor = 0;
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i - 1);
+}
+
+int	max_hor(char **map, int i)
+{
+	int	j;
+
+	j = 0;
+	while (map[i][j])
+		j++;
+	return (j);
+}
+
+int	is_outside_map(int x, int y, char **map)
+{
+	return (y < 0 || y > max_vert(map) || x < 0 || x > max_hor(map, y));
 }

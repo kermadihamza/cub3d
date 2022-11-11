@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:52:48 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:32:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define OPEN_WALL 9
 # define INCORR_RGB 10
 # define SPRITE_ERR 11
+# define DOOR_WALL 12
 
 void	init_map(t_game *game, char **av);
 void	parsing(t_game *game, int ac, char **av);
@@ -34,7 +35,5 @@ void	handle_errors(t_game *game, int error, char *str);
 void	check_error_name(t_game *game, char *av);
 void	error_map(t_game *game, char *map);
 void	holes_in_walls(t_game *game, char *map);
-void	init_color_sprite(t_game *game);
-void	init_player_pos(t_game *game);
 
 #endif

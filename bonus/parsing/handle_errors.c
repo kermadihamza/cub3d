@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/06 16:52:58 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:34:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	handle_map_error(int error, char *str)
 	if (error == NB_ELEMENTS)
 		write(2,
 			"Error.\nThere is too few or too many character(s). Fix it.\n", 58);
+	else if (error == DOOR_WALL)
+		write(2,
+			"Error.\nA door must be surrounded by two walls. Fix it.\n", 55);
 	else if (error == OTHER_CHAR)
 	{
 		write(2, "Error.\nIncorrect character in the map : ", 40);
