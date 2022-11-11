@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/11 16:04:04 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:30:05 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,6 @@ int	key_press(int code, t_game *game)
 	return (0);
 }
 
-int mouse_move(int x, int y, t_game *game)
-{
-	if (x > 0 && x < WIN_W / 2 - 100)
-		game->ray.p_angle = +0.2;
-	if (x > WIN_W / 2 + 100 && x < WIN_W)
-		game->ray.p_angle = -0.2;
-	if ((x > WIN_W / 2 - 100) & (WIN_W / 2 + 100))
-		game->ray.p_angle = 0;
-	(void)y;
-	return (0);
-}
 
 int	key_release(int code, t_game *game)
 {
@@ -96,3 +85,30 @@ int	key_release(int code, t_game *game)
 	}
 	return (0);
 }
+
+int mouse_move(int x, int y, t_game *game)
+{
+	if (x > 0 && x < WIN_W / 2 - 100)
+		game->player.angle = +0.2;
+	if (x > WIN_W / 2 + 100 && x < WIN_W)
+		game->player.angle = -0.2;
+	if ((x > WIN_W / 2 - 100) & (WIN_W / 2 + 100))
+		game->player.angle = 0;
+	(void)y;
+		mlx_mouse_move(game->win, WIN_W / 2, WIN_H / 2);
+	return (0);
+}
+
+// int	mouse_move(int x, int y, void *param)
+// {
+// 	t_cub	*cub;
+
+// 	cub = (t_cub *)param;
+// 	(void)y;
+// 	if (cub->game_state == GAME)
+// 	{
+// 		cub->mouse.x = x;
+// 		mlx_mouse_move(cub->mlx.win, WIN_W / 2, WIN_H / 2);
+// 	}
+// 	return (0);
+// }

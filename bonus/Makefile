@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
+#    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/08 18:59:37 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/11 17:50:04 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I ./includes #-fsanitize=thread
 
-MLX = /usr/local/lib/
+MLX = mlx/
 FRAMEWORK = -framework OpenGL -framework AppKit
 
 NAME = cub3d
@@ -70,6 +70,7 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME):	$(OBJS)
+	make -C $(MLX)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(MLX) -lmlx $(FRAMEWORK)
 
 .c.o:
@@ -79,6 +80,7 @@ clean:
 	rm -f $(OBJS)
 
 fclean:	clean
+	make -C $(MLX) clean
 	rm -f $(NAME)
 
 re: fclean all
