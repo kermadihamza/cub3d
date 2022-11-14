@@ -6,15 +6,12 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/11 17:01:00 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:42:22 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
-# define MOUSE_MOVE 6
-# define NO_EVENT_MASK 0
-
 
 typedef struct s_pos {
 	double	x;
@@ -155,6 +152,7 @@ typedef struct s_game {
 	t_ray		ray[N_THREAD];
 	t_player	player;
 	t_mess		mess;
+	t_pos		pos;
 }	t_game;
 
 typedef struct s_arg {

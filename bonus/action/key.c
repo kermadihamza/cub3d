@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/11 17:30:05 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:42:10 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	key_press(int code, t_game *game)
 	return (0);
 }
 
-
 int	key_release(int code, t_game *game)
 {
 	if (code == 0)
@@ -88,27 +87,27 @@ int	key_release(int code, t_game *game)
 
 int mouse_move(int x, int y, t_game *game)
 {
-	if (x > 0 && x < WIN_W / 2 - 100)
-		game->player.angle = +0.2;
-	if (x > WIN_W / 2 + 100 && x < WIN_W)
-		game->player.angle = -0.2;
-	if ((x > WIN_W / 2 - 100) & (WIN_W / 2 + 100))
-		game->player.angle = 0;
+	static int		old_x;
+
 	(void)y;
-		mlx_mouse_move(game->win, WIN_W / 2, WIN_H / 2);
+	if (!old_x)
+		old_x = 0;
+	if (x < old_x)
+	{
+		game->player.angle += (float)(old_x - x) / 500;
+		if (game->player.angle > 2 * M_PI)
+			game->player.angle = 0;
+		game->player.adj_x = cos(game->player.angle) / 5;
+		game->player.adj_y = sin(game->player.angle) / 5;
+	}
+	if (x > old_x)
+	{
+		game->player.angle -= (float)(x - old_x) / 500;
+		if (game->player.angle < 0)
+			game->player.angle = 2 * M_PI;
+		game->player.adj_x = cos(game->player.angle) / 5;
+		game->player.adj_y = sin(game->player.angle) / 5;
+	}
+	old_x = x;
 	return (0);
 }
-
-// int	mouse_move(int x, int y, void *param)
-// {
-// 	t_cub	*cub;
-
-// 	cub = (t_cub *)param;
-// 	(void)y;
-// 	if (cub->game_state == GAME)
-// 	{
-// 		cub->mouse.x = x;
-// 		mlx_mouse_move(cub->mlx.win, WIN_W / 2, WIN_H / 2);
-// 	}
-// 	return (0);
-// }

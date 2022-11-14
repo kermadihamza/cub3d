@@ -6,7 +6,7 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/11 17:50:04 by hakermad         ###   ########.fr        #
+#    Updated: 2022/11/14 17:33:16 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,17 +60,16 @@ SRCS = 	main.c\
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes #-fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -I ./includes -O3 #-fsanitize=thread
 
-MLX = mlx/
-FRAMEWORK = -framework OpenGL -framework AppKit
+MLX = /usr/local/lib/
+FRAMEWORK = -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3d
 
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-	make -C $(MLX)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(MLX) -lmlx $(FRAMEWORK)
 
 .c.o:
@@ -80,7 +79,6 @@ clean:
 	rm -f $(OBJS)
 
 fclean:	clean
-	make -C $(MLX) clean
 	rm -f $(NAME)
 
 re: fclean all
