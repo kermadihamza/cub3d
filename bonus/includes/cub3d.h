@@ -6,14 +6,14 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:01:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:03:47 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>

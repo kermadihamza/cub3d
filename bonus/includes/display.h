@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:57:53 by hakermad          #+#    #+#             */
-/*   Updated: 2022/11/08 19:03:05 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/11 17:20:05 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int		find_color_in_sprite(t_ray *ray, double y, t_img sprite);
 int		get_color(t_img sprite, t_pos pos);
 void	sprite_blt(t_game *game, t_sprite *sprite, t_img origin);
 
+int		key_press(int code, t_game *game);
+int		key_release(int code, t_game *game);
+void	key_manager(t_game *game, t_ray *ray, t_key key);
+int		mouse_move(int x, int y, t_game *game);
 void	display_evil(t_game *game, t_evil *evil);
 void	evil_time(t_evil *evil);
 int		choose_evil_sprite(int time);

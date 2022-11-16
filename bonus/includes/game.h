@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:01:23 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:03:43 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ typedef struct s_game {
 	t_ray		ray[N_THREAD];
 	t_player	player;
 	t_mess		mess;
+	t_pos		pos;
 }	t_game;
 
 typedef struct s_arg {

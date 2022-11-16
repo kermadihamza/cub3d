@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 21:16:20 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 14:46:17 by lrondia          ###   ########.fr       */
+/*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
+/*   Updated: 2022/11/16 14:07:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,32 @@ int	key_release(int code, t_game *game)
 		game->player.max = 0;
 		game->player.attack = 0;
 	}
+	return (0);
+}
+
+int mouse_move(int x, int y, t_game *game)
+{
+	static int		old_x;
+
+	(void)y;
+	if (!old_x)
+		old_x = 0;
+	if (x < old_x)
+	{
+		game->player.angle += (float)(old_x - x) / 500;
+		if (game->player.angle > 2 * M_PI)
+			game->player.angle = 0;
+		game->player.adj_x = cos(game->player.angle) / 5;
+		game->player.adj_y = sin(game->player.angle) / 5;
+	}
+	if (x > old_x)
+	{
+		game->player.angle -= (float)(x - old_x) / 500;
+		if (game->player.angle < 0)
+			game->player.angle = 2 * M_PI;
+		game->player.adj_x = cos(game->player.angle) / 5;
+		game->player.adj_y = sin(game->player.angle) / 5;
+	}
+	old_x = x;
 	return (0);
 }
