@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/08 18:59:37 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/09 18:01:44 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCS = 	main.c\
 		utils/ft_mlx_pixel_put.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
+		utils/sound.c\
 		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)

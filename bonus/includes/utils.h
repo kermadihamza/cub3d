@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/04 15:46:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:54:07 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int		is_near_evil(t_pos p, t_pos e, int dist);
 
 void	bloc_transfer(t_img *src, t_img *dst, t_pos d, t_rect r);
 t_rect	init_rect(int x, int y, int width, int height);
+void	play_sound(t_game *game);
 
 #endif

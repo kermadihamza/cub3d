@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 16:21:06 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:53:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ft_destroy_all(t_game *game)
 		free_split(game->s_map);
 	mlx_destroy_window(game->mlx, game->win);
 	free (game->mlx);
+	system ("killall afplay");
 	exit (EXIT_SUCCESS);
 	return (0);
 }

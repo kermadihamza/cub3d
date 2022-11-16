@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:21:00 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 18:12:37 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:01:27 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <math.h>
 # include <pthread.h>
+# include <signal.h>
 # include "define.h"
 # include "game.h"
 # include "parsing.h"

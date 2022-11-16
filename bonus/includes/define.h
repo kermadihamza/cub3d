@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:11:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/09 16:42:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:55:37 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@
 
 # define NOT_PIXEL 9961608
 # define STILL_NOT_PIXEL -16777216
+
+# ifdef LINUX
+#  define SOUND_PATH "/usr/bin/aplay"
+#  define SOUND_CMD "aplay"
+# else
+#  define SOUND_PATH "/usr/bin/afplay"
+#  define SOUND_CMD "afplay"
+# endif
 
 # define SPEED 1
 

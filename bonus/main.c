@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:00:43 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:31:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:54:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
+	play_sound(&game);
 	ft_memset(&game, 0, sizeof (t_game));
 	ft_mlx_init(&game);
 	parsing(&game, ac, av);

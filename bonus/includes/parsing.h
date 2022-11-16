@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/31 12:32:20 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:59:15 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define INCORR_RGB 10
 # define SPRITE_ERR 11
 # define DOOR_WALL 12
+# define EXECV_F 13
 
 void	init_map(t_game *game, char **av);
 void	parsing(t_game *game, int ac, char **av);
