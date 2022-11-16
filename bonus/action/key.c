@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:45:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:26:02 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	key_release(int code, t_game *game)
 	return (0);
 }
 
-int mouse_move(int x, int y, t_game *game)
+int	mouse_move(int x, int y, t_game *game)
 {
 	static int		old_x;
 

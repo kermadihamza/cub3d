@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:49:53 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 15:22:19 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:25:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sides(t_game *game, char *map)
 			if (map[i - 1] && (map[i - 1] == ' ' || map[i - 1] == '\n'))
 				handle_errors(game, OPEN_WALL, map);
 			else if ((map[i + 1] && (map[i + 1] == '\n'
-					|| map[i + 1] == ' ')) || !map[i + 1])
+						|| map[i + 1] == ' ')) || !map[i + 1])
 				handle_errors(game, OPEN_WALL, map);
 		}
 		i++;
