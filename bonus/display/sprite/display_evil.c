@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:30:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:21:52 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 		return (1);
 	else if ((ray.door_hor < evil.dist_p && ray.door_hor != -1)
 		|| (ray.door_vert < evil.dist_p && ray.door_vert != -1))
-		return (1);
+			return (1);
 	return (0);
 }
 
@@ -48,7 +48,7 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 	small = game->fov / (WIN_W / evil.scale.x);
 	if (evil.life <= 0 || is_there_a_wall_ahead(game, evil, 0)
 		|| is_there_a_wall_ahead(game, evil, small))
-		return ;
+			return ;
 	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
 	{
 		pos.x = 0;
@@ -82,7 +82,9 @@ int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 	i = 0;
 	while (i < game->nb_evil)
 	{
-		if (evil[i].dist_p > evil[res].dist_p && prev != -1
+		if (evil[i].dist_p == evil[res].dist_p)
+			evil[i].dist_p += 0.01;
+		if (evil[i].dist_p >= evil[res].dist_p && prev != -1
 			&& evil[i].dist_p < evil[prev].dist_p)
 			res = i;
 		else if (evil[i].dist_p > evil[res].dist_p && prev == -1)
@@ -110,6 +112,7 @@ void	display_evil(t_game *game, t_evil *evil)
 	while (i < game->nb_evil)
 	{
 		n = find_farthest_evil(game, evil, n);
+		// printf("%d\n", n);
 		origin.x = (evil[n].p_angle + game->fov / 2) / game->fov * WIN_W;
 		origin.y = (WIN_H / 2) - (evil[n].scale.y / 2);
 		cs = choose_evil_sprite(evil[0].time);

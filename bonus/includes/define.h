@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:11:42 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:03:45 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:46:20 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@
 #  define SOUND_CMD "afplay"
 # endif
 
-# define SPEED 1
+# define SPEED 2
 
 #endif

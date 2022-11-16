@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:07:17 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:45:04 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int mouse_move(int x, int y, t_game *game)
 		old_x = 0;
 	if (x < old_x)
 	{
-		game->player.angle += (float)(old_x - x) / 500;
+		game->player.angle += (float)(old_x - x) / 200;
 		if (game->player.angle > 2 * M_PI)
 			game->player.angle = 0;
 		game->player.adj_x = cos(game->player.angle) / 5;
@@ -102,7 +102,7 @@ int mouse_move(int x, int y, t_game *game)
 	}
 	if (x > old_x)
 	{
-		game->player.angle -= (float)(x - old_x) / 500;
+		game->player.angle -= (float)(x - old_x) / 200;
 		if (game->player.angle < 0)
 			game->player.angle = 2 * M_PI;
 		game->player.adj_x = cos(game->player.angle) / 5;
