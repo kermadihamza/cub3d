@@ -6,9 +6,10 @@
 #    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/16 14:45:01 by hakermad         ###   ########.fr        #
+#    Updated: 2022/11/18 16:58:15 by hakermad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 SRCS = 	main.c\
 		parsing/handle_errors.c\

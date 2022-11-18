@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:15:04 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/14 16:51:43 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:29:02 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	can_go(t_game *game, t_pos start, double side_x, double side_y)
 	t_pos	pos;
 
 	i = 0;
-	side_x *= 2;
-	side_y *= 2;
 	pos = posi(start.x + side_x, start.y + side_y);
 	while (i < game->nb_door)
 	{
@@ -47,7 +45,7 @@ int	can_go(t_game *game, t_pos start, double side_x, double side_y)
 			break ;
 		i++;
 	}
-	if (!is_wall(game, pos.x, pos.y) && (!is_door(game, pos.x, pos.y)
+	if (!is_wall(game, pos.x, pos.y) /*&& !is_wall(game, pos.x + 0.1, pos.y + 0.1)*/ && (!is_door(game, pos.x, pos.y)
 			|| (is_door(game, pos.x, pos.y) && game->door[i].time > 2 * SPEED)))
 		return (1);
 	return (0);

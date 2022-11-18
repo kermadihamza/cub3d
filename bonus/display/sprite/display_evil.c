@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:30:54 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:54:43 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
 	double	horizontal;
 	double	vertical;
 	t_ray	ray;
-	t_pos	pos;
 
-	pos = posi(MINI_W / 2 - 5 + MINI_SIDE, MINI_H / 2 - 5 + MINI_SIDE);
 	ray.door_hor = -1;
 	ray.door_vert = -1;
 	ray.ra = (game->player.angle - evil.p_angle) - small;
@@ -46,14 +44,26 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 
 	pos.y = 0;
 	small = game->fov / (WIN_W / evil.scale.x);
-	if (evil.life <= 0 || is_there_a_wall_ahead(game, evil, 0)
-		|| is_there_a_wall_ahead(game, evil, small))
+	if (evil.life <= 0)
 		return ;
 	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
 	{
 		pos.x = 0;
-		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W)
+		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W && pos.y + origin.y > 0)
 		{
+			while (pos.x + origin.x < 0)
+				pos.x++;
+			if (game->ray_dist[(int)(pos.x + origin.x)] <= evil.dist_p)
+			{
+				pos.x++;
+				continue ;
+			}
+			else if (game->door_dist[(int)(pos.x + origin.x)] <= evil.dist_p
+				&& game->door_dist[(int)(pos.x + origin.x)] > 0)
+			{
+				pos.x++;
+				continue ;
+			}
 			color = get_color(sprite,
 					get_pos(pos, evil.scale, sprite));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
@@ -82,7 +92,9 @@ int	find_farthest_evil(t_game *game, t_evil *evil, int prev)
 	i = 0;
 	while (i < game->nb_evil)
 	{
-		if (evil[i].dist_p > evil[res].dist_p && prev != -1
+		if (evil[i].dist_p == evil[res].dist_p)
+			evil[i].dist_p += 0.001;
+		if (evil[i].dist_p >= evil[res].dist_p && prev != -1
 			&& evil[i].dist_p < evil[prev].dist_p)
 			res = i;
 		else if (evil[i].dist_p > evil[res].dist_p && prev == -1)

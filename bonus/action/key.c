@@ -6,8 +6,10 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:41:55 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:44:12 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:57:35 by hakermad         ###   ########.fr       */
 /*                                                                            */
+/* ************************************************************************** */
+
 /* ************************************************************************** */
 
 #include "cub3d.h"
@@ -85,7 +87,7 @@ int	key_release(int code, t_game *game)
 	return (0);
 }
 
-int mouse_move(int x, int y, t_game *game)
+int	mouse_move(int x, int y, t_game *game)
 {
 	static int		old_x;
 

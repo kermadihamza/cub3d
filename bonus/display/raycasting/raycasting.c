@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:45:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 17:40:11 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:39:39 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,13 @@ void	raycasting(t_game *game, t_ray *ray, int start, int end)
 		horizontal = check_wall_hor(game, ray, game->player.pos);
 		vertical = check_wall_vert(game, ray, game->player.pos);
 		longuest_ray(game, ray, horizontal, vertical);
+		game->ray_dist[start] = ray->ray_len / cos(ray->ra - game->player.angle);
+		if ((ray->door_hor <= ray->door_vert && ray->door_hor != -1 && ray->door_vert != -1)
+			|| (ray->door_vert == -1 && ray->door_hor != -1))
+			game->door_dist[start] = ray->door_hor;
+		if ((ray->door_vert < ray->door_hor && ray->door_vert != -1 && ray->door_hor != -1)
+			|| (ray->door_hor == -1 && ray->door_vert != -1))
+			game->door_dist[start] = ray->door_vert;
 		print_ray(game, ray);
 		small -= game->fov / WIN_W;
 		start ++;

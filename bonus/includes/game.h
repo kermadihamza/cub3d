@@ -6,9 +6,10 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 18:08:00 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:57:18 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef GAME_H
 # define GAME_H
@@ -143,6 +144,8 @@ typedef struct s_pars {
 }	t_pars;
 
 typedef struct s_game {
+	double		*ray_dist;
+	double		*door_dist;
 	void		*mlx;
 	void		*win;
 	double		fov;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:49:53 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/14 17:43:05 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:25:00 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sides(t_game *game, char *map)
 			if (map[i - 1] && (map[i - 1] == ' ' || map[i - 1] == '\n'))
 				handle_errors(game, OPEN_WALL, map);
 			else if ((map[i + 1] && (map[i + 1] == '\n'
-				|| map[i + 1] == ' ')) || !map[i + 1])
+						|| map[i + 1] == ' ')) || !map[i + 1])
 				handle_errors(game, OPEN_WALL, map);
 		}
 		i++;
