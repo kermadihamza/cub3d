@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 15:41:31 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:54:43 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,12 @@ void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 				pos.x++;
 				continue ;
 			}
-			// else if (game->door_dist[(int)(pos.x + origin.x)] <= evil.dist_p
-			// 	&& game->door_dist[(int)(pos.x + origin.x)] > 0)
-			// {
-			// 	if (pos.x / 2 == 1)
-			// 		printf("game truc : %f et evil %f\n", game->door_dist[(int)(pos.x + origin.x)], evil.dist_p);
-			// 	pos.x++;
-			// 	continue ;
-			// }
+			else if (game->door_dist[(int)(pos.x + origin.x)] <= evil.dist_p
+				&& game->door_dist[(int)(pos.x + origin.x)] > 0)
+			{
+				pos.x++;
+				continue ;
+			}
 			color = get_color(sprite,
 					get_pos(pos, evil.scale, sprite));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
