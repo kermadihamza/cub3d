@@ -6,35 +6,11 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 15:54:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:07:35 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_there_a_wall_ahead(t_game *game, t_evil evil, double small)
-{
-	double	horizontal;
-	double	vertical;
-	t_ray	ray;
-
-	ray.door_hor = -1;
-	ray.door_vert = -1;
-	ray.ra = (game->player.angle - evil.p_angle) - small;
-	init_ray_values(&ray);
-	horizontal = check_wall_hor(game, &ray, game->player.pos);
-	vertical = check_wall_vert(game, &ray, game->player.pos);
-	if (horizontal < vertical)
-		ray.ray_len = horizontal;
-	else
-		ray.ray_len = vertical;
-	if (ray.ray_len < evil.dist_p)
-		return (1);
-	else if ((ray.door_hor < evil.dist_p && ray.door_hor != -1)
-		|| (ray.door_vert < evil.dist_p && ray.door_vert != -1))
-		return (1);
-	return (0);
-}
 
 void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 {

@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:35:49 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 13:53:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:29:47 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_hor_closer(double hor, double vert)
 {
-	return ((hor < vert && hor != -1 && vert != -1) || vert == -1);
+	return ((hor < vert && hor && vert) || !vert);
 }
 
 int	is_map_letter(char c)

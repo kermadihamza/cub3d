@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:01 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/02 11:41:49 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:14:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	other_character(t_game *game, char *map)
 	{
 		if (!is_map_letter(map[i]))
 			handle_errors(game, OTHER_CHAR, &map[i]);
-		else if (map[i] == '\n' && map[i + 1] && map[i + 1] == '\n')
-			handle_errors(game, OTHER_CHAR, "\n");
 		i++;
 	}
 }

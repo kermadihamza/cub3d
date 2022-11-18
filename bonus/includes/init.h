@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 09:41:14 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 19:00:07 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:06:23 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	init_ray_values(t_ray *ray);
 void	init_evil_pos(t_game *game);
 void	init_evil_values(t_game *game, t_evil *evil);
 void	init_door_pos(t_game *game);
+void	door_re_init(t_ray *ray);
 
 #endif

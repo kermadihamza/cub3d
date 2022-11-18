@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:35:38 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 17:50:05 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:35:08 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,9 @@ void	print_door(t_game *game, t_ray *ray, t_door *door)
 	}
 	if (ray->door > ray->ray_len)
 	{
-		ray->door_hor = -1;
-		ray->door_vert = -1;
-		ray->door = -1;
-		ray->door_tile = posi(0, 0);
+		door_re_init(ray);
 		return ;
 	}
 	print_door_loop(game, ray, door);
-	ray->door_hor = -1;
-	ray->door_vert = -1;
-	ray->door = -1;
-	ray->door_tile = posi(0, 0);
+	door_re_init(ray);
 }

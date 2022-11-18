@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 12:24:51 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 17:50:49 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:35:17 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ int	how_many(char c, char *str)
 		i++;
 	}
 	return (res);
+}
+
+void	door_re_init(t_ray *ray)
+{
+	ray->door_hor = 0;
+	ray->door_vert = 0;
+	ray->door = 0;
+	ray->door_tile = posi(0, 0);
 }
 
 void	init_door_pos(t_game *game)

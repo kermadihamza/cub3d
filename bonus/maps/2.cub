@@ -6,3 +6,42 @@ EA ./assets/background.xpm
 F 137,181,128
 C 130, 182, 255
 
+111
+111
+1N1
+11111111111111111111111111
+111111
+    101
+1111111
+111111111
+
+
+void	check_coord(t_game *game, int i, int j, char *map)
+{
+	if (i == 0 || !game->s_map[i + 1]
+		|| !game->s_map[i - 1][j] || !game->s_map[i + 1][j])
+		handle_errors(game, OPEN_WALL, map);
+	else if (game->s_map[i - 1][j] == ' ' || game->s_map[i - 1][j] == '\n')
+		handle_errors(game, OPEN_WALL, map);
+	else if (game->s_map[i + 1][j] == ' ' || game->s_map[i + 1][j] == '\n')
+		handle_errors(game, OPEN_WALL, map);
+}
+
+void	bottom(t_game *game, char *map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (game->s_map[i])
+	{
+		j = 0;
+		while (game->s_map[i][j])
+		{
+			if (game->s_map[i][j] == '0' || is_personage(game->s_map[i][j]))
+				check_coord(game, i, j, map);
+			j++;
+		}
+		i++;
+	}
+}

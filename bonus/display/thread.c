@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:57:25 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/08 18:51:10 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:05:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ void	*routine_raycasting(void *arg)
 	game = ((t_arg *)arg)->game;
 	start = (WIN_W / N_THREAD) * i;
 	end = start + (WIN_W / N_THREAD);
-	game->ray[i].door_tile = posi(0, 0);
-	game->ray[i].door = -1;
-	game->ray[i].door_hor = -1;
-	game->ray[i].door_vert = -1;
-	game->ray[i].pos_in_screen = 0;
+	door_re_init(&game->ray[i]);
 	raycasting(game, game->ray + i, start, end);
 	return (arg);
 }
