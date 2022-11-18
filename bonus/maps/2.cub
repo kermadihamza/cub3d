@@ -1,15 +1,8 @@
-NO ./assets/trees.xpm
-SO ./assets/trees.xpm
-WE ./assets/trees.xpm
-EA ./assets/trees.xpm
+NO ./assets/background.xpm
+SO ./assets/background.xpm
+WE ./assets/background.xpm
+EA ./assets/background.xpm
 
-F 170,250,190
-C 100,180,250
+F 137,181,128
+C 130, 182, 255
 
-11111111
-1N000001
-10000001
-10000001
-10000001
-10000011
-11111111

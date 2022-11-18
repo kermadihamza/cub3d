@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:03:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/17 18:33:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ typedef struct s_mess {
 }	t_mess;
 
 typedef struct s_game {
+	double		*ray_dist;
+	double		*door_dist;
 	void		*mlx;
 	void		*win;
 	double		fov;

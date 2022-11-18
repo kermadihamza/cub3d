@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/16 14:24:27 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:03:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ static void	protection_wall(t_game *game, t_evil *evil, char **map)
 	while (map[y])
 	{
 		x = 0;
+		(void) evil;
 		while (map[y][x] && i < game->nb_evil)
 		{
 			if (map[y][x] == 'M')
 			{
 				if (map[y][x - 1] && map[y][x - 1] == '1')
-					add_new_pos(&evil[i].pos, 1, 0);
+					add_new_pos(&evil[i].pos, 0.1, 0);
 				if (map[y - 1][x] && map[y - 1][x] == '1')
-					add_new_pos(&evil[i].pos, 0, 1);
+					add_new_pos(&evil[i].pos, 0.1, 1);
 				i++;
 			}
 			x++;
@@ -72,14 +73,14 @@ void	init_evil_values(t_game *game, t_evil *evil)
 	sinu = -sin(game->player.angle);
 	dist.x = evil->pos.x - game->player.pos.x;
 	dist.y = evil->pos.y - game->player.pos.y;
-	evil->dist_p = hypot(dist.x, dist.y);
 	evil->p_angle = atan2(dist.y, dist.x) - atan2(sinu, cosi);
+	evil->dist_p = hypot(dist.x, dist.y);
+	evil->scale.y = WIN_W / evil->dist_p;
+	evil->scale.x = evil->scale.y * (game->sprite.w / game->sprite.h);
 	while (evil->p_angle > M_PI)
 		evil->p_angle -= 2 * M_PI;
 	while (evil->p_angle < -M_PI)
 		evil->p_angle += 2 * M_PI;
-	evil->scale.y = WIN_W / evil->dist_p;
-	evil->scale.x = evil->scale.y * (game->sprite.w / game->sprite.h);
 }
 
 t_pos	get_pos(t_pos pos, t_pos size, t_img sprite)
