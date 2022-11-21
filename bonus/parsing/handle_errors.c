@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/21 16:17:49 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:51:01 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,15 @@ void	handle_map_error(int error, char *str)
 		write(2, "Error\nThis map does not exit. Change it now.\n", 45);
 }
 
+void	handle_parse_error(int error)
+{
+	if (error == PARSE)
+		write(2, "Need NO/SO/WE/EA and F/C color.\n", 32);
+}
+
 void	handle_errors(t_game *game, int error, char *str)
 {
+	handle_parse_error(error);
 	handle_map_error(error, str);
 	handle_syntax_error(error, str);
 	handle_file_arg_error(error, str);

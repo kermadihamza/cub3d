@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/21 16:33:03 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:48:24 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	read_map(t_game *game, char *file)
 			break ;
 		while (!is_map_line(buffer) && (buffer[i] == ' ' || buffer[i] == '	'))
 			i++;
-		sort_map_infos(game, buffer);
+		sort_map_infos(game, buffer + i);
 		if (buffer)
 			free (buffer);
 	}

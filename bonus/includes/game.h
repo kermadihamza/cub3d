@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:02:31 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/17 18:33:24 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:50:57 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,16 @@ typedef struct s_mess {
 	t_img	mess_w[3];
 }	t_mess;
 
+typedef struct s_pars {
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*p;
+	char			*f;
+	char			*c;
+}	t_pars;
+
 typedef struct s_game {
 	double		*ray_dist;
 	double		*door_dist;
@@ -155,6 +165,7 @@ typedef struct s_game {
 	t_player	player;
 	t_mess		mess;
 	t_pos		pos;
+	t_pars		pars;
 }	t_game;
 
 typedef struct s_arg {
@@ -167,5 +178,6 @@ void	debug_img(t_img img);
 void	debug_split(char **split);
 void	debug_pos(t_pos pos);
 void	debug_ray(t_ray *ray);
+void	handle_parse_error(int error);
 
 #endif

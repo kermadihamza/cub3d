@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/21 16:24:09 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/21 16:57:10 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS = 	main.c\
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes
+CFLAGS = -Wall -Wextra -Werror -I ./includes -O3 #-fsanitize=address
 
 MLX = /usr/local/lib/
 FRAMEWORK = -framework OpenGL -framework AppKit

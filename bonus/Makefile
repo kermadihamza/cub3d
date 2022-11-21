@@ -6,9 +6,10 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/18 17:28:22 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/21 17:08:17 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 SRCS = 	main.c\
 		parsing/handle_errors.c\
@@ -56,7 +57,6 @@ SRCS = 	main.c\
 		utils/gnl/get_next_line.c\
 		utils/gnl/get_next_line_utils.c\
 		utils/sound.c\
-		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)
 

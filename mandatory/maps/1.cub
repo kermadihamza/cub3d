@@ -1,9 +1,9 @@
 NO ./sprites/country.xpm
 SO ./sprites/country.xpm
-WE 		  ./sprites/country.xpm
+WE ./sprites/country.xpm
 EA ./sprites/country.xpm
 
-F 137, 181, 128
+  F 137, 181, 128
 C 130, 182, 255
 
 111111111111111111111111111111

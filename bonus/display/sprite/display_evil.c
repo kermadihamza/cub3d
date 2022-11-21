@@ -6,48 +6,46 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/21 16:11:18 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:07:30 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	can_move_along(t_game *game, t_pos *pos, t_pos origin, t_evil evil)
+int	can_print(int color, t_pos pos, t_pos origin)
 {
-	int	start;
-
-	start = (int)(pos->x + origin.x);
-	while (pos->x + origin.x < 0)
-		pos->x++;
-	if ((game->ray_dist[start] <= evil.dist_p)
-		|| (game->door_dist[start] <= evil.dist_p
-			&& game->door_dist[start] > 0))
-	{
-		pos->x++;
-		return (0);
-	}
-	return (1);
+	return (color != NOT_PIXEL && color != STILL_NOT_PIXEL
+		&& is_in_screen(pos.x + origin.x, pos.y + origin.y));
 }
 
-void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
+int	is_behind_something(double *ray, double *door, int start, double evil)
+{
+	return ((ray[start] <= evil) || (door[start] <= evil && door[start] > 0));
+}
+
+void	print_evil(t_game *game, t_pos or, t_evil evil, t_img sprite)
 {
 	int		color;
 	t_pos	pos;
 
 	pos.y = 0;
-	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
+	while (pos.y < evil.scale.y && pos.y + or.y < WIN_H)
 	{
 		pos.x = 0;
-		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W
-			&& pos.y + origin.y > 0)
+		while (pos.x < evil.scale.x && pos.x + or.x < WIN_W
+			&& pos.y + or.y > 0)
 		{
-			if (!can_move_along(game, &pos, origin, evil))
+			while (pos.x + or.x < 0)
+				pos.x++;
+			if (is_behind_something(game->ray_dist, game->door_dist,
+					(int)(pos.x + or.x), evil.dist_p))
+			{
+				pos.x++;
 				continue ;
+			}
 			color = get_color(sprite, get_pos(pos, evil.scale, sprite));
-			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
-				&& is_in_screen(pos.x + origin.x, pos.y + origin.y))
-				ft_mlx_pixel_put(&game->img,
-					pos.x + origin.x, pos.y + origin.y, color);
+			if (can_print(color, pos, or))
+				ft_mlx_pixel_put(&game->img, pos.x + or.x, pos.y + or.y, color);
 			pos.x++;
 		}
 		pos.y++;

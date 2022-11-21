@@ -6,11 +6,18 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:46:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/10 14:41:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:55:51 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	missing_element(t_game *game)
+{
+	return (!(game->sprite.n_path) || !(game->sprite.s_path)
+		|| !(game->sprite.e_path) || !(game->sprite.w_path)
+		|| !(game->roof) || !(game->floor));
+}
 
 void	parsing_rgb(t_game *game, char *rgb, int *color)
 {
@@ -19,6 +26,8 @@ void	parsing_rgb(t_game *game, char *rgb, int *color)
 	char	**cpy;
 
 	i = 0;
+	if (missing_element(game))
+		handle_errors(game, PARSE, NULL);
 	cpy = ft_split(rgb, ',');
 	while (cpy[i])
 	{
