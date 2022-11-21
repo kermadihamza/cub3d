@@ -3,12 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
+#    By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/11/18 17:28:22 by lrondia          ###   ########.fr        #
+=======
+#    Updated: 2022/11/18 16:58:15 by hakermad         ###   ########.fr        #
+>>>>>>> aef2e7c457a380854c9281f10b5e553bc6f7f2e1
 #                                                                              #
 # **************************************************************************** #
+
 
 SRCS = 	main.c\
 		parsing/handle_errors.c\
