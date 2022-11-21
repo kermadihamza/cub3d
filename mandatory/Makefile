@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/11/21 16:57:10 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/21 17:41:13 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,20 +42,22 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I ./includes -O3 #-fsanitize=address
 
-MLX = /usr/local/lib/
-FRAMEWORK = -framework OpenGL -framework AppKit
+MLX_DIR = ../mlx/
+MLX_FLAGS = -L $(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3d
 
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(MLX) -lmlx $(FRAMEWORK)
+	make -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	make -C $(MLX_DIR) clean
 	rm -f $(OBJS)
 
 fclean:	clean
