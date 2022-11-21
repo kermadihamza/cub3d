@@ -1,7 +1,7 @@
-NO ./assets/background1.xpm
-SO ./assets/background1.xpm
-WE ./assets/background1.xpm
-EA ./assets/background1.xpm
+NO ./assets/wall.xpm
+SO ./assets/wall.xpm
+WE ./assets/wall.xpm
+EA ./assets/wall.xpm
 
   F 102, 129, 110
 C 240, 242, 215
