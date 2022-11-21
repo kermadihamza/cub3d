@@ -3,8 +3,8 @@ SO ./assets/background1.xpm
 WE ./assets/background1.xpm
 EA ./assets/background1.xpm
 
-F 204, 255, 204
-C 100,180,250
+F 102, 129, 110
+C 240, 242, 215
 
 111111111111111111111111111111
 100000000000001100000000000001

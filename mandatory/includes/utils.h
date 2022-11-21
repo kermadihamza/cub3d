@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:34:44 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:29:56 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:24:55 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	is_west(double ray);
 
 int		is_wall(t_game *game, int x, int y);
 void	calcul_ray_len(t_ray *ray, t_pos player, t_pos *pos, double *len);
-int		is_hor_closer(t_game *game, t_ray *ray);
 void	set_final_pos(t_game *game, t_ray *ray);
 int		is_outside_map(int x, int y, char **map);
 

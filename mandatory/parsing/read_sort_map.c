@@ -6,11 +6,23 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:44:18 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/07 15:49:00 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:33:03 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_map_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '	')
+		i++;
+	if (str[i] == '1' || str[i] == '0')
+		return (1);
+	return (0);
+}
 
 char	*copy_infos(char *src)
 {
@@ -18,7 +30,7 @@ char	*copy_infos(char *src)
 	char	*dest;
 
 	i = 0;
-	while (src[i] == ' ' && src[i] == '	')
+	while (src[i] == ' ' || src[i] == '	')
 		i++;
 	if (src[i] == ' ' || src[i] == '	')
 		i++;
@@ -59,6 +71,7 @@ void	sort_map_infos(t_game *game, char *str)
 
 void	read_map(t_game *game, char *file)
 {
+	int		i;
 	int		fd;
 	char	*buffer;
 
@@ -71,9 +84,12 @@ void	read_map(t_game *game, char *file)
 	game->map[0] = '\0';
 	while (game->map)
 	{
+		i = 0;
 		buffer = get_next_line(fd);
 		if (!buffer)
 			break ;
+		while (!is_map_line(buffer) && (buffer[i] == ' ' || buffer[i] == '	'))
+			i++;
 		sort_map_infos(game, buffer);
 		if (buffer)
 			free (buffer);

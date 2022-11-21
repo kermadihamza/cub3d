@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:15:48 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 16:53:04 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:17:49 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	handle_map_error(int error, char *str)
 	}
 	else if (error == OPEN_WALL)
 	{	
-		write(2, "Error\nA wall of the map is open here:\n", 39);
+		write(2, "Error\nA wall of the map is open here :\n", 39);
 		write (2, str, ft_strlen(str));
 		write (2, "\nClose it.\n", 11);
 	}

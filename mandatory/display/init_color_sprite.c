@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:49:20 by hakermad          #+#    #+#             */
-/*   Updated: 2022/10/10 12:43:42 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:36:50 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_sprites(t_game *game, char *path, t_img *sprite)
 {
-	int width;
-	int height;
+	int	width;
+	int	height;
 
 	sprite->img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
 	if (!(sprite->img) || !height || !width)

@@ -6,42 +6,44 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:54:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 17:07:35 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:11:18 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	can_move_along(t_game *game, t_pos *pos, t_pos origin, t_evil evil)
+{
+	int	start;
+
+	start = (int)(pos->x + origin.x);
+	while (pos->x + origin.x < 0)
+		pos->x++;
+	if ((game->ray_dist[start] <= evil.dist_p)
+		|| (game->door_dist[start] <= evil.dist_p
+			&& game->door_dist[start] > 0))
+	{
+		pos->x++;
+		return (0);
+	}
+	return (1);
+}
+
 void	print_evil(t_game *game, t_pos origin, t_evil evil, t_img sprite)
 {
 	int		color;
-	double	small;
 	t_pos	pos;
 
 	pos.y = 0;
-	small = game->fov / (WIN_W / evil.scale.x);
-	if (evil.life <= 0)
-		return ;
 	while (pos.y < evil.scale.y && pos.y + origin.y < WIN_H)
 	{
 		pos.x = 0;
-		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W && pos.y + origin.y > 0)
+		while (pos.x < evil.scale.x && pos.x + origin.x < WIN_W
+			&& pos.y + origin.y > 0)
 		{
-			while (pos.x + origin.x < 0)
-				pos.x++;
-			if (game->ray_dist[(int)(pos.x + origin.x)] <= evil.dist_p)
-			{
-				pos.x++;
+			if (!can_move_along(game, &pos, origin, evil))
 				continue ;
-			}
-			else if (game->door_dist[(int)(pos.x + origin.x)] <= evil.dist_p
-				&& game->door_dist[(int)(pos.x + origin.x)] > 0)
-			{
-				pos.x++;
-				continue ;
-			}
-			color = get_color(sprite,
-					get_pos(pos, evil.scale, sprite));
+			color = get_color(sprite, get_pos(pos, evil.scale, sprite));
 			if (color != NOT_PIXEL && color != STILL_NOT_PIXEL
 				&& is_in_screen(pos.x + origin.x, pos.y + origin.y))
 				ft_mlx_pixel_put(&game->img,
@@ -101,7 +103,8 @@ void	display_evil(t_game *game, t_evil *evil)
 		origin.x = (evil[n].p_angle + game->fov / 2) / game->fov * WIN_W;
 		origin.y = (WIN_H / 2) - (evil[n].scale.y / 2);
 		cs = choose_evil_sprite(evil[0].time);
-		print_evil(game, origin, evil[n], game->sprite.evil[cs]);
+		if (evil[n].life > 0)
+			print_evil(game, origin, evil[n], game->sprite.evil[cs]);
 		i++;
 	}
 }

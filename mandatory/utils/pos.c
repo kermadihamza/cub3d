@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:30:23 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/11 15:29:34 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:38:09 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	is_north(double ray)
 	else
 		return (0);
 }
+
 char	is_west(double ray)
 {
 	while (ray >= 2 * M_PI)

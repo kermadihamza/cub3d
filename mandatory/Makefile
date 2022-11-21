@@ -6,7 +6,7 @@
 #    By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 17:01:45 by hakermad          #+#    #+#              #
-#    Updated: 2022/10/07 22:02:34 by lrondia          ###   ########.fr        #
+#    Updated: 2022/11/21 16:24:09 by lrondia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS = 	main.c\
 		display/init_ray_values.c\
 		display/print_ray.c\
 		display/sprite_3d.c\
-		utils/debug.c\
 
 OBJS = $(SRCS:.c=.o)
 

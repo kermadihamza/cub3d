@@ -6,7 +6,7 @@
 /*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:01:37 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 15:03:24 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:53:56 by lrondia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	protection_wall(t_game *game, t_evil *evil, char **map)
 			if (map[y][x] == 'M')
 			{
 				if (map[y][x - 1] && map[y][x - 1] == '1')
-					add_new_pos(&evil[i].pos, 0.1, 0);
-				if (map[y - 1][x] && map[y - 1][x] == '1')
-					add_new_pos(&evil[i].pos, 0.1, 1);
+					add_new_pos(&evil[i].pos, 1, 0);
+				if (map[y - 1] && map[y - 1][x] && map[y - 1][x] == '1')
+					add_new_pos(&evil[i].pos, 0, 1);
 				i++;
 			}
 			x++;
