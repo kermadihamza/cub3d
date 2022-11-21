@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_rgb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:46:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/10 14:41:43 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 11:52:27 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	parsing_rgb(t_game *game, char *rgb, int *color)
 	char	**cpy;
 
 	i = 0;
+	if (!(game->sprite.n_path) || !(game->sprite.s_path) || !(game->sprite.e_path)
+	|| !(game->sprite.w_path) || !(game->roof) || !(game->floor))
+		handle_errors(game, PARSE, NULL);
 	cpy = ft_split(rgb, ',');
 	while (cpy[i])
 	{

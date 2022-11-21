@@ -6,7 +6,7 @@
 /*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:46:21 by lrondia           #+#    #+#             */
-/*   Updated: 2022/11/18 17:07:09 by hakermad         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:56:02 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	parsing_rgb(t_game *game, char *rgb, int *color)
 	i = 0;
 	if (!(game->sprite.north.path) || !(game->sprite.south.path) || !(game->sprite.east.path)
 		|| !(game->sprite.west.path) || !(game->roof) || !(game->floor))
-		{
 			handle_errors(game, PARSE, NULL);
-			
-		}
 	cpy = ft_split(rgb, ',');
 	while (cpy[i])
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrondia <lrondia@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hakermad <hakermad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:12:28 by lrondia           #+#    #+#             */
-/*   Updated: 2022/10/05 15:52:48 by lrondia          ###   ########.fr       */
+/*   Updated: 2022/11/21 11:43:33 by hakermad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define OPEN_WALL 9
 # define INCORR_RGB 10
 # define SPRITE_ERR 11
+# define PARSE 12
 
 void	init_map(t_game *game, char **av);
 void	parsing(t_game *game, int ac, char **av);
